@@ -7,8 +7,11 @@
 	border-bottom: 1px solid #CDCDCD;
     box-shadow: 0 1px 4px #ccc;
 }
-body {
-  padding-top: 60px;
+.navbar-brand{
+	padding: 0;
+}
+.regbtn{
+	margin-top: 25px;
 }
 .footer{
     text-align: center;
@@ -30,4 +33,16 @@ body {
 }
 .blockquote{
 	margin-top: 30px;
+}
+body {
+  padding-top: 60px;
+}
+.abouthead{
+	background-image: url(../images/about_back.jpg);
+	background-repeat: no-repeat;
+background-size: cover;
+height: 400px;
+}
+.page-header{
+	border-bottom: 1px solid #CDCDCD;
 }

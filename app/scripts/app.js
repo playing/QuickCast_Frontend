@@ -13,6 +13,10 @@ angular.module('quickCastIndex', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         templateUrl: '404.html',
       });
