@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('quickCastIndex')
-  .controller('MainCtrl', function ($scope) {
+angular.module('QuickCast')
+  .controller('LoginCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+    alert("s");
   });

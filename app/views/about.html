@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="/">
+      <a class="navbar-brand" ng-href="#/">
         <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
@@ -20,10 +20,10 @@
             <input type="password" class="form-control" placeholder="密码"></div>
         </form>
         <li >
-          <button class="btn btn-info nav-btn">登录快投</button>
+          <button class="btn btn-info nav-btn" ng-click="login()">登录快投</button>
         </li>
         <li >
-          <button class="btn btn-default nav-btn">忘记密码</button>
+          <button class="btn btn-default nav-btn" ng-click="resetpassword()">忘记密码</button>
         </li>
       </ul>
     </div>
@@ -78,7 +78,7 @@
 <div class="footer">
   <p>
     Quick Cast | 快投 ©2014
-    <a ng-href="/"></a>
+    <a ng-href="#/">主页</a>
     |
     <a ng-href="#/opinion">意见与反馈</a>
     |

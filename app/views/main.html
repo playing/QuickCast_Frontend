@@ -8,7 +8,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="/"><img src="./images/nav_logo.png"></a>
+      <a class="navbar-brand" ng-href="#/">
+        <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
       <ul class="nav navbar-nav navbar-right" >
@@ -19,10 +20,10 @@
             <input type="password" class="form-control" placeholder="密码"></div>
         </form>
         <li >
-          <button class="btn btn-info nav-btn">登录快投</button>
+          <button class="btn btn-info nav-btn" ng-click="login()">登录快投</button>
         </li>
         <li >
-          <button class="btn btn-default nav-btn">忘记密码</button>
+          <button class="btn btn-default nav-btn" ng-click="resetpassword()">忘记密码</button>
         </li>
       </ul>
     </div>
@@ -56,7 +57,7 @@
         <div class="form-group">
           <input type="password" class="form-control"  placeholder="密码"></div>
       </form>
-<button type="button" class="btn btn-success btn-block btn-lg regbtn">加入我们</button>
+      <button type="button" class="btn btn-success btn-block btn-lg regbtn" ng-click="register()" >加入我们</button>
     </div>
   </div>
   <blockquote  class=" blockquote">
@@ -72,14 +73,22 @@
 
 <div class="footer">
   <p>
-  Quick Cast | 快投 ©2014
-    <a ng-href="/"></a>
+    Quick Cast | 快投 ©2014
+    <a ng-href="#/">主页</a>
     |
     <a ng-href="#/opinion">意见与反馈</a>
     |
     <a ng-href="#/about">关于我们</a>
   </p>
-  <p>Designed and built with <a href="http://www.bootcss.com">Bootstrap</a> and <a href="http://angularjs.org">Angularjs</a> by <a href="http://www.playingcn.com">@playing</a>.</p>
+  <p>
+    Designed and built with
+    <a href="http://www.bootcss.com">Bootstrap</a>
+    and
+    <a href="http://angularjs.org">Angularjs</a>
+    by
+    <a href="http://www.playingcn.com">@playing</a>
+    .
+  </p>
   <p>
     Based on
     <a href="http://nodejs.org/">node.js</a>
