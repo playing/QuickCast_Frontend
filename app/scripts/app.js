@@ -20,7 +20,7 @@ angular.module('QuickCast', [
       })
       .when('/register', {
         templateUrl: 'views/register.html',
-        controller: 'LoginCtrl',
+        controller: 'RegisterCtrl',
       })
       .otherwise({
         templateUrl: '404.html',

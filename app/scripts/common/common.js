@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('QuickCast')
-	.controller('CommonCtrl', function($scope) {
-		$scope.awesomeThings = [
-			'HTML5 Boilerplate',
-			'AngularJS',
-			'Karma'
-		];
-		alert("ss");
+	.controller('CommonCtrl', function($scope, $route, $routeParams, $location) {
+		$scope.$route = $route;
+		$scope.$location = $location;
+		$scope.$routeParams = $routeParams;
 		$scope.register = function() {
-			alert("ss");
+			var ss = $location.path();
+			alert(ss);
+			//$location.path("/register");
 			//TO DO
 		};
 		$scope.login = function() {
-			alert("ss");
+			var ss = $location.path();
+			alert(ss);
 			//TO DO
 		};
 		$scope.resetpassword = function() {
