@@ -5,6 +5,8 @@ angular.module('QuickCast')
 		$scope.$route = $route;
 		$scope.$location = $location;
 		$scope.$routeParams = $routeParams;
+		var ss = $location.path();
+		alert(ss);
 		$scope.register = function() {
 			var ss = $location.path();
 			alert(ss);

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-fixed-top"
   role="navigation">
   <div class="container">
@@ -8,7 +9,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="#/"><img src="./images/nav_logo.png"></a>
+      <a class="navbar-brand" ng-href="#/">
+        <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
       <ul class="nav navbar-nav navbar-right" >
@@ -29,19 +31,77 @@
   </div>
 </nav>
 
-<div class="container index">
+<div class="container index" >
+  <div class="page-header">
+    <h1>
+      注册信息
+      <small>带*为必须填写内容.</small>
+    </h1>
+  </div>
+  <form >
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >
+            <span class="glyphicon glyphicon-asterisk"></span>
+            账号:
+          </label>
+          <input type="text" class="form-control"  placeholder="账号"></div>
+        <div class="form-group">
+          <label >
+            <span class="glyphicon glyphicon-asterisk"></span>
+            密码:
+          </label>
+          <input type="text" class="form-control"  placeholder="密码"></div>
+        <div class="form-group">
+          <label >
+            <span class="glyphicon glyphicon-asterisk"></span>
+            再次输入密码:
+          </label>
+          <input type="text" class="form-control"  placeholder="再次输入密码"></div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label >
+            <span class="glyphicon glyphicon-asterisk"></span>
+            真实姓名:
+          </label>
+          <input type="text" class="form-control"  placeholder="中文名"></div>
+        <div class="form-group">
+          <label >
+            英文名:
+          </label>
+          <input type="text" class="form-control"  placeholder="英文名"></div>
+        <div class="form-group">
+          <label >
+            <span class="glyphicon glyphicon-asterisk"></span>
+            邮箱地址:
+          </label>
+          <input type="text" class="form-control"  placeholder="E-mail"></div>
+      </div>
+    </div>
+  </form>
+  <button type="button" class="btn btn-success btn-lg btn-block regbtn">马上注册</button>
 </div>
 
 <div class="footer">
   <p>
-  Quick Cast | 快投 ©2014
+    Quick Cast | 快投 ©2014
     <a ng-href="#/">主页</a>
     |
     <a ng-href="#/opinion">意见与反馈</a>
     |
     <a ng-href="#/about">关于我们</a>
   </p>
-  <p>Designed and built with <a href="http://www.bootcss.com">Bootstrap</a> and <a href="http://angularjs.org">Angularjs</a> by <a href="http://www.playingcn.com">@playing</a>.</p>
+  <p>
+    Designed and built with
+    <a href="http://www.bootcss.com">Bootstrap</a>
+    and
+    <a href="http://angularjs.org">Angularjs</a>
+    by
+    <a href="http://www.playingcn.com">@playing</a>
+    .
+  </p>
   <p>
     Based on
     <a href="http://nodejs.org/">node.js</a>

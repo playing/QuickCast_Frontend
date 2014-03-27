@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('QuickCast', [
+angular.module('QuickCastAdmin', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -8,7 +8,7 @@ angular.module('QuickCast', [
   'ui.bootstrap',
   'ngAnimate'
 ])
-  .config(function($routeProvider) {
+  .config(function($routeProvider,$locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -20,9 +20,10 @@ angular.module('QuickCast', [
       })
       .when('/register', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl',
+        controller: 'CommonCtrl',
       })
       .otherwise({
         templateUrl: '404.html',
       });
+            $locationProvider.html5Mode(true);
   });
