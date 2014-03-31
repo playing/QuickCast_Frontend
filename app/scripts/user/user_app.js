@@ -4,29 +4,25 @@ angular.module('QuickCastUser', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
   'ui.bootstrap',
-  'ngAnimate'
+  'ngAnimate',
+  'ui.router'
 ])
-  .config(function($routeProvider,$locationProvider) {
-    $routeProvider
-          .when('/user', {
-        templateUrl: 'views/main.html',
-        controller: 'UserCtrl'
+  .config(function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise("404");
+    $stateProvider
+      .state('index', {
+        url: "/",
+        templateUrl: "views/user/user_main.html",
+        controller: "UserCtrl"
       })
-      .when('/user.html', {
-        redirectTo: '/user'
+    $stateProvider
+      .state('404', {
+        url: "/404",
+        templateUrl: "404.html",
+        controller: "UserCtrl"
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'UserCtrl'
-      })
-      .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'UserCtrl',
-      })
-      .otherwise({
-        templateUrl: '404.html',
-      });
-            $locationProvider.html5Mode(true);
+
+
   });
