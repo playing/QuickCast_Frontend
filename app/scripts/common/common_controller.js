@@ -1,25 +1,22 @@
 'use strict';
 
 angular.module('QuickCast')
-	.controller('CommonCtrl', function($scope, $route, $routeParams, $location) {
-		$scope.$route = $route;
-		$scope.$location = $location;
-		$scope.$routeParams = $routeParams;
-		var ss = $location.path();
-		alert(ss);
-		$scope.register = function() {
-			var ss = $location.path();
-			alert(ss);
-			//$location.path("/register");
+	.controller('CommonCtrl', function($scope,$location,$stateParams,$state,register) {
+
+		$scope.register = function(user_reg) {
+			$scope.user_reg = angular.copy(user_reg);
+			$state.go('register');
+			//跳转注册页面,保留数据.
+		};
+		$scope.registernow = function(user_reg) {
+			register(user_reg);
 			//TO DO
 		};
 		$scope.login = function() {
-			var ss = $location.path();
-			alert(ss);
 			//TO DO
 		};
 		$scope.resetpassword = function() {
-			alert("ss");
+
 			//TO DO
 		};
 

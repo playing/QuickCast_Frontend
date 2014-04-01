@@ -15,9 +15,9 @@
       <ul class="nav navbar-nav navbar-right" >
         <form class="navbar-form navbar-left" >
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="账号"></div>
+            <input type="text" class="form-control" placeholder="账号" ng-model="user_login.user_name"></div>
           <div class="form-group">
-            <input type="password" class="form-control" placeholder="密码"></div>
+            <input type="password" class="form-control" placeholder="密码" ng-model="user_login.password"></div>
         </form>
         <li >
           <button class="btn btn-info nav-btn" ng-click="login()">登录快投</button>
@@ -45,19 +45,19 @@
       <h3> <strong>马上加入:</strong>
       </h3>
       <p>只需两分钟,就能加入快投.</p>
-      <form class="form-inline" role="form">
+      <form class="form-inline" role="form" novalidate >
         <div class="form-group">
-          <input type="text" class="form-control"  placeholder="中文名"></div>
+          <input type="text" class="form-control"  placeholder="中文名" ng-model="user_reg.cname" ></div>
         <div class="form-group">
-          <input type="password" class="form-control"  placeholder="英文名(可选)"></div>
+          <input type="text" class="form-control"  placeholder="英文名(可选)" ng-model="user_reg.ename"></div>
       </form>
       <form class="regform" role="form">
         <div class="form-group">
-          <input type="text" class="form-control"  placeholder="账号"></div>
-        <div class="form-group">
-          <input type="password" class="form-control"  placeholder="密码"></div>
+          <input type="text" class="form-control"  placeholder="账号" ng-model="user_reg.user_name" ></div>
+        <div class="form-group"> 
+          <input type="password" class="form-control"  placeholder="密码" ng-model="user_reg.password"></div>
       </form>
-      <button type="button" class="btn btn-success btn-block btn-lg regbtn" ng-click="register()" >加入我们</button>
+      <button type="button" class="btn btn-success btn-block btn-lg regbtn" ng-click="register(user_reg)" >加入我们</button>
     </div>
   </div>
   <blockquote  class=" blockquote">
@@ -68,8 +68,6 @@
     <p>"快投网真的很好,拓展了职业人脉,找到了工作机会,还提升了个人的技能!"</p>
     <small>Haoliang Jiang, Job Seekers from WuHan.</small>
   </blockquote>
-<a href="
-user.html">222</a>
 </div>
 <div class="footer">
   <p>

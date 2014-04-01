@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="#/">
+      <a class="navbar-brand" ui-sref="index">
         <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
@@ -44,21 +44,21 @@
         <div class="form-group">
           <label >
             <span class="glyphicon glyphicon-asterisk"></span>
-            账号:
+            账号:{{user_reg_form.user_name}}
           </label>
-          <input type="text" class="form-control"  placeholder="账号"></div>
+          <input type="text" class="form-control"  placeholder="账号" ng-model="user_reg.user_name"></div>
         <div class="form-group">
           <label >
             <span class="glyphicon glyphicon-asterisk"></span>
             密码:
           </label>
-          <input type="text" class="form-control"  placeholder="密码"></div>
+          <input type="password" class="form-control"  placeholder="密码" ng-model="user_reg.password"></div>
         <div class="form-group">
           <label >
             <span class="glyphicon glyphicon-asterisk"></span>
             再次输入密码:
           </label>
-          <input type="text" class="form-control"  placeholder="再次输入密码"></div>
+          <input type="password" class="form-control"  placeholder="再次输入密码"></div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
@@ -66,32 +66,32 @@
             <span class="glyphicon glyphicon-asterisk"></span>
             真实姓名:
           </label>
-          <input type="text" class="form-control"  placeholder="中文名"></div>
+          <input type="text" class="form-control"  placeholder="中文名" ng-model="user_reg.cname"></div>
         <div class="form-group">
           <label >
             英文名:
           </label>
-          <input type="text" class="form-control"  placeholder="英文名"></div>
+          <input type="text" class="form-control"  placeholder="英文名" ng-model="user_reg.ename"></div>
         <div class="form-group">
           <label >
             <span class="glyphicon glyphicon-asterisk"></span>
             邮箱地址:
           </label>
-          <input type="text" class="form-control"  placeholder="E-mail"></div>
+          <input type="email" class="form-control"  placeholder="E-mail" ng-model="user_reg.email"></div>
       </div>
     </div>
   </form>
-  <button type="button" class="btn btn-success btn-lg btn-block regbtn">马上注册</button>
+  <button type="button" class="btn btn-success btn-lg btn-block regbtn" ng-click="registernow(user_reg)">马上注册</button>
 </div>
 
 <div class="footer">
   <p>
     Quick Cast | 快投 ©2014
-    <a ng-href="#/">主页</a>
+    <a ui-sref="index">主页</a>
     |
-    <a ng-href="#/opinion">意见与反馈</a>
+    <a ui-sref="opinion">意见与反馈</a>
     |
-    <a ng-href="#/about">关于我们</a>
+    <a ui-sref="about">关于我们</a>
   </p>
   <p>
     Designed and built with
@@ -114,4 +114,3 @@
     .
   </p>
 </div>
-        <script src="scripts/user/register-controller.js"></script>
