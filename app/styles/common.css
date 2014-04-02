@@ -1,5 +1,10 @@
 body {
   padding-top: 60px;
+  font-family: Michroma,'Segoe UI Light','Segoe UI','Segoe UI WP','Microsoft Jhenghei','微软雅黑',sans-serif,Times;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: Michroma,'Segoe UI Light','Segoe UI','Segoe UI WP','Microsoft Jhenghei','微软雅黑',sans-serif,Times;
+
 }
 .nav-btn {
   margin-top: 9px;
@@ -42,4 +47,16 @@ body {
 }
 .page-header{
 	border-bottom: 1px solid #CDCDCD;
+}
+.prform{
+width: 50%;
+}
+.blocklabel
+{
+	display: block;
+}
+.inlinelabel
+{
+	margin-right: 15px;
+	margin-left: 15px;
 }

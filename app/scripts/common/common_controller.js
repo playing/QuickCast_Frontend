@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('QuickCast')
-	.controller('CommonCtrl', function($scope,$location,$stateParams,$state,register) {
-
+	.controller('CommonCtrl', function($scope, $location, $stateParams, $state, register) {
+		$scope.alerts = [];
 		$scope.register = function(user_reg) {
 			$scope.user_reg = angular.copy(user_reg);
 			$state.go('register');
@@ -19,5 +19,8 @@ angular.module('QuickCast')
 
 			//TO DO
 		};
-
+		$scope.alerts.push({
+			type: "danger",
+			msg: "Placeholder."
+		});
 	});

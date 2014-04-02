@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-default navbar-fixed-top"
   role="navigation">
   <div class="container">
@@ -35,49 +34,64 @@
   <div class="page-header">
     <h1>
       注册信息
-      <small>带*为必须填写内容.</small>
+      <small>带* 必须填写内容.</small>
     </h1>
   </div>
+  <h2>{{user_reg.cn_tname}} 欢迎您注册快投网!</h2>
+  <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
   <form >
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div class="form-group">
           <label >
-            <span class="glyphicon glyphicon-asterisk"></span>
-            账号:{{user_reg_form.user_name}}
+            * 账号:
           </label>
           <input type="text" class="form-control"  placeholder="账号" ng-model="user_reg.user_name"></div>
         <div class="form-group">
           <label >
-            <span class="glyphicon glyphicon-asterisk"></span>
-            密码:
+            * 密码:
           </label>
           <input type="password" class="form-control"  placeholder="密码" ng-model="user_reg.password"></div>
         <div class="form-group">
           <label >
-            <span class="glyphicon glyphicon-asterisk"></span>
-            再次输入密码:
+            * 再次输入密码:
           </label>
           <input type="password" class="form-control"  placeholder="再次输入密码"></div>
-      </div>
-      <div class="col-md-6">
         <div class="form-group">
           <label >
-            <span class="glyphicon glyphicon-asterisk"></span>
-            真实姓名:
+            * 真实姓名:
           </label>
-          <input type="text" class="form-control"  placeholder="中文名" ng-model="user_reg.cname"></div>
+          <input type="text" class="form-control"  placeholder="中文名" ng-model="user_reg.cn_tname"></div>
+        <div class="form-group">
+          <label >英文名:</label>
+          <input type="text" class="form-control"  placeholder="英文名" ng-model="user_reg.eng_name"></div>
         <div class="form-group">
           <label >
-            英文名:
-          </label>
-          <input type="text" class="form-control"  placeholder="英文名" ng-model="user_reg.ename"></div>
-        <div class="form-group">
-          <label >
-            <span class="glyphicon glyphicon-asterisk"></span>
-            邮箱地址:
+            * 邮箱地址:
           </label>
           <input type="email" class="form-control"  placeholder="E-mail" ng-model="user_reg.email"></div>
+      </div>
+      <div class="col-md-5">
+        <blockquote>
+          <h3>一个快投网账号可以帮助您...</h3>
+          <p>
+            <span class="glyphicon glyphicon-ok"></span>
+            展现你的技能和经验.
+          </p>
+          <p>
+            <span class="glyphicon glyphicon-ok"></span>
+            给你带来崭新的机会.
+          </p>
+          <p>
+            <span class="glyphicon glyphicon-ok"></span>
+            保持与同学同事以及朋友的联系.
+          </p>
+                    <p>
+            <span class="glyphicon glyphicon-ok"></span>
+还有更多,等你来发现...
+          </p>
+
+        </blockquote>
       </div>
     </div>
   </form>

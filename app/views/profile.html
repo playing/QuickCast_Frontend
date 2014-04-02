@@ -1,0 +1,245 @@
+<nav class="navbar navbar-default navbar-fixed-top"
+  role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="index">
+        <img src="./images/nav_logo.png"></a>
+    </div>
+    <div class="collapse navbar-collapse" >
+      <ul class="nav navbar-nav navbar-right" >
+        <p>placeholder</p>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container index" >
+  <div class="page-header">
+    <h1>
+      详细信息
+      <small>带* 为必须填写内容.</small>
+    </h1>
+  </div>
+  <h2>{{user_reg.cn_tname}} 让我们来一起完善你的个人信息!</h2>
+  <div class="row detailrow">
+    <div class="col-md-7">
+      <div class="form-group">
+        <label >国籍:</label>
+        <p class="form-control-static">中国 China</p>
+      </div>
+      <div class="form-group">
+        <label >省份:</label>
+        <select class="form-control prform">
+          <option value="">选择省份</option>
+          <option value="14">北京</option>
+          <option value="30">上海</option>
+          <option value="11">安徽</option>
+          <option value="23">重庆</option>
+          <option value="24">福建</option>
+          <option value="1">甘肃</option>
+          <option value="18">广东</option>
+          <option value="10">广西</option>
+          <option value="8">贵州</option>
+          <option value="28">海南</option>
+          <option value="5">河北</option>
+          <option value="12">黑龙江</option>
+          <option value="15">河南</option>
+          <option value="29">湖北</option>
+          <option value="3">湖南</option>
+          <option value="6">内蒙古</option>
+          <option value="21">江苏</option>
+          <option value="17">江西</option>
+          <option value="26">吉林</option>
+          <option value="19">辽宁</option>
+          <option value="31">宁夏</option>
+          <option value="25">青海</option>
+          <option value="9">陕西</option>
+          <option value="20">山东</option>
+          <option value="13">山西</option>
+          <option value="4">四川</option>
+          <option value="22">天津</option>
+          <option value="16">西藏</option>
+          <option value="7">新疆</option>
+          <option value="2">云南</option>
+          <option value="27">浙江</option>
+        </select>
+      </div>
+      <h3>请选择您的身份:</h3>
+      <button class="btn btn-default btn-lg" ng-click="isCollapsed2=0;isCollapsed3=0;isCollapsed1 = !isCollapsed1">
+        <span class="glyphicon glyphicon-file"></span>
+        求职者
+      </button>
+      <button class="btn btn-default btn-lg" ng-click="isCollapsed1=0;isCollapsed3=0;isCollapsed2 = !isCollapsed2">
+        <span class="glyphicon glyphicon-briefcase"></span>
+        雇主
+      </button>
+      <button class="btn btn-default btn-lg" ng-click="isCollapsed2=0;isCollapsed1=0;isCollapsed3 = !isCollapsed3">
+        <span class="glyphicon glyphicon-user"></span>
+        猎头
+      </button>
+      <div class="detailrow">
+        <div collapse="!isCollapsed1">
+          <form role="form">
+            <div class="form-group">
+              <label >近期工作职位:</label>
+              <input type="text" class="form-control prform"  ></div>
+            <div class="form-group">
+              <label >近期工作公司:</label>
+              <input type="text" class="form-control prform" ></div>
+            <div class="form-group">
+              <label >近期工作行业:</label>
+              <input type="text" class="form-control prform"></div>
+          </form>
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label class="blocklabel">时间:</label>
+              <select class="form-control">
+                <option value="" selected="">-</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2000">2000</option>
+                <option value="1999">1999</option>
+                <option value="1998">1998</option>
+                <option value="1997">1997</option>
+                <option value="1996">1996</option>
+                <option value="1995">1995</option>
+                <option value="1994">1994</option>
+                <option value="1993">1993</option>
+                <option value="1992">1992</option>
+                <option value="1991">1991</option>
+                <option value="1990">1990</option>
+                <option value="1989">1989</option>
+                <option value="1988">1988</option>
+                <option value="1987">1987</option>
+                <option value="1986">1986</option>
+                <option value="1985">1985</option>
+                <option value="1984">1984</option>
+                <option value="1983">1983</option>
+                <option value="1982">1982</option>
+                <option value="1981">1981</option>
+                <option value="1980">1980</option>
+              </select>
+              <label class="inlinelabel">到</label>
+              <select class="form-control">
+                <option value="" selected="">-</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+                <option value="2010">2010</option>
+                <option value="2009">2009</option>
+                <option value="2008">2008</option>
+                <option value="2007">2007</option>
+                <option value="2006">2006</option>
+                <option value="2005">2005</option>
+                <option value="2004">2004</option>
+                <option value="2003">2003</option>
+                <option value="2002">2002</option>
+                <option value="2001">2001</option>
+                <option value="2000">2000</option>
+                <option value="1999">1999</option>
+                <option value="1998">1998</option>
+                <option value="1997">1997</option>
+                <option value="1996">1996</option>
+                <option value="1995">1995</option>
+                <option value="1994">1994</option>
+                <option value="1993">1993</option>
+                <option value="1992">1992</option>
+                <option value="1991">1991</option>
+                <option value="1990">1990</option>
+                <option value="1989">1989</option>
+                <option value="1988">1988</option>
+                <option value="1987">1987</option>
+                <option value="1986">1986</option>
+                <option value="1985">1985</option>
+                <option value="1984">1984</option>
+                <option value="1983">1983</option>
+                <option value="1982">1982</option>
+                <option value="1981">1981</option>
+                <option value="1980">1980</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div collapse="!isCollapsed2">
+          <div class=" ">Some content2</div>
+        </div>
+        <div collapse="!isCollapsed3">
+          <div>Some content3</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <blockquote>
+        <h3>一个快投网账号可以帮助您...</h3>
+        <p>
+          <span class="glyphicon glyphicon-ok"></span>
+          建立个人品牌.
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-ok"></span>
+          获取事业洞察力.
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-ok"></span>
+          开发职场人脉.
+        </p>
+        <p>
+          <span class="glyphicon glyphicon-ok"></span>
+          还有更多,等你来发现...
+        </p>
+      </blockquote>
+    </div>
+
+  </div>
+    <button type="button" class="btn btn-success btn-lg btn-block regbtn" >完成</button>
+</div>
+
+<div class="footer">
+  <p>
+    Quick Cast | 快投 ©2014
+    <a ui-sref="index">主页</a>
+    |
+    <a ui-sref="opinion">意见与反馈</a>
+    |
+    <a ui-sref="about">关于我们</a>
+  </p>
+  <p>
+    Designed and built with
+    <a href="http://www.bootcss.com">Bootstrap</a>
+    and
+    <a href="http://angularjs.org">Angularjs</a>
+    by
+    <a href="http://www.playingcn.com">@playing</a>
+    .
+  </p>
+  <p>
+    Based on
+    <a href="http://nodejs.org/">node.js</a>
+    , use
+    <a href="http://gruntjs.com/">Grunt</a>
+    ,
+    <a href="http://bower.io/">Bower</a>
+    ,and
+    <a href="http://yeoman.io/">Yeoman</a>
+    .
+  </p>
+</div>

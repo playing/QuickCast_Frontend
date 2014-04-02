@@ -32,7 +32,12 @@ angular.module('QuickCast', [
       })
        $stateProvider
       .state('register', {
-        url: "/register",
+        url: "/reg/register",
         templateUrl: "views/register.html",
+      })
+          $stateProvider
+      .state('profile', {
+        url: "/reg/profile",
+        templateUrl: "views/profile.html",
       })
   });
