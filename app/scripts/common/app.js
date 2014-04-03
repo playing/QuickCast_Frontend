@@ -10,6 +10,11 @@ angular.module('QuickCast', [
 ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/404");
+        $stateProvider
+      .state('null', {
+        url: "",
+        templateUrl: "views/main.html",
+      })
     $stateProvider
       .state('about', {
         url: "/about",
@@ -30,12 +35,12 @@ angular.module('QuickCast', [
         url: "/404",
         templateUrl: "404.html",
       })
-       $stateProvider
+    $stateProvider
       .state('register', {
         url: "/reg/register",
         templateUrl: "views/register.html",
       })
-          $stateProvider
+    $stateProvider
       .state('profile', {
         url: "/reg/profile",
         templateUrl: "views/profile.html",
