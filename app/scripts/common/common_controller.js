@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('QuickCast')
-	.controller('CommonCtrl', function($scope, $location, $stateParams, $state, $window, register, profile) {
+	.controller('CommonCtrl', function($scope, $location, $stateParams, $state, $window, register, profile, login) {
 		$scope.alerts = [];
 		$scope.register = function(user_reg) {
 			$scope.user_reg = angular.copy(user_reg);
@@ -11,7 +11,8 @@ angular.module('QuickCast')
 		$scope.registernow = function(user_reg) {
 			register(user_reg);
 		};
-		$scope.login = function() {
+		$scope.login = function(user_login) {
+			login(user_login);
 			//TO DO
 		};
 		$scope.resetpassword = function() {

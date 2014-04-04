@@ -11,7 +11,7 @@
       <a class="navbar-brand" ui-sref="index">
         <img src="./images/nav_logo.png"></a>
     </div>
-    <div class="collapse navbar-collapse" >
+    <div class="collapse navbar-collapse"s>
       <ul class="nav navbar-nav navbar-right" >
         <form class="navbar-form navbar-left" >
           <div class="form-group">
@@ -20,7 +20,7 @@
             <input type="password" class="form-control" placeholder="密码" ng-model="user_login.password"></div>
         </form>
         <li >
-          <button class="btn btn-info nav-btn" ng-click="login()">登录快投</button>
+          <button class="btn btn-info nav-btn" ng-click="login(user_login)">登录快投</button>
         </li>
         <li >
           <button class="btn btn-default nav-btn" ng-click="resetpassword()">忘记密码</button>
@@ -29,7 +29,6 @@
     </div>
   </div>
 </nav>
-
 <div class="container index">
   <h1 class="text-center">寻找关系,探寻机会,分享智慧.</h1>
   <h1 class="text-center">Connect, share ideas, and discover opportunities.</h1>
