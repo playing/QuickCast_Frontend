@@ -20,13 +20,13 @@ angular.module('QuickCast')
 			//TO DO
 		};
 		$scope.profile = function() {
-			alert($location.url());
-			profile("s");
-			$window.location.href = "user.html#/"
+			$window.alert($location.url());
+			profile('s');
+			$window.location.href = 'user.html#/'
 
 		};
 		$scope.alerts.push({
-			type: "danger",
-			msg: "Placeholder."
+			type: 'danger',
+			msg: 'Placeholder.'
 		});
 	});
