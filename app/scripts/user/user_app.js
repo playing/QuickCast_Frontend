@@ -13,15 +13,15 @@ angular.module('QuickCastUser', [
     $urlRouterProvider.otherwise('404');
     $stateProvider
       .state('index', {
-        url: '/',
+        url: '/user/:user_id',
         templateUrl: 'views/user/user_main.html',
         controller: 'UserCtrl'
       })
-       .state('null', {
-        url: '',
-        templateUrl: 'views/user/user_main.html',
-        controller: 'UserCtrl'
-      })
+      //  .state('null', {
+      //   url: '',
+      //   templateUrl: 'views/user/user_main.html',
+      //   controller: 'UserCtrl'
+      // })
     $stateProvider
       .state('404', {
         url: '/404',

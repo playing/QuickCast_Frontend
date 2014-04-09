@@ -2,6 +2,7 @@
 
 angular.module('QuickCastUser')
 	.controller('UserCtrl', function($scope, $location, $stateParams, $state, $window) {
+		$window.alert($stateParams.user_id);
 		$scope.messages = [];
 		$scope.notices = [];
 		$scope.applys = [];
@@ -36,5 +37,11 @@ angular.module('QuickCastUser')
 			sender: 'Wang',
 			msg: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse'
 		});
+		$scope.updates.push({
+			id: '12344',
+			sender: 'Wang',
+			msg: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse'
+		});
+
 
 	});
