@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('QuickCast')
-	.controller('CommonCtrl', function($scope, $location, $stateParams, $state, $window, CommonService) {
-		$scope.alerts = [];
+	.controller('CommonCtrl', function($scope, $location, $stateParams, $state, $window, $cookies, CommonService) {
 
+		$cookies._UDATAID = "12314";
+
+
+		$scope.alerts = [];
 		$scope.register = function(user_reg) {
 			$scope.user_reg = angular.copy(user_reg);
 			$state.go('register');
@@ -11,7 +14,46 @@ angular.module('QuickCast')
 		};
 
 		$scope.registernow = function(user_reg) {
-			register(user_reg);
+			CommonService.check_name(user_reg).then(function(response) {
+				if (respone === 'true') {
+					$scope.nameflag = 1;
+
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '用户名已存在,请重新填写一个用户名.'
+					});
+				}
+
+			});
+			CommonService.check_email(user_reg).then(function(response) {
+				if (response === 0) {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '该邮箱已被注册,请重新填写一个邮箱地址.'
+					});
+
+				} else {
+					$scope.emailflag = 1;
+
+				};
+
+			});
+			if ($scope.emailflag === 1 && $scope.nameflag === 1) {
+				CommonService.register(user_reg).then(function(response) {
+					if (response === 'false') {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '注册失败,请重新尝试注册.'
+						});
+
+					} else {
+						$state.go('profile');
+						$cookies._UDATAID = response;
+					};
+				});
+
+			}
 			//注册函数
 		};
 
@@ -45,10 +87,14 @@ angular.module('QuickCast')
 
 		};
 
-		$scope.profile = function() {
-			$window.alert($location.url());
-			profile('s');
-			$window.location.href = 'user.html#/';
+		$scope.profile = function(user_profile) {
+			user_profile.user_id = $cookies._UDATAID;
+
+			CommonService.login(user_profile).then(function(response) {
+
+
+
+			});
 			//详细信息函数
 		};
 

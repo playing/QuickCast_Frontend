@@ -4,14 +4,10 @@ angular.module('QuickCast')
 		var CommonService = {
 			login: function(user_login) {
 				//login服务
-				var login_data = {
-					'user_name': user_login.user_name,
-					'password': user_login.password
-				};
 				var login_response = $http({
 					method: 'post',
 					url: 'http://114.215.168.150:8080/quickcast/user_reg.do?method=login',
-					data: login_data
+					data: user_login
 				})
 					.then(function(response) {
 						//response.data = decodeURIComponent(decodeURIComponent(response.data));
@@ -22,17 +18,11 @@ angular.module('QuickCast')
 			},
 			register: function(user_reg) {
 				//register服务
-				var register_data = {
-					'user_name': user_reg.user_name,
-					'password': user_reg.password,
-					'email': user_reg.email,
-					'cn_tname': user_reg.cn_tname,
-					'eng_name': user_reg.eng_name
-				};
+
 				var register_response = $http({
 					method: 'post',
 					url: 'http://114.215.168.150:8080/quickcast/user_reg.do?method=reg',
-					data: register_data
+					data: user_reg
 				})
 					.then(function(response) {
 						//response.data = decodeURIComponent(decodeURIComponent(response.data));
@@ -41,54 +31,56 @@ angular.module('QuickCast')
 				return register_response
 				//register服务返回数据
 			},
-			profile: function(user_reg) {},
-			checkname: function(user_reg) {},
-			checkemail: function(user_reg) {}
+
+			check_name: function(user_reg) {
+				//checkname服务
+				var check_name_data = {
+					'user_name': user_reg.user_name
+				};
+				var check_name_response = $http({
+					method: 'post',
+					url: 'http://114.215.168.150:8080/quickcast/user_reg.do?method=check_uname',
+					data: check_name_data
+				})
+					.then(function(response) {
+						console.log(response.data);
+						return response.data;
+					});
+				return check_name_response
+				//checkname服务返回数据
+
+			},
+			check_email: function(user_reg) {
+				//checkemail服务
+				var check_email_data = {
+					'email': user_reg.email
+				};
+				var check_email_response = $http({
+					method: 'post',
+					url: 'http://114.215.168.150:8080/quickcast/user_reg.do?method=check_email',
+					data: check_email_data
+				})
+					.then(function(response) {
+						return response.data;
+					});
+				return check_email_response
+				//checkemail服务返回数据
+
+			},
+			profile: function(user_profile) {
+				//profile服务
+
+				var profile_response = $http({
+					method: 'post',
+					url: 'http://114.215.168.150:8080/quickcast/user_reg.do?method=check_uname',
+					data: user_profile
+				})
+					.then(function(response) {
+						return response.data;
+					});
+				return profile_response
+				//profile服务返回数据
+			}
 		};
 		return CommonService;
-	});
-
-angular.module('QuickCast')
-	.factory('profile', function($http, $stateParams, $state, $window) {
-		var profile_instance = function(user_profile) {
-			var profile_data = {};
-			$http({
-				method: 'post',
-				url: 'user_reg.do?method=reg',
-				data: profile_data
-			}).
-			success(function(data, status) {
-				$window.alert('success');
-				//$state.go('basicprofile');
-			}).
-			error(function(data, status) {
-				$window.alert('failed');
-				$state.go('profile');
-			});
-
-			$window.alert('profile');
-		}
-		return profile_instance;
-	});
-
-angular.module('QuickCast')
-	.factory('checkname', function($http, $stateParams, $state, $window) {
-		var checkname_instance = function(user_name) {
-			var checkname_data = user_name;
-			$http({
-				method: 'post',
-				url: 'user_reg.do?method=check_uname',
-				data: checkname_data
-			}).
-			success(function(data, status) {
-				$window.alert('success');
-
-			}).
-			error(function(data, status) {
-				$window.alert('failed');
-			});
-
-			$window.alert('checkname');
-		}
-		return checkname_instance;
 	});

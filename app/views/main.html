@@ -32,7 +32,7 @@
 <div class="container index">
   <h1 class="text-center">寻找关系,探寻机会,分享智慧.</h1>
   <h1 class="text-center">Connect, share ideas, and discover opportunities.</h1>
-    <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
+  <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
   <div class="row detailrow">
     <div class="col-md-6">
       <img src="./images/index_head_1.png">
@@ -54,7 +54,7 @@
       <form class="regform" role="form" >
         <div class="form-group">
           <input type="text" class="form-control"  placeholder="账号" ng-model="user_reg.user_name" required></div>
-        <div class="form-group"> 
+        <div class="form-group">
           <input type="password" class="form-control"  placeholder="密码" ng-model="user_reg.password" required></div>
       </form>
       <button type="button" class="btn btn-success btn-block btn-lg regbtn" ng-click="register(user_reg)" >加入我们</button>
