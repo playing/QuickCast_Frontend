@@ -2,7 +2,7 @@
 
 angular.module('QuickCastUser')
 	.controller('UserCtrl', function($scope, $location, $stateParams, $state, $window) {
-		$window.alert($stateParams.user_id);
+		//$window.alert($stateParams.user_id);
 		$scope.messages = [];
 		$scope.notices = [];
 		$scope.applys = [];
