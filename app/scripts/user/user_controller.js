@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('QuickCastUser')
-	.controller('UserCtrl', function($scope, $location, $stateParams, $state, $window) {
+	.controller('UserCtrl', function($scope, $location, $stateParams, $state, $window, $cookieStore, UserService) {
 		//$window.alert($stateParams.user_id);
 		$scope.messages = [];
 		$scope.notices = [];
@@ -43,5 +43,20 @@ angular.module('QuickCastUser')
 			msg: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse'
 		});
 
+
+
+		UserService.message().then(function(response) {
+			console.log(response);
+			// if (response === 'false') {
+			// 	$scope.alerts.push({
+			// 		type: 'danger',
+			// 		msg: '注册失败,请重新尝试注册.'
+			// 	});
+
+			// } else {
+			// 	$state.go('profile');
+			// 	$cookies._UDATAID = response;
+			// };
+		});
 
 	});
