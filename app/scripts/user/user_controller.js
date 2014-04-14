@@ -45,7 +45,7 @@ angular.module('QuickCastUser')
 
 
 
-		UserService.message().then(function(response) {
+		UserService.messageReceive().then(function(response) {
 			console.log(response);
 			// if (response === 'false') {
 			// 	$scope.alerts.push({

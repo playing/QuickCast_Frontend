@@ -3,7 +3,7 @@
 angular.module('QuickCast')
 	.controller('CommonCtrl', function($scope, $location, $stateParams, $state, $window, $cookieStore, CommonService) {
 		$scope.alerts = [];
-
+		$scope.user_reg = {};
 		$scope.register = function(user_reg) {
 			$scope.user_reg = angular.copy(user_reg);
 			$state.go('register');
@@ -69,7 +69,6 @@ angular.module('QuickCast')
 						'user_id': user_id,
 						'user_cn_tname': cn_tname
 					};
-
 					//$scope.user_reg.cn_tname = cn_tname;
 					$cookieStore.put('_UDATA', UDATA);
 
@@ -79,18 +78,21 @@ angular.module('QuickCast')
 							type: 'success',
 							msg: '请填写详细信息并选择身份以完成注册流程.'
 						});
+						console.log($cookieStore.get('_UDATA'));
+						$scope.user_reg.cn_tname = $cookieStore.get('_UDATA').user_cn_tname;
+
 					} else {
 						$window.location.href = 'user.html#/user/' + user_id;
 					}
 
 				} else {
 
-					if ($scope.alerts.length === 0) {
-						$scope.alerts.push({
-							type: 'danger',
-							msg: '登录失败,用户名或者密码错误.'
-						});
-					}
+					// if ($scope.alerts.length === 0) {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '登录失败,用户名或者密码错误.'
+					});
+					//}
 				}
 			});
 			//登录函数
