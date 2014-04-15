@@ -2,8 +2,10 @@
 
 angular.module('QuickCastUser')
 	.controller('UserCtrl', function($scope, $location, $stateParams, $state, $window, $cookieStore, UserService) {
+		$scope.active1='active';
 		//$window.alert($stateParams.user_id);
 		$scope.messages = [];
+		$scope.sendmessages = [];
 		$scope.notices = [];
 		$scope.applys = [];
 		$scope.recommends = [];
@@ -12,7 +14,13 @@ angular.module('QuickCastUser')
 			id: '123',
 			sender: 'playing',
 			header: 'msghead',
-			msg: 'Placeholder.'
+			msg: 'Placeholder.我我我我我'
+		});
+		$scope.sendmessages.push({
+			id: '123',
+			sender: 'playing',
+			header: 'msghead',
+			msg: 'Placeholder.我我我我我'
 		});
 		$scope.notices.push({
 			id: '123',
@@ -42,8 +50,6 @@ angular.module('QuickCastUser')
 			sender: 'Wang',
 			msg: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse'
 		});
-
-
 
 		UserService.messageReceive().then(function(response) {
 			console.log(response);

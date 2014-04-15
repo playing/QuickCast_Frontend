@@ -156,65 +156,34 @@
   </div>
 </nav>
 
-<div class="container index">
-  <div class="row">
-    <div class="col-md-8">
-      <h3>{{user.name}}快来分享你的新鲜动态.</h3>
-      <textarea rows="3" cols="40" class="form-control" ></textarea>
-      <button class="btn btn-primary btn-block btn-lg regbtn">发布</button>
-      <div class="well regbtn" ng-repeat="update in updates">
-        <a href="{{update.id}}">
-          <h5>{{update.sender}}</h5>
-        </a>
-        <p>{{update.msg}}</p>
-      </div>
-      <button class="btn btn-info btn-block  regbtn">
-        更多动态
-        <span class="glyphicon glyphicon-chevron-down"></span>
-      </button>
-    </div>
-    <div class="col-md-4">
-      <div>
-        <h3>职位推荐:</h3>
-        <div class="well well-sm" ng-repeat="recommend in recommends">
-          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
-          <a href="{{recommend.id}}">
-            <h4>{{recommend.title}}</h4>
-          </a>
-          <p>{{recommend.company}}--{{recommend.city}}</p>
-        </div>
-        <a href="" class="pull-right">更多职位</a>
-      </div>
-      <div class="footer">
-        <p>
-          Quick Cast | 快投 ©2014
-          <a ng-href="/">主页</a>
-          |
-          <a ng-href="/">意见与反馈</a>
-          |
-          <a ng-href="/user/about">关于我们</a>
-        </p>
-        <p>
-          Designed and built with
-          <a href="http://www.bootcss.com">Bootstrap</a>
-          and
-          <a href="http://angularjs.org">Angularjs</a>
-          by
-          <a href="http://www.playingcn.com">@playing</a>
-        </p>
-        <p>
-          Based on
-          <a href="http://nodejs.org/">node.js</a>
-          , 
-    use
-          <a href="http://gruntjs.com/">Grunt</a>
-          ,
-          <a href="http://bower.io/">Bower</a>
-          ,
+<div class="container"></div>
+<div class="footer">
+  <p>
+    Quick Cast | 快投 ©2014
+    <a ng-href="/">主页</a>
+    |
+    <a ng-href="/">意见与反馈</a>
+    |
+    <a ng-href="/user/about">关于我们</a>
+  </p>
+  <p>
+    Designed and built with
+    <a href="http://www.bootcss.com">Bootstrap</a>
     and
-          <a href="http://yeoman.io/">Yeoman</a>
-        </p>
-      </div>
-    </div>
-  </div>
+    <a href="http://angularjs.org">Angularjs</a>
+    by
+    <a href="http://www.playingcn.com">@playing</a>
+  </p>
+  <p>
+    Based on
+    <a href="http://nodejs.org/">node.js</a>
+    , 
+    use
+    <a href="http://gruntjs.com/">Grunt</a>
+    ,
+    <a href="http://bower.io/">Bower</a>
+    ,
+    and
+    <a href="http://yeoman.io/">Yeoman</a>
+  </p>
 </div>
