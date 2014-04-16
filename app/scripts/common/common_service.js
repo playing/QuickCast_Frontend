@@ -1,17 +1,18 @@
 'use strict';
 angular.module('QuickCast')
 	.factory('CommonService', function($http) {
-		var Server='http://192.168.1.104:8080/quickcast/';
+		var Server = 'http://192.168.191.1:8080/quickcast/';
 		var CommonService = {
 			login: function(user_login) {
 				//login服务
 				var login_response = $http({
 					method: 'post',
-					url: Server+'user_reg.do?method=login',
+					url: Server + 'user_reg.do?method=login',
 					data: user_login
+					
 				})
 					.then(function(response) {
-						//response.data = decodeURIComponent(decodeURIComponent(response.data));
+				response.data = decodeURIComponent(decodeURIComponent(response.data));
 						return response.data;
 					});
 				return login_response;
@@ -22,7 +23,7 @@ angular.module('QuickCast')
 
 				var register_response = $http({
 					method: 'post',
-					url: Server+'user_reg.do?method=reg',
+					url: Server + 'user_reg.do?method=reg',
 					data: user_reg
 				})
 					.then(function(response) {
@@ -40,7 +41,7 @@ angular.module('QuickCast')
 				};
 				var check_name_response = $http({
 					method: 'post',
-					url: Server+'user_reg.do?method=check_uname',
+					url: Server + 'user_reg.do?method=check_uname',
 					data: check_name_data
 				})
 					.then(function(response) {
@@ -58,7 +59,7 @@ angular.module('QuickCast')
 				};
 				var check_email_response = $http({
 					method: 'post',
-					url: Server+'user_reg.do?method=check_email',
+					url: Server + 'user_reg.do?method=check_email',
 					data: check_email_data
 				})
 					.then(function(response) {
@@ -73,7 +74,7 @@ angular.module('QuickCast')
 
 				var profile_response = $http({
 					method: 'post',
-					url: Server+'user_reg.do?method=check_uname',
+					url: Server + 'user_reg.do?method=check_uname',
 					data: user_profile
 				})
 					.then(function(response) {

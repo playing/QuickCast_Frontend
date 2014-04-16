@@ -4,26 +4,53 @@ angular.module('QuickCastCompany', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
   'ui.bootstrap',
-  'ngAnimate'
+  'ngAnimate',
+  'ui.router'
 ])
-  .config(function($routeProvider,$locationProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'CommonCtrl'
+  .config(function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('404');
+    $stateProvider
+      .state('index', {
+        url: '/company/:user_id',
+        templateUrl: 'views/company/company_main.html',
+        controller: "CompanyCtrl"
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'CommonCtrl'
-      })
-      .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'CommonCtrl',
-      })
-      .otherwise({
-        templateUrl: '404.html',
-      });
-            $locationProvider.html5Mode(true);
+
+    .state('message', {
+      url: '/company/:user_id/message',
+      templateUrl: 'views/company/company_message.html',
+      controller: "CompanyCtrl"
+    })
+
+    .state('setting', {
+      url: '/company/:user_id/setting',
+      templateUrl: 'views/company/company_setting.html',
+      controller: "CompanyCtrl"
+    })
+
+    .state('friends', {
+      url: '/company/:user_id/friends',
+      templateUrl: 'views/company/company_friends.html',
+      controller: "CompanyCtrl"
+    })
+
+    .state('resume', {
+      url: '/company/:user_id/resume',
+      templateUrl: 'views/company/company_resume.html',
+      controller: "CompanyCtrl"
+    })
+    // $stateProvider
+    //   .state('null', {
+    //     url: '',
+    //     templateUrl: 'views/user/user_main.html',
+    //     controller: 'UserCtrl'
+    //   })
+    .state('404', {
+      url: '/404',
+      templateUrl: '404.html',
+      controller: "CompanyCtrl"
+    });
+
   });

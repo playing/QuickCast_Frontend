@@ -4,26 +4,23 @@ angular.module('QuickCastAdmin', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
   'ui.bootstrap',
-  'ngAnimate'
+  'ngAnimate',
+  'ui.router'
 ])
-  .config(function($routeProvider,$locationProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'CommonCtrl'
+  .config(function($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('404');
+    $stateProvider
+      .state('index', {
+        url: '/admin',
+        templateUrl: 'views/admin/admin_main.html',
+        controller: "AdminCtrl"
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'CommonCtrl'
-      })
-      .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'CommonCtrl',
-      })
-      .otherwise({
+      .state('404', {
+        url: '/404',
         templateUrl: '404.html',
+        controller: "AdminCtrl"
       });
-            $locationProvider.html5Mode(true);
+
   });

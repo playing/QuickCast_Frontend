@@ -4,6 +4,19 @@ angular.module('QuickCast')
 	.controller('CommonCtrl', function($scope, $location, $stateParams, $state, $window, $cookieStore, CommonService) {
 		$scope.alerts = [];
 		$scope.user_reg = {};
+
+		var check_login = function() {
+			var check = $cookieStore.get('_UDATA');
+			if (check == 'undefined') {
+				$state.go('index');
+				$scope.alerts.push({
+					type: 'danger',
+					msg: '验证失败,请重新登录.'
+				});
+				//cookie校验
+			}
+		};
+		check_login();
 		$scope.register = function(user_reg) {
 			$scope.user_reg = angular.copy(user_reg);
 			$state.go('register');
@@ -33,9 +46,7 @@ angular.module('QuickCast')
 								msg: '邮箱格式不正确,请重新填写一个邮箱地址.'
 							});
 							$scope.emailflag = 0;
-
 						} else {
-
 							$scope.alerts.push({
 								type: 'danger',
 								msg: '该邮箱已被注册,请重新填写一个邮箱地址.'
@@ -47,7 +58,7 @@ angular.module('QuickCast')
 						CommonService.register(user_reg).then(function(response) {
 							var UDATA = {
 								'user_id': response.login_result.user_id,
-								'user_cn_tname': user_reg.cn_tname
+								'cn_tname': user_reg.cn_tname
 							};
 							$cookieStore.put('_UDATA', UDATA);
 							$state.go('profile');
@@ -60,39 +71,34 @@ angular.module('QuickCast')
 
 		$scope.login = function(user_login) {
 			CommonService.login(user_login).then(function(response) {
+				response = JSON.parse(response);
 				if (response.login_report[0].status === 'success') {
 					var user_id = response.login_report[0].data[0].user_id;
 					var user_type = response.login_report[0].data[0].user_type;
-					//var cn_tname = response.login_report[0].data[0].cn_tname;
-					var cn_tname = '王一桐';
+					var cn_tname = response.login_report[0].data[0].cn_tname;
 					var UDATA = {
 						'user_id': user_id,
-						'user_cn_tname': cn_tname
+						'cn_tname': cn_tname
 					};
-					//$scope.user_reg.cn_tname = cn_tname;
 					$cookieStore.put('_UDATA', UDATA);
-
 					if (user_type === 'null') {
 						$state.go('profile');
+						$scope.user_reg = angular.copy($cookieStore.get('_UDATA'));
 						$scope.alerts.push({
 							type: 'success',
 							msg: '请填写详细信息并选择身份以完成注册流程.'
 						});
-						console.log($cookieStore.get('_UDATA'));
-						$scope.user_reg.cn_tname = $cookieStore.get('_UDATA').user_cn_tname;
 
 					} else {
 						$window.location.href = 'user.html#/user/' + user_id;
 					}
-
 				} else {
-
-					// if ($scope.alerts.length === 0) {
-					$scope.alerts.push({
-						type: 'danger',
-						msg: '登录失败,用户名或者密码错误.'
-					});
-					//}
+					if ($scope.alerts.length === 0) {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '登录失败,用户名或者密码错误.'
+						});
+					}
 				}
 			});
 			//登录函数
@@ -109,9 +115,7 @@ angular.module('QuickCast')
 
 		$scope.profile = function(user_profile) {
 			user_profile.user_id = $cookies._UDATAID;
-
 			CommonService.login(user_profile).then(function(response) {
-
 
 
 			});
