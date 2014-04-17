@@ -90,7 +90,16 @@ angular.module('QuickCast')
 						});
 
 					} else {
-						$window.location.href = 'user.html#/user/' + user_id;
+						if (user_type === '1') {
+							$window.location.href = 'user.html#/user/' + user_id;
+
+						} else {
+							if (user_type === '2') {
+								$window.location.href = 'headhunter.html#/user/' + user_id;
+							};
+							$window.location.href = 'company.html#/user/' + user_id;
+						};
+
 					}
 				} else {
 					if ($scope.alerts.length === 0) {

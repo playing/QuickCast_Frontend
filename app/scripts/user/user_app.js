@@ -13,23 +13,23 @@ angular.module('QuickCastUser', [
     $urlRouterProvider.otherwise('404');
     $stateProvider
       .state('index', {
-        url: '/user/:user_id',
+        url: '/user/{user_id:[0-9]{1,8}}',
         templateUrl: 'views/user/user_main.html'
       })
       .state('message', {
-        url: '/user/:user_id/message',
+        url: '/user/{user_id:[0-9]{1,8}}/message',
         templateUrl: 'views/user/user_message.html'
       })
       .state('setting', {
-        url: '/user/:user_id/setting',
+        url: '/user/{user_id:[0-9]{1,8}}/setting',
         templateUrl: 'views/user/user_setting.html'
       })
       .state('friends', {
-        url: '/user/:user_id/friends',
+        url: '/user/{user_id:[0-9]{1,8}}/friends',
         templateUrl: 'views/user/user_friends.html'
       })
       .state('resume', {
-        url: '/user/:user_id/resume',
+        url: '/user/{user_id:[0-9]{1,8}}/resume',
         templateUrl: 'views/user/user_resume.html'
       })
       .state('404', {

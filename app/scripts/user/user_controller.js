@@ -10,18 +10,40 @@ angular.module('QuickCastUser')
 		$scope.applys = [];
 		$scope.recommends = [];
 		$scope.updates = [];
+		$scope.searchicon = 'list';
+		var location_array = $location.path().split('/');
+		$scope.user_id = location_array[2];
+		$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
 		var check_login = function() {
 			var check = $cookieStore.get('_UDATA');
-			if (check == 'undefined') {
+			console.log(check.user_id);
+			if (check == undefined) {
 				$window.location.href = 'http://127.0.0.1:9000/';
-				$scope.alerts.push({
-					type: 'danger',
-					msg: '验证失败,请重新登录.'
-				});
 				//cookie校验
+			} else {
+				if (check.user_id === $scope.user_id) {} else {
+					$window.location.href = 'http://127.0.0.1:9000/';
+				}
 			}
 		};
+		var init = function() {
+			UserService.messageReceive().then(function(response) {
+				console.log(response);
+				// if (response === 'false') {
+				// 	$scope.alerts.push({
+				// 		type: 'danger',
+				// 		msg: '注册失败,请重新尝试注册.'
+				// 	});
+
+				// } else {
+				// 	$state.go('profile');
+				// 	$cookies._UDATAID = response;
+				// };
+			});
+
+		}
 		check_login();
+		init();
 		$scope.messages.push({
 			id: '123',
 			sender: 'playing',
@@ -69,19 +91,7 @@ angular.module('QuickCastUser')
 			email: '10010@qq.com',
 			msg: 'Placeholder.我我我我我'
 		});
-		UserService.messageReceive().then(function(response) {
-			console.log(response);
-			// if (response === 'false') {
-			// 	$scope.alerts.push({
-			// 		type: 'danger',
-			// 		msg: '注册失败,请重新尝试注册.'
-			// 	});
 
-			// } else {
-			// 	$state.go('profile');
-			// 	$cookies._UDATAID = response;
-			// };
-		});
 		$scope.logout = function() {
 			$cookieStore.remove('_UDATA');
 			$window.location.href = 'http://127.0.0.1:9000/';

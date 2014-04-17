@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ui-sref="index">
+      <a class="navbar-brand" ng-href="user.html#/user/{{user_id}}">
         <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
@@ -18,37 +18,37 @@
             <div class="input-group nav-search" >
               <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon  glyphicon-list"></span>
+                  <span class="glyphicon  glyphicon-{{searchicon}}"></span>
                 </button>
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="test()" href="">
+                    <a ng-click="search_type=1;searchicon='list-alt';" href="">
                       <span class="glyphicon glyphicon-list-alt"></span>
                       找职位
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="">
+                    <a ng-click="search_type=2;searchicon='briefcase';" href="">
                       <span class="glyphicon glyphicon-briefcase"></span>
                       找公司
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="">
+                    <a ng-click="search_type=3;searchicon='user';" href="">
                       <span class="glyphicon glyphicon-user"></span>
                       找猎头
                     </a>
                   </li>
                 </ul>
               </div>
-              <input type="text" class="form-control"></div>
+              <input type="text" class="form-control" ng-model="serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search()">
+          <button class="btn btn-default nav-btn" ng-click="search(serach_key)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -59,31 +59,30 @@
           <a href="" class="dropdown-toggle">
             <span class="glyphicon glyphicon-envelope"></span>
             站内信
-            <span class="label label-primary">1</span>
-
+            <span class="label label-primary">{{messages.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/message">
               站内信
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
-            <button class="btn btn-default btn-sm pull-right btnmargin">
+            <a class="btn btn-default btn-sm pull-right btnmargin" ng-href="user.html#/user/{{user_id}}/message">
               <span class="glyphicon  glyphicon-share"></span>
-            </button>
+            </a>
             <div class="list-group nav-list">
-              <a href="{{message.id}}" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.header}}</strong>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.header}}</strong>
                 <p>发件人:{{message.sender}}</p>
                 <p>{{message.msg}}</p>
               </a>
             </div>
-            <a href="" class="pull-right">查看更多</a>
+            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
           <a href="" class="dropdown-toggle">
             <span class="glyphicon  glyphicon-flag"></span>
             通知
-            <span class="label label-primary">2</span>
+            <span class="label label-primary">{{notices.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
             <h5 >
@@ -91,22 +90,22 @@
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </h5>
             <div class="list-group nav-list">
-              <a href="{{notice.id}}" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.header}}</strong>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.header}}</strong>
                 <p>发件人:{{notice.sender}}</p>
                 <p>{{notice.msg}}</p>
               </a>
             </div>
-            <a href="" class="pull-right">查看更多</a>
+            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
           <a href="" class="dropdown-toggle" >
             <span class="glyphicon  glyphicon-plus" ></span>
             添加好友
-            <span class="label label-primary">3</span>
+            <span class="label label-primary">{{applys.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/friends">
               好友管理
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
@@ -119,7 +118,7 @@
               </li>
             </ul>
             <p>找找谁已加入快投</p>
-            <a href="" class="pull-right">查看更多</a>
+            <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">查看更多</a>
           </div>
         </li>
         <li>
@@ -135,18 +134,18 @@
             <ul class="list-group nav-list">
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-user"></span>
-                Wang Yitong
-                <a href="" class=" pull-right">退出</a>
+                {{cn_tname}}
+                <a href="" class=" pull-right" ng-click="logout()">退出</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-wrench"></span>
                 设置
-                <a href="" class=" pull-right">查看</a>
+                <a href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-folder-open"></span>
                 简历管理
-                <a href="" class=" pull-right">查看</a>
+                <a ng-href="user.html#/user/{{user_id}}/resume" class="pull-right">查看</a>
               </li>
             </ul>
 
