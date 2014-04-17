@@ -188,12 +188,13 @@
     </div>
     <div class="col-md-9">
       <div ng-switch on="settingTab">
-        <div  ng-switch-when="reg"> <div class="row">
+        <div  ng-switch-when="reg">
+          <div class="row">
             <div class="col-md-5">
               <h4>注册账户:</h4>
               <p>{{user.user_name}}</p>
               <h4>账户类型:</h4>
-              <p>{{user.user_type}}</p>
+              <p>{{user.user_type|usertype}}</p>
               <h4>电子邮件:</h4>
               <p>{{user.email}}</p>
               <h4>电话:</h4>
@@ -209,7 +210,8 @@
               <p>您有{{"13"}}位联系人在快投网.</p>
               <a href="">查看详情</a>
             </div>
-          </div></div>
+          </div>
+        </div>
         <div  ng-switch-when="profile">1</div>
         <div  ng-switch-default>
           <div class="row">

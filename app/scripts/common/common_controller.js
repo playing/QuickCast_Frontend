@@ -78,7 +78,8 @@ angular.module('QuickCast')
 					var cn_tname = response.login_report[0].data[0].cn_tname;
 					var UDATA = {
 						'user_id': user_id,
-						'cn_tname': cn_tname
+						'cn_tname': cn_tname,
+						'user_type':user_type
 					};
 					$cookieStore.put('_UDATA', UDATA);
 					if (user_type === 'null') {

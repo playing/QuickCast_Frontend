@@ -3,6 +3,7 @@
 angular.module('QuickCastUser')
 	.controller('UserCtrl', function($scope, $location, $stateParams, $state, $window, $cookieStore, UserService) {
 		$scope.active1 = 'active';
+		$scope.user = {};
 		$scope.messages = [];
 		$scope.friends = [];
 		$scope.sendmessages = [];
@@ -12,8 +13,7 @@ angular.module('QuickCastUser')
 		$scope.updates = [];
 		$scope.searchicon = 'list';
 		var location_array = $location.path().split('/');
-		$scope.user_id = location_array[2];
-		$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
+
 		var check_login = function() {
 			var check = $cookieStore.get('_UDATA');
 			console.log(check.user_id);
@@ -21,24 +21,21 @@ angular.module('QuickCastUser')
 				$window.location.href = 'http://127.0.0.1:9000/';
 				//cookie校验
 			} else {
+				$scope.user_id = location_array[2];
+				$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
 				if (check.user_id === $scope.user_id) {} else {
 					$window.location.href = 'http://127.0.0.1:9000/';
 				}
+
 			}
 		};
 		var init = function() {
 			UserService.messageReceive().then(function(response) {
-				console.log(response);
-				// if (response === 'false') {
-				// 	$scope.alerts.push({
-				// 		type: 'danger',
-				// 		msg: '注册失败,请重新尝试注册.'
-				// 	});
 
-				// } else {
-				// 	$state.go('profile');
-				// 	$cookies._UDATAID = response;
-				// };
+
+			});
+			UserService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
+				$scope.user = JSON.parse(response).user[0];
 			});
 
 		}
@@ -97,4 +94,22 @@ angular.module('QuickCastUser')
 			$window.location.href = 'http://127.0.0.1:9000/';
 		};
 
+
+	})
+	.filter('usertype', function() {
+		return function(input) {
+			var out = "";
+			if (input === '1') {
+				out = '求职者';
+			} else {
+				if (input === '2') {
+					out = '猎头';
+				} else {
+					out = '公司';
+				}
+				out='未确定';
+
+			};
+			return out;
+		}
 	});
