@@ -70,9 +70,9 @@
               <span class="glyphicon  glyphicon-share"></span>
             </a>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.header}}</strong>
-                <p>发件人:{{message.sender}}</p>
-                <p>{{message.msg}}</p>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.title}}</strong>
+                <p>发件人:{{message.dispatch_name}}</p>
+                <p>{{message.content}}</p>
               </a>
             </div>
             <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
@@ -90,9 +90,9 @@
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </h5>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.header}}</strong>
-                <p>发件人:{{notice.sender}}</p>
-                <p>{{notice.msg}}</p>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.title}}</strong>
+                <p>发件人:{{notice.dispatch_name}}</p>
+                <p>{{notice.content}}</p>
               </a>
             </div>
             <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
@@ -163,54 +163,55 @@
       <small>Message Box</small>
     </h1>
   </div>
+  <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
   <div class="row">
     <div class="col-md-3">
-      <button class="btn  btn-lg btn-block btn-success" ng-click="messageTab='write';active1='';active2='';">
+      <button class="btn  btn-lg btn-block btn-success" ng-click="messageswitch.messageTab='write';active1='';active2='';" >
         <span class="glyphicon glyphicon-edit"></span>
         写站内信
       </button>
       <ul class="nav nav-pills nav-stacked blockquote">
         <li class="{{active1}}">
-          <a href="" ng-click="messageTab='other';active1='active';active2='';">
+          <a href="" ng-click="messageswitch.messageTab='other';active1='active';active2='';">
             <span class="glyphicon glyphicon-inbox"></span>
             收件箱
-            <span class="badge pull-right">11</span>
+            <span class="badge pull-right">{{messages.length}}</span>
           </a>
         </li>
         <li class="{{active2}}">
-          <a href="" ng-click="messageTab='send';active2='active';active1='';" >
+          <a href="" ng-click="messageswitch.messageTab='send';active2='active';active1='';" >
             <span class="glyphicon glyphicon-new-window"></span>
             已发送
-            <span class="badge pull-right">22</span>
+            <span class="badge pull-right">{{sendmessages.length}}</span>
           </a>
         </li>
       </ul>
     </div>
     <div class="col-md-9">
-      <div ng-switch on="messageTab">
+      <div ng-switch on="messageswitch.messageTab">
         <div  ng-switch-when="write">
           <div class="form-group">
-            <h4 class="form-control-static">发件人: {{"王一桐"}}</h4>
+            <h4 class="form-control-static">发件人: {{cn_tname}}</h4>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control"  placeholder="收件人"></div>
+            <input type="text" class="form-control"  placeholder="收件人" ng-model="newmessage_data.receive_name" ></div>
           <div class="form-group">
-            <input type="text" class="form-control"  placeholder="主题"></div>
-          <textarea class="form-control" rows="5" placeholder="正文"></textarea>
-          <button class="btn btn-primary messagebtn">发送</button>
-          <button class="btn btn-info messagebtn">取消</button>
+            <input type="text" class="form-control"  placeholder="主题" ng-model="newmessage_data.title"></div>
+          <textarea class="form-control" rows="5" placeholder="正文" ng-model="newmessage_data.content"></textarea>
+          <button class="btn btn-primary messagebtn" ng-click="newmessage(newmessage_data)">发送</button>
+          <button class="btn btn-info messagebtn" ng-click="messageTab='other';active1='active';active2='';">取消</button>
         </div>
         <div  ng-switch-when="send">
           <div class="list-group">
             <li  class="list-group-item"  ng-repeat="sendmessage in sendmessages">
-              <strong class="list-group-item-heading">{{sendmessage.header}}</strong>
-              <p >收件人:{{sendmessage.sender}}</p>
-              <p >{{sendmessage.msg}}</p>
-              <button class="btn btn-success btn-sm" ng-click="replay();">
+              <strong class="list-group-item-heading">{{sendmessage.title}}</strong>
+              <p >收件人:{{sendmessage.receive_name}}</p>
+              <p >{{sendmessage.content}}</p>
+              <button class="btn btn-success btn-sm" ng-click="replay($index,'dispatch')">
                 <span class="glyphicon glyphicon-edit"></span>
                 新信息
               </button>
-              <button class="btn btn-danger btn-sm" ng-click="delmessage();">
+              <button class="btn btn-danger btn-sm" ng-click="delmessage($index,'dispatch')">
                 <span class="glyphicon glyphicon-trash"></span>
                 删除
               </button>
@@ -220,14 +221,14 @@
         <div  ng-switch-default>
           <div class="list-group">
             <li  class="list-group-item"  ng-repeat="message in messages">
-              <strong class="list-group-item-heading">{{message.header}}</strong>
-              <p >发件人:{{message.sender}}</p>
-              <p >{{message.msg}}</p>
-              <button class="btn btn-success btn-sm" ng-click="replay();">
+              <strong class="list-group-item-heading">{{message.title}}</strong>
+              <p >发件人:{{message.dispatch_name}}</p>
+              <p >{{message.content}}</p>
+              <button class="btn btn-success btn-sm" ng-click="replay($index,'receive')">
                 <span class="glyphicon glyphicon-edit"></span>
                 回复
               </button>
-              <button class="btn btn-danger btn-sm" ng-click="delmessage();">
+              <button class="btn btn-danger btn-sm" ng-click="delmessage($index,'receive')">
                 <span class="glyphicon glyphicon-trash"></span>
                 删除
               </button>

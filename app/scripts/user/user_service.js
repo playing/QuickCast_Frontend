@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastUser')
 	.factory('UserService', function($http) {
-		var Server = 'http://192.168.1.106:8080/quickcast/';
+		var Server = 'http://192.168.191.1:8080/quickcast/';
 		var UserService = {
 
 			messageReceive: function(receive_id) {
@@ -58,14 +58,16 @@ angular.module('QuickCastUser')
 
 			Delmessage: function(del_message) {
 				//delmessage服务
-
+				var del_message_msg_id = {
+					'msg_id': del_message
+				};
 				var delmessage_response = $http({
 					method: 'post',
 					url: Server + 'message.do?method=imp_message_deleteByMsgId',
-					data: del_message
+					data: del_message_msg_id
 				})
 					.then(function(response) {
-						//response.data = decodeURIComponent(decodeURIComponent(response.data));
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
 						return response.data;
 					});
 				return delmessage_response;

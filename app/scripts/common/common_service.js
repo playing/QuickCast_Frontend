@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCast')
 	.factory('CommonService', function($http) {
-		var Server = 'http://192.168.1.106:8080/quickcast/';
+		var Server = 'http://192.168.191.1:8080/quickcast/';
 		var CommonService = {
 			login: function(user_login) {
 				//login服务
@@ -9,10 +9,10 @@ angular.module('QuickCast')
 					method: 'post',
 					url: Server + 'user_reg.do?method=login',
 					data: user_login
-					
+
 				})
 					.then(function(response) {
-				response.data = decodeURIComponent(decodeURIComponent(response.data));
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
 						return response.data;
 					});
 				return login_response;

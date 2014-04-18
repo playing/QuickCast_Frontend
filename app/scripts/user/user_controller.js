@@ -3,6 +3,7 @@
 angular.module('QuickCastUser')
 	.controller('UserCtrl', function($scope, $location, $stateParams, $state, $window, $cookieStore, UserService) {
 		$scope.active1 = 'active';
+		$scope.alerts = [];
 		$scope.user = {};
 		$scope.messages = [];
 		$scope.friends = [];
@@ -11,12 +12,13 @@ angular.module('QuickCastUser')
 		$scope.applys = [];
 		$scope.recommends = [];
 		$scope.updates = [];
+		$scope.newmessage_data = {};
 		$scope.searchicon = 'list';
+		$scope.$parent.messageswitch = {};
 		var location_array = $location.path().split('/');
 
 		var check_login = function() {
 			var check = $cookieStore.get('_UDATA');
-			console.log(check.user_id);
 			if (check == undefined) {
 				$window.location.href = 'http://127.0.0.1:9000/';
 				//cookie校验
@@ -30,35 +32,31 @@ angular.module('QuickCastUser')
 			}
 		};
 		var init = function() {
-			UserService.messageReceive().then(function(response) {
+			UserService.messageReceive($scope.user_id).then(function(response) {
+				var messageReceive = JSON.parse(response).message;
+				for (var i = 0; i <= messageReceive.length - 1; i++) {
+					if (messageReceive[i].message_type === '1') {
+						$scope.messages.push(messageReceive[i]);
 
+					} else {
+						$scope.notices.push(messageReceive[i]);
+					}
+				};
 
 			});
 			UserService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
 				$scope.user = JSON.parse(response).user[0];
 			});
+			UserService.messageSend($scope.user_id).then(function(response) {
+				$scope.sendmessages = JSON.parse(response).message;
+			});
+
 
 		}
 		check_login();
 		init();
-		$scope.messages.push({
-			id: '123',
-			sender: 'playing',
-			header: 'msghead',
-			msg: 'Placeholder.我我我我我'
-		});
-		$scope.sendmessages.push({
-			id: '123',
-			sender: 'playing',
-			header: 'msghead',
-			msg: 'Placeholder.我我我我我'
-		});
-		$scope.notices.push({
-			id: '123',
-			sender: 'playing',
-			header: 'msghead',
-			msg: 'Placeholder.'
-		});
+
+
 		$scope.applys.push({
 			id: '123',
 			sender: 'playing',
@@ -94,6 +92,79 @@ angular.module('QuickCastUser')
 			$window.location.href = 'http://127.0.0.1:9000/';
 		};
 
+		$scope.newmessage = function(newmessage_data) {
+			newmessage_data.dispatch_time = Date();
+			newmessage_data.dispatch_id = $scope.user_id;
+			UserService.Newmessage(newmessage_data).then(function(response) {
+				console.log(response);
+			});
+
+		};
+		$scope.delmessage = function(index, method) {
+			if (method === 'receive') {
+				var del_message_index = $scope.messages[index].msg_id;
+				UserService.Delmessage(del_message_index).then(function(response) {
+					response = JSON.parse(response);
+
+					if (response.result.data === 'success') {
+						$scope.messages.splice(index, 1);
+						$scope.alerts.push({
+							type: 'success',
+							msg: '删除成功.'
+						});
+					} else {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '删除失败.'
+						});
+					};
+				});
+
+			} else {
+				var del_message_index = $scope.sendmessages[index].msg_id;
+				UserService.Delmessage(del_message_index).then(function(response) {
+					response = JSON.parse(response);
+					if (response.result.data === 'success') {
+						$scope.sendmessages.splice(index, 1);
+						$scope.alerts.push({
+							type: 'success',
+							msg: '删除成功.'
+						});
+					} else {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '删除失败.'
+						});
+					};
+				});
+			};
+			//删除站内信
+		};
+
+		$scope.replay = function(index, method) {
+			if (method === 'receive') {
+				var replay_message_name = $scope.messages[index].dispatch_name;
+			} else {
+				var replay_message_name = $scope.sendmessages[index].receive_name;
+			}
+			$scope.newmessage_data.receive_name = replay_message_name;
+			//$scope.$parent.test.messageTab=null;
+			$scope.$parent.messageswitch = {
+				messageTab: 'write'
+			};
+			$scope.active1 = '';
+			$scope.active2 = '';
+			//回复站内信信息
+		};
+		$scope.delalert = function(index) {
+			$scope.alerts.splice(index, 1);
+			//手动删除错误信息
+		};
+		$scope.$on('$stateChangeStart',
+			function(event, toState, toParams, fromState, fromParams) {
+				$scope.alerts = [];
+				//视图切换时清空错误信息
+			});
 
 	})
 	.filter('usertype', function() {
@@ -107,7 +178,7 @@ angular.module('QuickCastUser')
 				} else {
 					out = '公司';
 				}
-				out='未确定';
+				out = '未确定';
 
 			};
 			return out;

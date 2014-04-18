@@ -70,9 +70,9 @@
               <span class="glyphicon  glyphicon-share"></span>
             </a>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.header}}</strong>
-                <p>发件人:{{message.sender}}</p>
-                <p>{{message.msg}}</p>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.title}}</strong>
+                <p>发件人:{{message.dispatch_name}}</p>
+                <p>{{message.content}}</p>
               </a>
             </div>
             <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
@@ -90,9 +90,9 @@
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </h5>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.header}}</strong>
-                <p>发件人:{{notice.sender}}</p>
-                <p>{{notice.msg}}</p>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.title}}</strong>
+                <p>发件人:{{notice.dispatch_name}}</p>
+                <p>{{notice.content}}</p>
               </a>
             </div>
             <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
@@ -156,7 +156,9 @@
   </div>
 </nav>
 
-<div class="container index">
+
+<div class="container ">
+  <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
   <div class="row">
     <div class="col-md-8">
       <h3>{{user.name}}快来分享你的新鲜动态.</h3>
