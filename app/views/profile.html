@@ -90,15 +90,15 @@
         </select>
       </div>
       <h3 >请选择您的身份:</h3>
-      <button class="btn btn-default btn-lg" ng-click="isCollapsed2=0;isCollapsed3=0;isCollapsed1 = !isCollapsed1;user_profile.type=1;">
+      <button class="btn btn-default btn-lg" ng-click="isCollapsed2=0;isCollapsed3=0;isCollapsed1 = !isCollapsed1;user_profile.user_type='1';">
         <span class="glyphicon glyphicon-file"></span>
         求职者
       </button>
-      <button class="btn btn-default btn-lg" ng-click="isCollapsed1=0;isCollapsed3=0;isCollapsed2 = !isCollapsed2;user_profile.type=2;">
+      <button class="btn btn-default btn-lg" ng-click="isCollapsed1=0;isCollapsed3=0;isCollapsed2 = !isCollapsed2;user_profile.user_type='3';">
         <span class="glyphicon glyphicon-briefcase"></span>
         雇主
       </button>
-      <button class="btn btn-default btn-lg" ng-click="isCollapsed2=0;isCollapsed1=0;isCollapsed3 = !isCollapsed3;user_profile.type=3;">
+      <button class="btn btn-default btn-lg" ng-click="isCollapsed2=0;isCollapsed1=0;isCollapsed3 = !isCollapsed3;user_profile.user_type='2';">
         <span class="glyphicon glyphicon-user"></span>
         猎头
       </button>
@@ -700,10 +700,10 @@
             </div>
             <div class="form-group">
               <label >通讯地址:</label>
-              <input type="text" class="form-control prform" ng-model="user_profile.self_intro"></div>
+              <input type="text" class="form-control prform" ng-model="user_profile.msg_addr"></div>
             <div class="form-group">
               <label >合作过的客户:</label>
-              <input type="text" class="form-control prform" ng-model="user_profile.h_addr"></div>
+              <input type="text" class="form-control prform" ng-model="user_profile.partner"></div>
             <label >猎头介绍:</label>
             <textarea  class="form-control prform" rows="5" ng-model="user_profile.self_intro"></textarea>
           </form>
@@ -734,7 +734,7 @@
 
   </div>
   {{user_profile|json}}
-  <button type="button" class="btn btn-success btn-lg btn-block regbtn" ng-click="profile(user_profile)">完成</button>
+  <button type="button" class="btn btn-success btn-lg btn-block regbtn" ng-click="userprofile(user_profile)">完成</button>
 </div>
 
 <div class="footer">

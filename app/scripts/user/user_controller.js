@@ -19,7 +19,7 @@ angular.module('QuickCastUser')
 
 		var check_login = function() {
 			var check = $cookieStore.get('_UDATA');
-			if (check == undefined) {
+			if (check === undefined) {
 				$window.location.href = 'http://127.0.0.1:9000/';
 				//cookie校验
 			} else {
@@ -41,7 +41,7 @@ angular.module('QuickCastUser')
 					} else {
 						$scope.notices.push(messageReceive[i]);
 					}
-				};
+				}
 
 			});
 			UserService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
@@ -52,7 +52,7 @@ angular.module('QuickCastUser')
 			});
 
 
-		}
+		};
 		check_login();
 		init();
 
@@ -101,8 +101,9 @@ angular.module('QuickCastUser')
 
 		};
 		$scope.delmessage = function(index, method) {
+			var del_message_index = '';
 			if (method === 'receive') {
-				var del_message_index = $scope.messages[index].msg_id;
+				del_message_index = $scope.messages[index].msg_id;
 				UserService.Delmessage(del_message_index).then(function(response) {
 					response = JSON.parse(response);
 
@@ -117,11 +118,11 @@ angular.module('QuickCastUser')
 							type: 'danger',
 							msg: '删除失败.'
 						});
-					};
+					}
 				});
 
 			} else {
-				var del_message_index = $scope.sendmessages[index].msg_id;
+				del_message_index = $scope.sendmessages[index].msg_id;
 				UserService.Delmessage(del_message_index).then(function(response) {
 					response = JSON.parse(response);
 					if (response.result.data === 'success') {
@@ -135,20 +136,20 @@ angular.module('QuickCastUser')
 							type: 'danger',
 							msg: '删除失败.'
 						});
-					};
+					}
 				});
-			};
+			}
 			//删除站内信
 		};
 
 		$scope.replay = function(index, method) {
+			var replay_message_name = '';
 			if (method === 'receive') {
-				var replay_message_name = $scope.messages[index].dispatch_name;
+				replay_message_name = $scope.messages[index].dispatch_name;
 			} else {
-				var replay_message_name = $scope.sendmessages[index].receive_name;
+				replay_message_name = $scope.sendmessages[index].receive_name;
 			}
 			$scope.newmessage_data.receive_name = replay_message_name;
-			//$scope.$parent.test.messageTab=null;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};
@@ -161,7 +162,7 @@ angular.module('QuickCastUser')
 			//手动删除错误信息
 		};
 		$scope.$on('$stateChangeStart',
-			function(event, toState, toParams, fromState, fromParams) {
+			function() {
 				$scope.alerts = [];
 				//视图切换时清空错误信息
 			});
@@ -169,7 +170,7 @@ angular.module('QuickCastUser')
 	})
 	.filter('usertype', function() {
 		return function(input) {
-			var out = "";
+			var out = '';
 			if (input === '1') {
 				out = '求职者';
 			} else {
@@ -179,8 +180,7 @@ angular.module('QuickCastUser')
 					out = '公司';
 				}
 				out = '未确定';
-
-			};
+			}
 			return out;
-		}
+		};
 	});

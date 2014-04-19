@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCast')
 	.factory('CommonService', function($http) {
-		var Server = 'http://192.168.191.1:8080/quickcast/';
+		var Server = 'http://192.168.1.107:8080/quickcast/';
 		var CommonService = {
 			login: function(user_login) {
 				//login服务
@@ -69,17 +69,47 @@ angular.module('QuickCast')
 				//checkemail服务返回数据
 
 			},
-			profile: function(user_profile) {
+			userprofile: function(user_profile) {
 				//profile服务
+				if (user_profile.user_type === '1') {
+					user_profile.user_type = undefined;
+					var profile_response = $http({
+						method: 'post',
+						url: Server + 'info.do?method=seekerinfo_insert',
+						data: user_profile
+					})
+						.then(function(response) {
+							response.data = decodeURIComponent(decodeURIComponent(response.data));
+							return response.data;
+						});
 
-				var profile_response = $http({
-					method: 'post',
-					url: Server + 'user_reg.do?method=check_uname',
-					data: user_profile
-				})
-					.then(function(response) {
-						return response.data;
-					});
+				} else {
+
+					if (user_profile.user_type === '2') {
+						user_profile.user_type = undefined;
+						var profile_response = $http({
+							method: 'post',
+							url: Server + 'info.do?method=hunterinfo_insert',
+							data: user_profile
+						})
+							.then(function(response) {
+								response.data = decodeURIComponent(decodeURIComponent(response.data));
+								return response.data;
+							});
+
+					} else {
+						user_profile.user_type = undefined;
+						var profile_response = $http({
+							method: 'post',
+							url: Server + 'info.do?method=etpinfo_insert',
+							data: user_profile
+						})
+							.then(function(response) {
+								response.data = decodeURIComponent(decodeURIComponent(response.data));
+								return response.data;
+							});
+					}
+				}
 				return profile_response;
 				//profile服务返回数据
 			}
