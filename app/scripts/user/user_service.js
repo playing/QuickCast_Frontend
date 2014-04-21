@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastUser')
 	.factory('UserService', function($http) {
-		var Server = 'http://192.168.1.107:8080/quickcast/';
+		var Server = 'http://192.168.191.1:8080/quickcast/';
 		var UserService = {
 
 			messageReceive: function(receive_id) {
@@ -73,19 +73,53 @@ angular.module('QuickCastUser')
 				return delmessage_response;
 				//delmessage服务返回数据
 			},
-			Publishnews: function(news) {
+
+			Publishnews: function(publish) {
 				//delmessage服务
 
-				var delmessage_response = $http({
+				var publishnews_response = $http({
 					method: 'post',
 					url: Server + 'news.do?method=imp_news_insert',
-					data: news
+					data: publish
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return publishnews_response;
+				//delmessage服务返回数据
+			},
+
+			Receivenews: function(user_id) {
+				//delmessage服务
+				var reveive_news_data = {
+					'pub_id': user_id
+				};
+				var receivenews_response = $http({
+					method: 'post',
+					url: Server + 'news.do?method=imp_news_queryByPubId',
+					data: reveive_news_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return receivenews_response;
+				//delmessage服务返回数据
+			},
+			Delnews: function(news_id) {
+				//delmessage服务
+
+				var delnews_response = $http({
+					method: 'post',
+					url: Server + 'news.do?method=imp_news_deleteByNewsId',
+					data: news_id
 				})
 					.then(function(response) {
 						//response.data = decodeURIComponent(decodeURIComponent(response.data));
 						return response.data;
 					});
-				return delmessage_response;
+				return delnews_response;
 				//delmessage服务返回数据
 			},
 
@@ -119,6 +153,64 @@ angular.module('QuickCastUser')
 				return userprofile_response;
 				//UserProfile服务返回数据
 			},
+			FriendsList: function(user_id) {
+				//UserProfile服务
+
+				var friend_list_data = {
+					'self_id': user_id
+				};
+				var friendslist_response = $http({
+					method: 'post',
+					url: Server + 'friend_list.do?method=imp_friend_list_queryBySelfId',
+					data: friend_list_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return friendslist_response;
+				//UserProfile服务返回数据
+			},
+			DelFriends: function(self_id, partner_id) {
+				//UserProfile服务
+
+				var del_friends_data = {
+					'self_id': self_id,
+					'partner_id': partner_id
+				};
+				var delfriends_response = $http({
+					method: 'post',
+					url: Server + 'friend_list.do?method=imp_friend_list_deleteBySelfId',
+					data: del_friends_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return delfriends_response;
+				//UserProfile服务返回数据
+			},
+			ApplyConfirm: function(self_id, partner_id, friend_status) {
+				//UserProfile服务
+
+				var apply_data = {
+					'self_id': self_id,
+					'partner_id': partner_id,
+					'status': friend_status
+				};
+				var apply_response = $http({
+					method: 'post',
+					url: Server + 'friend_list.do?method=imp_friend_list_update',
+					data: apply_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return apply_response;
+				//UserProfile服务返回数据
+			},
+
 
 		};
 		return UserService;

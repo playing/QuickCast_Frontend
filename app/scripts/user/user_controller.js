@@ -6,11 +6,14 @@ angular.module('QuickCastUser')
 		$scope.alerts = [];
 		$scope.user = {};
 		$scope.messages = [];
-		$scope.friends = [];
+		$scope.seekerfriends = [];
+		$scope.headhunterfriends = [];
+		$scope.companyfriends = [];
 		$scope.sendmessages = [];
 		$scope.notices = [];
 		$scope.applys = [];
 		$scope.recommends = [];
+		$scope.friendcircles = [];
 		$scope.updates = [];
 		$scope.newmessage_data = {};
 		$scope.searchicon = 'list';
@@ -47,6 +50,35 @@ angular.module('QuickCastUser')
 			UserService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
 				$scope.user = JSON.parse(response).user[0];
 			});
+
+
+			UserService.FriendsList($scope.user_id).then(function(response) {
+				var friendlist = JSON.parse(response).friend_list;
+				for (var i = 0; i <= friendlist.length - 1; i++) {
+					if (friendlist[i].friend_status === '1') {
+						$scope.applys.push({
+							name: friendlist[i].partner_name,
+							id: friendlist[i].partner_id,
+							group: friendlist[i].friendsgroup,
+							reason: friendlist[i].reason,
+						});
+						friendlist.splice(i, 1);
+						i--;
+					} else {
+						if (friendlist[i].friendsgroup === '1') {
+							$scope.seekerfriends.push(friendlist[i]);
+						} else {
+							if (friendlist[i].friendsgroup === '2') {
+								$scope.headhunterfriends.push(friendlist[i]);
+							} else {
+								$scope.companyfriends.push(friendlist[i]);
+							}
+						}
+					}
+				}
+			});
+
+
 			UserService.messageSend($scope.user_id).then(function(response) {
 				$scope.sendmessages = JSON.parse(response).message;
 			});
@@ -56,40 +88,37 @@ angular.module('QuickCastUser')
 		check_login();
 		init();
 
-
-		$scope.applys.push({
-			id: '123',
-			sender: 'playing',
-			header: 'msghead',
-			msg: 'Placeholder.'
-		});
 		$scope.recommends.push({
 			id: '12344',
 			title: '开发工程师',
 			company: 'company',
 			city: 'wuhan.'
 		});
-		$scope.updates.push({
+		$scope.friendcircles.push({
 			id: '12344',
-			sender: 'Wang',
-			msg: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse'
-		});
-		$scope.updates.push({
-			id: '12344',
-			sender: 'Wang',
-			msg: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse'
-		});
-		$scope.friends.push({
-			id: '123',
-			name: 'playing',
-			tel: '10010',
-			email: '10010@qq.com',
-			msg: 'Placeholder.我我我我我'
+			name: '黄凯',
+			content: 'company',
+			city: 'wuhan.'
 		});
 
 		$scope.logout = function() {
 			$cookieStore.remove('_UDATA');
 			$window.location.href = 'http://127.0.0.1:9000/';
+		};
+
+		$scope.publishnews = function(publish) {
+			publish.pub_id = $scope.user_id;
+			publish.pub_time = Date();
+			publish.pub_type = '1';
+
+			UserService.Publishnews(publish).then(function(response) {
+				console.log(response);
+			});
+		};
+		$scope.morenews = function() {
+			UserService.Receivenews($scope.user_id).then(function(response) {
+				console.log(response);
+			});
 		};
 
 		$scope.newmessage = function(newmessage_data) {
@@ -100,6 +129,7 @@ angular.module('QuickCastUser')
 			});
 
 		};
+
 		$scope.delmessage = function(index, method) {
 			var del_message_index = '';
 			if (method === 'receive') {
@@ -157,6 +187,79 @@ angular.module('QuickCastUser')
 			$scope.active2 = '';
 			//回复站内信信息
 		};
+		$scope.friendtomessage = function(index, method) {
+			var friend_message_name = '';
+			if (method === 'seeker') {
+				friend_message_name = $scope.seekerfriends[index].partner_name;
+			} else {
+				if (method === 'headhunter') {
+					friend_message_name = $scope.headhunterfriends[index].partner_name;
+				} else {
+					friend_message_name = $scope.companyfriends[index].partner_name;
+				}
+			}
+			$location.path('user/' + $scope.user_id + '/message');
+			$scope.newmessage_data.receive_name = friend_message_name;
+			$scope.$parent.messageswitch = {
+				messageTab: 'write'
+			};
+		};
+		$scope.delfriend = function(index, method) {
+			var del_friend_id = '';
+			if (method === 'seeker') {
+				del_friend_id = $scope.seekerfriends[index].partner_id;
+			} else {
+				if (method === 'headhunter') {
+					del_friend_id = $scope.headhunterfriends[index].partner_id;
+				} else {
+					del_friend_id = $scope.companyfriends[index].partner_id;
+				}
+			}
+			UserService.DelFriends(parseInt($scope.user_id), del_friend_id).then(function(response) {
+				console.log(response);
+
+			});
+
+		};
+		$scope.friendpage = function(index, method) {
+			var firend_page_id = '';
+			if (method === 'seeker') {
+				firend_page_id = $scope.seekerfriends[index].partner_id;
+				$window.open('http://127.0.0.1:9000/user.html#/user/' + firend_page_id);
+			} else {
+				if (method === 'headhunter') {
+					firend_page_id = $scope.headhunterfriends[index].partner_id;
+					$window.open('http://127.0.0.1:9000/headhunter.html#/user/' + firend_page_id);
+				} else {
+					firend_page_id = $scope.companyfriends[index].partner_id;
+					$window.open('http://127.0.0.1:9000/company.html#/user/' + firend_page_id);
+				}
+			}
+
+		};
+
+		$scope.friend_add = function(index, method) {
+			var friend_status = '';
+			console.log($scope.applys[0].id);
+			if (method === 'agree') {
+				friend_status = '2';
+			} else {
+				friend_status = '1';
+				alert("s");
+			}
+			UserService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status).then(function(response) {
+				console.log(response);
+			});
+
+		};
+
+		$scope.findfriend = function() {
+			// body...
+		};
+		$scope.circleapply = function(index) {	
+			// body...
+		};
+
 		$scope.delalert = function(index) {
 			$scope.alerts.splice(index, 1);
 			//手动删除错误信息
@@ -176,8 +279,10 @@ angular.module('QuickCastUser')
 			} else {
 				if (input === '2') {
 					out = '猎头';
+					return out;
 				} else {
 					out = '公司';
+					return out;
 				}
 				out = '未确定';
 			}

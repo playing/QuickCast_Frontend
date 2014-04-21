@@ -111,10 +111,11 @@
             </a>
             <ul class="list-group nav-list">
               <li class="list-group-item"  ng-repeat="apply in applys">
-                <p>申请人:{{apply.sender}}</p>
-                <p>{{apply.msg}}</p>
-                <button class="btn btn-success btn-sm">同意</button>
-                <button class="btn btn-danger btn-sm">拒绝</button>
+                <p>申请人:{{apply.name}}</p>
+                <p >用户类别:{{apply.group|usertype}}</p>
+                <p>{{apply.reason}}</p>
+                <button class="btn btn-success btn-sm" ng-click="friend_add($index,'agree')">同意</button>
+                <button class="btn btn-danger btn-sm" ng-click="friend_add($index,'disagree')">拒绝</button>
               </li>
             </ul>
             <p>找找谁已加入快投</p>
@@ -199,7 +200,7 @@
             <input type="text" class="form-control"  placeholder="主题" ng-model="newmessage_data.title"></div>
           <textarea class="form-control" rows="5" placeholder="正文" ng-model="newmessage_data.content"></textarea>
           <button class="btn btn-primary messagebtn" ng-click="newmessage(newmessage_data)">发送</button>
-          <button class="btn btn-info messagebtn" ng-click="messageTab='other';active1='active';active2='';">取消</button>
+          <button class="btn btn-info messagebtn" ng-click="messageswitch.messageTab='other';active1='active';active2='';">取消</button>
         </div>
         <div  ng-switch-when="send">
           <div class="list-group">

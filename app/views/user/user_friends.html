@@ -111,10 +111,11 @@
             </a>
             <ul class="list-group nav-list">
               <li class="list-group-item"  ng-repeat="apply in applys">
-                <p>申请人:{{apply.sender}}</p>
-                <p>{{apply.msg}}</p>
-                <button class="btn btn-success btn-sm">同意</button>
-                <button class="btn btn-danger btn-sm">拒绝</button>
+                <p>申请人:{{apply.name}}</p>
+                <p >用户类别:{{apply.group|usertype}}</p>
+                <p>{{apply.reason}}</p>
+                <button class="btn btn-success btn-sm" ng-click="friend_add($index,'agree')">同意</button>
+                <button class="btn btn-danger btn-sm" ng-click="friend_add($index,'disagree')">拒绝</button>
               </li>
             </ul>
             <p>找找谁已加入快投</p>
@@ -156,7 +157,6 @@
   </div>
 </nav>
 
-
 <div class="container">
   <div class="page-header">
     <h1>
@@ -164,27 +164,29 @@
       <small>Contacts</small>
     </h1>
   </div>
-    <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
+  <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
   <div class="row">
 
     <div class="col-md-3">
-      <button class="btn  btn-lg btn-block btn-success" ng-click="friendsTab='search';active1='';active2='';">
+      <button class="btn  btn-lg btn-block btn-success" ng-click="friendSwitch.friendsTab='search';active1='';active2='';">
         <span class="glyphicon glyphicon-search"></span>
         找找谁已加入快投!
       </button>
       <ul class="nav nav-pills nav-stacked blockquote">
         <li class="{{active1}}">
-          <a href="" ng-click="friendsTab='other';active1='active';active2='';">
+          <a href="" ng-click="friendSwitch.friendsTab='other';active1='active';active2='';">
             <span class="glyphicon glyphicon-plus"></span>
             好友申请
-            <span class="badge pull-right">11</span>
+            <span class="badge pull-right">{{applys.length}}</span>
           </a>
         </li>
         <li class="{{active2}}">
-          <a href="" ng-click="friendsTab='list';active2='active';active1='';" >
+          <a href="" ng-click="friendSwitch.friendsTab='list';active2='active';active1='';" >
             <span class="glyphicon glyphicon-list"></span>
             联系人列表
-            <span class="badge pull-right">22</span>
+            <span class="badge pull-right">
+              {{seekerfriends.length+headhunterfriends.length+companyfriends.length}}
+            </span>
           </a>
         </li>
       </ul>
@@ -192,50 +194,114 @@
 
     <div class="col-md-9">
 
-      <div ng-switch on="friendsTab">
+      <div ng-switch on="friendSwitch.friendsTab">
         <div  ng-switch-when="search">
           <h3>认识的人都加入快投了吗？立即搜索邮箱或姓名找到他们。</h3>
           <div class="form-group">
-            <input type="text" class="form-control"  placeholder="姓名或邮箱"></div>
-          <button class="btn btn-primary messagebtn">搜索</button>
-          <button class="btn btn-info messagebtn">取消</button>
+            <input type="text" class="form-control"  placeholder="姓名或邮箱" ng-model="findfriend_input"></div>
+          <h3>你可能认识这些人,赶紧和他们成为好友!</h3>
+          <div class="row">
+            <div class="col-md-4" ng-repeat="friendcircle in friendcircles">
+              <div class="panel panel-default">
+                <div class="panel-heading">{{friendcircle.name}}</div>
+                <div class="panel-body">
+                  <p>{{friendcircle.content}}</p>
+                  <button type="button" class="btn btn-danger" ng-click="circleapply($index)">add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary messagebtn" ng-click="findfriend()">搜索</button>
+          <button class="btn btn-info messagebtn" ng-click="friendSwitch.friendsTab='other';">取消</button>
         </div>
 
         <div  ng-switch-when="list">
-          <div class="list-group">
-            <li  class="list-group-item"  ng-repeat="friend in friends">
-              <h4>
-                <strong class="list-group-item-heading">{{friend.name}}</strong>
-              </h4>
-              <p >联系方式:{{friend.email}}</p>
-              <p >电话:{{friend.tel}}</p>
-              <p >{{friend.msg}}</p>
-              <button class="btn btn-success btn-sm" ng-click="">
-                <span class="glyphicon glyphicon-edit"></span>
-                写站内信
-              </button>
-              <button class="btn btn-primary btn-sm" ng-click="">
-                <span class="glyphicon glyphicon-send"></span>
-                查看主页
-              </button>
-              <button class="btn btn-danger btn-sm pull-right" ng-click="delfriend();">
-                <span class="glyphicon glyphicon-trash"></span>
-                删除好友
-              </button>
-            </li>
-          </div>
+          <tabset justified="true">
+            <tab heading="求职者">
+              <div class="list-group">
+                <li  class="list-group-item"  ng-repeat="seekerfriend in seekerfriends">
+                  <h4>
+                    <strong class="list-group-item-heading">{{seekerfriend.partner_name}}</strong>
+                  </h4>
+                  <p >联系方式:{{seekerfriend.partner_email}}</p>
+                  <button class="btn btn-success btn-sm" ng-click="friendtomessage($index,'seeker')">
+                    <span class="glyphicon glyphicon-edit" ></span>
+                    站内信
+                  </button>
+                  <button class="btn btn-primary btn-sm" ng-click="friendpage($index,'seeker')">
+                    <span class="glyphicon glyphicon-send"></span>
+                    查看主页
+                  </button>
+                  <button class="btn btn-danger btn-sm pull-right" ng-click="delfriend($index,'seeker');">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    删除好友
+                  </button>
+                </li>
+              </div>
+            </tab>
+            <tab heading="猎头">
+              <div class="list-group">
+                <li  class="list-group-item"  ng-repeat="headhunterfriend in headhunterfriends">
+                  <h4>
+                    <strong class="list-group-item-heading">{{headhunterfriend.partner_name}}</strong>
+                  </h4>
+                  <p >联系方式:{{headhunterfriend.partner_email}}</p>
+                  <button class="btn btn-success btn-sm" ng-click="friendtomessage($index,'headhunter')">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    站内信
+                  </button>
+                  <button class="btn btn-primary btn-sm" ng-click="friendpage($index,'headhunter')">
+                    <span class="glyphicon glyphicon-send"></span>
+                    查看主页
+                  </button>
+                  <button class="btn btn-danger btn-sm pull-right" ng-click="delfriend($index,'headhunter');">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    删除好友
+                  </button>
+                </li>
+              </div>
+            </tab>
+            <tab heading="企业">
+              <div class="list-group">
+                <li  class="list-group-item"  ng-repeat="companyfriend in companyfriends">
+                  <h4>
+                    <strong class="list-group-item-heading">{{companyfriend.partner_name}}</strong>
+                  </h4>
+                  <p >联系方式:{{companyfriend.partner_email}}</p>
+
+                  <button class="btn btn-success btn-sm" ng-click="friendtomessage($index,'company')">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    站内信
+                  </button>
+                  <button class="btn btn-primary btn-sm" ng-click="friendpage($index,'company')">
+                    <span class="glyphicon glyphicon-send"></span>
+                    查看主页
+                  </button>
+                  <button class="btn btn-danger btn-sm pull-right" ng-click="delfriend($index,'company');">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    删除好友
+                  </button>
+                </li>
+              </div>
+            </tab>
+          </tabset>
+
         </div>
 
         <div  ng-switch-default>
           <div class="list-group">
             <li  class="list-group-item"  ng-repeat="apply in applys">
-              <p >申请人:{{apply.sender}}</p>
-              <p >{{apply.msg}}</p>
-              <button class="btn btn-success btn-sm" ng-click="replay();">
+              <p >
+                申请人:
+                <strong>{{apply.name}}</strong>
+              </p>
+              <p >用户类别:{{apply.group|usertype}}</p>
+              <p >{{apply.reason}}</p>
+              <button class="btn btn-success btn-sm" ng-click="friend_add($index,'agree')">
                 <span class="glyphicon glyphicon-edit"></span>
                 同意
               </button>
-              <button class="btn btn-danger btn-sm" ng-click="delmessage();">
+              <button class="btn btn-danger btn-sm" ng-click="friend_add($index,'disagree')">
                 <span class="glyphicon glyphicon-trash"></span>
                 拒绝
               </button>
