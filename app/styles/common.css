@@ -51,6 +51,9 @@ font-family:  "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-
 .prform{
 width: 50%;
 }
+.newsspan{
+margin-top: 50px;
+}
 .blocklabel
 {
 	display: block;

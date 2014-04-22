@@ -18,6 +18,12 @@ angular.module('QuickCastUser')
 		$scope.newmessage_data = {};
 		$scope.searchicon = 'list';
 		$scope.$parent.messageswitch = {};
+		$scope.newsbutton = '所有动态';
+		$scope.searchbtn = '邮箱地址';
+		$scope.newsquantity = 10;
+		$scope.search_key = {};
+		$scope.search_key.serach_type = 'email';
+
 		var location_array = $location.path().split('/');
 
 		var check_login = function() {
@@ -35,6 +41,19 @@ angular.module('QuickCastUser')
 			}
 		};
 		var init = function() {
+			UserService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+				$scope.updates = JSON.parse(response).news;
+				UserService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+					var myself_updates = JSON.parse(response).news;
+					$scope.updates = $scope.updates.concat(myself_updates);
+				});
+			});
+
+			UserService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
+				$scope.user = JSON.parse(response).user[0];
+			});
+
+
 			UserService.messageReceive($scope.user_id).then(function(response) {
 				var messageReceive = JSON.parse(response).message;
 				for (var i = 0; i <= messageReceive.length - 1; i++) {
@@ -47,16 +66,13 @@ angular.module('QuickCastUser')
 				}
 
 			});
-			UserService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
-				$scope.user = JSON.parse(response).user[0];
-			});
-
 
 			UserService.FriendsList($scope.user_id).then(function(response) {
 				var friendlist = JSON.parse(response).friend_list;
 				for (var i = 0; i <= friendlist.length - 1; i++) {
-					if (friendlist[i].friend_status === '1') {
+					if (friendlist[i].friend_status === 1) {
 						$scope.applys.push({
+							rlts_id: friendlist[i].rlts_id,
 							name: friendlist[i].partner_name,
 							id: friendlist[i].partner_id,
 							group: friendlist[i].friendsgroup,
@@ -78,9 +94,11 @@ angular.module('QuickCastUser')
 				}
 			});
 
-
 			UserService.messageSend($scope.user_id).then(function(response) {
 				$scope.sendmessages = JSON.parse(response).message;
+			});
+			UserService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
+				console.log(JSON.parse(response));
 			});
 
 
@@ -107,27 +125,46 @@ angular.module('QuickCastUser')
 		};
 
 		$scope.publishnews = function(publish) {
+			var timestamp = new Date();
 			publish.pub_id = $scope.user_id;
-			publish.pub_time = Date();
+			publish.pub_time = timestamp.getTime();
 			publish.pub_type = '1';
-
 			UserService.Publishnews(publish).then(function(response) {
-				console.log(response);
+				if (JSON.parse(response).result.data === 'success') {
+					UserService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+						$scope.updates = JSON.parse(response).news;
+						UserService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+							var myself_updates = JSON.parse(response).news;
+							$scope.updates = $scope.updates.concat(myself_updates);
+						});
+					});
+
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '发送失败,请尝试重新发送.'
+					});
+				}
 			});
 		};
 		$scope.morenews = function() {
-			UserService.Receivenews($scope.user_id).then(function(response) {
-				console.log(response);
-			});
+			$scope.newsquantity = $scope.newsquantity + 5;
 		};
 
 		$scope.newmessage = function(newmessage_data) {
-			newmessage_data.dispatch_time = Date();
+			var timestamp = new Date();
+			newmessage_data.dispatch_time = timestamp.getTime();
 			newmessage_data.dispatch_id = $scope.user_id;
 			UserService.Newmessage(newmessage_data).then(function(response) {
-				console.log(response);
+				if (JSON.parse(response).result.data === 'success') {
+					//$scope.updates.push(newmessage_data);
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '发送失败,请尝试重新发送.'
+					});
+				}
 			});
-
 		};
 
 		$scope.delmessage = function(index, method) {
@@ -245,18 +282,32 @@ angular.module('QuickCastUser')
 				friend_status = '2';
 			} else {
 				friend_status = '1';
-				alert("s");
 			}
-			UserService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status).then(function(response) {
-				console.log(response);
+			UserService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
+				if (JSON.parse(response).result.data === 'success') {
+					$scope.alerts.push({
+						type: 'success',
+						msg: '操作成功.'
+					});
+					$scope.applys.splice(index, 1);
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '操作失败.'
+					});
+				}
 			});
 
 		};
 
-		$scope.findfriend = function() {
-			// body...
+		$scope.findfriend = function(search_key) {
+			if (search_key.serach_type === 'email') {
+
+			} else {
+
+			}
 		};
-		$scope.circleapply = function(index) {	
+		$scope.circleapply = function(index) {
 			// body...
 		};
 

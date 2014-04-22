@@ -74,8 +74,10 @@ angular.module('QuickCastUser')
 				//delmessage服务返回数据
 			},
 
+
+
 			Publishnews: function(publish) {
-				//delmessage服务
+				//Publishnews服务
 
 				var publishnews_response = $http({
 					method: 'post',
@@ -87,17 +89,17 @@ angular.module('QuickCastUser')
 						return response.data;
 					});
 				return publishnews_response;
-				//delmessage服务返回数据
+				//Publishnews服务返回数据
 			},
 
 			Receivenews: function(user_id) {
-				//delmessage服务
+				//Receivenews服务
 				var reveive_news_data = {
 					'pub_id': user_id
 				};
 				var receivenews_response = $http({
 					method: 'post',
-					url: Server + 'news.do?method=imp_news_queryByPubId',
+					url: Server + 'news.do?method=imp_news_display',
 					data: reveive_news_data
 				})
 					.then(function(response) {
@@ -105,10 +107,27 @@ angular.module('QuickCastUser')
 						return response.data;
 					});
 				return receivenews_response;
-				//delmessage服务返回数据
+				//Receivenews服务返回数据
+			},
+			Friendnews: function(user_id) {
+				//Friendnews服务
+				var friend_news_data = {
+					'pub_id': user_id
+				};
+				var friendnews_response = $http({
+					method: 'post',
+					url: Server + 'news.do?method=imp_news_queryByPubId',
+					data: friend_news_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return friendnews_response;
+				//Friendnews服务返回数据
 			},
 			Delnews: function(news_id) {
-				//delmessage服务
+				//Delnews服务
 
 				var delnews_response = $http({
 					method: 'post',
@@ -120,8 +139,10 @@ angular.module('QuickCastUser')
 						return response.data;
 					});
 				return delnews_response;
-				//delmessage服务返回数据
+				//Delnews服务返回数据
 			},
+
+
 
 			UserReg: function(user) {
 				//UserReg服务
@@ -153,6 +174,9 @@ angular.module('QuickCastUser')
 				return userprofile_response;
 				//UserProfile服务返回数据
 			},
+
+
+
 			FriendsList: function(user_id) {
 				//UserProfile服务
 
@@ -172,7 +196,7 @@ angular.module('QuickCastUser')
 				//UserProfile服务返回数据
 			},
 			DelFriends: function(self_id, partner_id) {
-				//UserProfile服务
+				//DelFriends服务
 
 				var del_friends_data = {
 					'self_id': self_id,
@@ -188,15 +212,52 @@ angular.module('QuickCastUser')
 						return response.data;
 					});
 				return delfriends_response;
-				//UserProfile服务返回数据
+				//DelFriends服务返回数据
 			},
-			ApplyConfirm: function(self_id, partner_id, friend_status) {
-				//UserProfile服务
+			AddFriends: function(self_id, partner_id, reason) {
+				//AddFriends服务
+
+				var add_friends_data = {
+					'self_id': self_id,
+					'partner_id': partner_id
+				};
+				var addfriends_response = $http({
+					method: 'post',
+					url: Server + 'friend_list.do?method=imp_friend_list_insert',
+					data: add_friends_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return addfriends_response;
+				//AddFriends服务返回数据
+			},
+			Friendcircle: function(user_id) {
+				//Friendcircle服务
+				var friend_circle_data = {
+					'self_id': user_id
+				};
+				var friendcircle_response = $http({
+					method: 'post',
+					url: Server + 'friend_list.do?method=display_friendsarray',
+					data: friend_circle_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return friendcircle_response;
+				//Friendcircle服务返回数据
+			},
+			ApplyConfirm: function(self_id, partner_id, friend_status, rlts_id) {
+				//ApplyConfirm服务
 
 				var apply_data = {
 					'self_id': self_id,
 					'partner_id': partner_id,
-					'status': friend_status
+					'status': friend_status,
+					'rlts_id': rlts_id
 				};
 				var apply_response = $http({
 					method: 'post',
@@ -208,7 +269,7 @@ angular.module('QuickCastUser')
 						return response.data;
 					});
 				return apply_response;
-				//UserProfile服务返回数据
+				//ApplyConfirm服务返回数据
 			},
 
 

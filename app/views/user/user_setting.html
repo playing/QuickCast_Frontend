@@ -141,7 +141,7 @@
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-wrench"></span>
                 设置
-                <a href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
+                <a ng-href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-folder-open"></span>
@@ -164,6 +164,7 @@
       <small>Setting</small>
     </h1>
   </div>
+  <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
   <div class="row">
     <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked blockquote">

@@ -141,7 +141,7 @@
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-wrench"></span>
                 设置
-                <a href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
+                <a ng-href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-folder-open"></span>
@@ -158,19 +158,44 @@
 </nav>
 
 <div class="container index">
-  <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
   <div class="row">
     <div class="col-md-8">
       <h3>{{cn_tname}} 快来分享你的新鲜动态.</h3>
-      <textarea rows="3" cols="40" class="form-control" ng-model="publish.content"></textarea>
+      <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
+      <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
       <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
-      <div class="well regbtn" ng-repeat="update in updates">
-        <a href="{{update.id}}">
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">
+          {{newsbutton}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="" ng-click="search.pub_type=1;newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
+          </li>
+          <li>
+            <a href="" ng-click="search.pub_type=2;newsbutton='猎头信息';search.pub_id=undefined;">猎头信息</a>
+          </li>
+          <li>
+            <a href="" ng-click="search.pub_type=3;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
+          </li>
+          <li>
+            <a href="" ng-click="search.pub_id=user_id;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="" ng-click="search.pub_type=undefined;newsbutton='所有动态';search.pub_id=undefined;">所有动态</a>
+          </li>
+        </ul>
+      </div>
+      <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
+        <a ng-href="user.html#/user/{{update.pub_id}}">
           <h5>{{update.pub_name}}</h5>
         </a>
         <p>{{update.content}}</p>
+        <p>{{update.pub_time|date:'yyyy-MM-dd HH:mm:ss'}}</p>
       </div>
-      <button class="btn btn-info btn-block regbtn" ng-click="morenews()">
+      <button class="btn btn-info btn-block newsspan" ng-click="morenews()">
         更多动态
         <span class="glyphicon glyphicon-chevron-down"></span>
       </button>

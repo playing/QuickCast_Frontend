@@ -141,7 +141,7 @@
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-wrench"></span>
                 设置
-                <a href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
+                <a ng-href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-folder-open"></span>
@@ -158,22 +158,16 @@
 </nav>
 
 <div class="container ">
-  <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
+
   <div class="row">
     <div class="col-md-8">
-      <h3>{{user.name}}快来分享你的新鲜动态.</h3>
-      <textarea rows="3" cols="40" class="form-control" ></textarea>
-      <button class="btn btn-primary btn-block btn-lg regbtn">发布</button>
-      <div class="well regbtn" ng-repeat="update in updates">
-        <a href="{{update.id}}">
-          <h5>{{update.sender}}</h5>
-        </a>
-        <p>{{update.msg}}</p>
+      <div class="page-header">
+        <h1>
+          简历中心
+          <small>Curriculum Vitae</small>
+        </h1>
       </div>
-      <button class="btn btn-info btn-block  regbtn">
-        更多动态
-        <span class="glyphicon glyphicon-chevron-down"></span>
-      </button>
+      <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
     </div>
     <div class="col-md-4">
       <div>
