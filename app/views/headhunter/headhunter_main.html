@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ui-sref="index">
+      <a class="navbar-brand" ng-href="user.html#/user/{{user_id}}">
         <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
@@ -18,37 +18,37 @@
             <div class="input-group nav-search" >
               <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon  glyphicon-list"></span>
+                  <span class="glyphicon  glyphicon-{{searchicon}}"></span>
                 </button>
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="test()" href="">
+                    <a ng-click="search_type=1;searchicon='list-alt';" href="">
                       <span class="glyphicon glyphicon-list-alt"></span>
                       找职位
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="">
+                    <a ng-click="search_type=2;searchicon='briefcase';" href="">
                       <span class="glyphicon glyphicon-briefcase"></span>
                       找公司
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a href="">
+                    <a ng-click="search_type=3;searchicon='user';" href="">
                       <span class="glyphicon glyphicon-user"></span>
                       找猎头
                     </a>
                   </li>
                 </ul>
               </div>
-              <input type="text" class="form-control"></div>
+              <input type="text" class="form-control" ng-model="serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search()">
+          <button class="btn btn-default nav-btn" ng-click="search(serach_key)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -59,30 +59,30 @@
           <a href="" class="dropdown-toggle">
             <span class="glyphicon glyphicon-envelope"></span>
             站内信
-            <span class="label label-primary">1</span>
+            <span class="label label-primary">{{messages.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/message">
               站内信
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
-            <button class="btn btn-default btn-sm pull-right btnmargin">
+            <a class="btn btn-default btn-sm pull-right btnmargin" ng-href="user.html#/user/{{user_id}}/message">
               <span class="glyphicon  glyphicon-share"></span>
-            </button>
+            </a>
             <div class="list-group nav-list">
-              <a href="{{message.id}}" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.header}}</strong>
-                <p>发件人:{{message.sender}}</p>
-                <p>{{message.msg}}</p>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.title}}</strong>
+                <p>发件人:{{message.dispatch_name}}</p>
+                <p>{{message.content}}</p>
               </a>
             </div>
-            <a href="" class="pull-right">查看更多</a>
+            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
           <a href="" class="dropdown-toggle">
             <span class="glyphicon  glyphicon-flag"></span>
             通知
-            <span class="label label-primary">2</span>
+            <span class="label label-primary">{{notices.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
             <h5 >
@@ -90,35 +90,36 @@
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </h5>
             <div class="list-group nav-list">
-              <a href="{{notice.id}}" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.header}}</strong>
-                <p>发件人:{{notice.sender}}</p>
-                <p>{{notice.msg}}</p>
+              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.title}}</strong>
+                <p>发件人:{{notice.dispatch_name}}</p>
+                <p>{{notice.content}}</p>
               </a>
             </div>
-            <a href="" class="pull-right">查看更多</a>
+            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
           <a href="" class="dropdown-toggle" >
             <span class="glyphicon  glyphicon-plus" ></span>
             添加好友
-            <span class="label label-primary">3</span>
+            <span class="label label-primary">{{applys.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/friends">
               好友管理
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
             <ul class="list-group nav-list">
               <li class="list-group-item"  ng-repeat="apply in applys">
-                <p>申请人:{{apply.sender}}</p>
-                <p>{{apply.msg}}</p>
-                <button class="btn btn-success btn-sm">同意</button>
-                <button class="btn btn-danger btn-sm">拒绝</button>
+                <p>申请人:{{apply.name}}</p>
+                <p >用户类别:{{apply.group|usertype}}</p>
+                <p>{{apply.reason}}</p>
+                <button class="btn btn-success btn-sm" ng-click="friend_add($index,'agree')">同意</button>
+                <button class="btn btn-danger btn-sm" ng-click="friend_add($index,'disagree')">拒绝</button>
               </li>
             </ul>
             <p>找找谁已加入快投</p>
-            <a href="" class="pull-right">查看更多</a>
+            <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">查看更多</a>
           </div>
         </li>
         <li>
@@ -134,18 +135,18 @@
             <ul class="list-group nav-list">
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-user"></span>
-                Wang Yitong
-                <a href="" class=" pull-right">退出</a>
+                {{cn_tname}}
+                <a href="" class=" pull-right" ng-click="logout()">退出</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-wrench"></span>
                 设置
-                <a href="" class=" pull-right">查看</a>
+                <a ng-href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-folder-open"></span>
                 简历管理
-                <a href="" class=" pull-right">查看</a>
+                <a ng-href="user.html#/user/{{user_id}}/resume" class="pull-right">查看</a>
               </li>
             </ul>
 
@@ -159,16 +160,42 @@
 <div class="container index">
   <div class="row">
     <div class="col-md-8">
-      <h3>{{user.name}}快来分享你的新鲜动态.</h3>
-      <textarea rows="3" cols="40" class="form-control" ></textarea>
-      <button class="btn btn-primary btn-block btn-lg regbtn">发布</button>
-      <div class="well regbtn" ng-repeat="update in updates">
-        <a href="{{update.id}}">
-          <h5>{{update.sender}}</h5>
-        </a>
-        <p>{{update.msg}}</p>
+      <h3>{{cn_tname}} 快来分享你的新鲜动态.</h3>
+      <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
+      <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+      <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">
+          {{newsbutton}}
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li>
+            <a href="" ng-click="search.pub_type=1;newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
+          </li>
+          <li>
+            <a href="" ng-click="search.pub_type=2;newsbutton='猎头信息';search.pub_id=undefined;">猎头信息</a>
+          </li>
+          <li>
+            <a href="" ng-click="search.pub_type=3;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
+          </li>
+          <li>
+            <a href="" ng-click="search.pub_id=user_id;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="" ng-click="search.pub_type=undefined;newsbutton='所有动态';search.pub_id=undefined;">所有动态</a>
+          </li>
+        </ul>
       </div>
-      <button class="btn btn-info btn-block  regbtn">
+      <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
+        <a ng-href="user.html#/user/{{update.pub_id}}">
+          <h5>{{update.pub_name}}</h5>
+        </a>
+        <p>{{update.content}}</p>
+        <p>{{update.pub_time|date:'yyyy-MM-dd HH:mm:ss'}}</p>
+      </div>
+      <button class="btn btn-info btn-block newsspan" ng-click="morenews()">
         更多动态
         <span class="glyphicon glyphicon-chevron-down"></span>
       </button>

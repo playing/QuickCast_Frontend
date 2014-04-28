@@ -22,7 +22,8 @@ angular.module('QuickCastUser')
 		$scope.searchbtn = '邮箱地址';
 		$scope.newsquantity = 10;
 		$scope.search_key = {};
-		$scope.search_key.serach_type = 'email';
+		$scope.search_key.search_type = 'email';
+		$scope.searchfriend_lists = [];
 
 		var location_array = $location.path().split('/');
 
@@ -66,29 +67,32 @@ angular.module('QuickCastUser')
 				}
 
 			});
+			UserService.ApplysList(parseInt($scope.user_id)).then(function(response) {
+				var applylist = JSON.parse(response).friend_list;
+				
+				for (var i = 0; i < applylist.length; i++) {
+					if (applylist[i].friend_status === '1') {
+						$scope.applys.push({
+							rlts_id: applylist[i].rlts_id,
+							name: applylist[i].partner_name,
+							id: applylist[i].partner_id,
+							group: applylist[i].user_type,
+							reason: applylist[i].reason,
+						});
+					}
+				};
 
+			});
 			UserService.FriendsList($scope.user_id).then(function(response) {
 				var friendlist = JSON.parse(response).friend_list;
 				for (var i = 0; i <= friendlist.length - 1; i++) {
-					if (friendlist[i].friend_status === 1) {
-						$scope.applys.push({
-							rlts_id: friendlist[i].rlts_id,
-							name: friendlist[i].partner_name,
-							id: friendlist[i].partner_id,
-							group: friendlist[i].friendsgroup,
-							reason: friendlist[i].reason,
-						});
-						friendlist.splice(i, 1);
-						i--;
+					if (friendlist[i].friendsgroup === '1') {
+						$scope.seekerfriends.push(friendlist[i]);
 					} else {
-						if (friendlist[i].friendsgroup === '1') {
-							$scope.seekerfriends.push(friendlist[i]);
+						if (friendlist[i].friendsgroup === '2') {
+							$scope.headhunterfriends.push(friendlist[i]);
 						} else {
-							if (friendlist[i].friendsgroup === '2') {
-								$scope.headhunterfriends.push(friendlist[i]);
-							} else {
-								$scope.companyfriends.push(friendlist[i]);
-							}
+							$scope.companyfriends.push(friendlist[i]);
 						}
 					}
 				}
@@ -277,7 +281,6 @@ angular.module('QuickCastUser')
 
 		$scope.friend_add = function(index, method) {
 			var friend_status = '';
-			console.log($scope.applys[0].id);
 			if (method === 'agree') {
 				friend_status = '2';
 			} else {
@@ -301,12 +304,29 @@ angular.module('QuickCastUser')
 		};
 
 		$scope.findfriend = function(search_key) {
-			if (search_key.serach_type === 'email') {
+			UserService.SearchFriends(search_key).then(function(response) {
+				if (JSON.parse(response).hasOwnProperty('result')) {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '搜索失败,未能找到相应的用户.'
+					});
+				} else {
+					$scope.searchfriend_lists = JSON.parse(response).query;
+				}
+			});
 
-			} else {
-
-			}
 		};
+
+		$scope.searchapply = function(index, friend_insert) {
+			friend_insert.self_id = parseInt($scope.user_id);
+			friend_insert.partner_id = $scope.searchfriend_lists[index].partner_id;
+			UserService.AddFriends(friend_insert).then(function(response) {
+
+				console.log(response);
+
+			});
+		};
+
 		$scope.circleapply = function(index) {
 			// body...
 		};

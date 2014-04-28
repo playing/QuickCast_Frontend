@@ -179,7 +179,6 @@ angular.module('QuickCastUser')
 
 			FriendsList: function(user_id) {
 				//UserProfile服务
-
 				var friend_list_data = {
 					'self_id': user_id
 				};
@@ -194,6 +193,23 @@ angular.module('QuickCastUser')
 					});
 				return friendslist_response;
 				//UserProfile服务返回数据
+			},
+			ApplysList: function(user_id) {
+				//ApplysList服务
+				var apply_list_data = {
+					'partner_id': user_id
+				};
+				var applyslist_response = $http({
+					method: 'post',
+					url: Server + 'friend_list.do?method=imp_friend_list_apply',
+					data: apply_list_data
+				})
+					.then(function(response) {
+						response.data = decodeURIComponent(decodeURIComponent(response.data));
+						return response.data;
+					});
+				return applyslist_response;
+				//ApplysList服务返回数据
 			},
 			DelFriends: function(self_id, partner_id) {
 				//DelFriends服务
@@ -214,17 +230,12 @@ angular.module('QuickCastUser')
 				return delfriends_response;
 				//DelFriends服务返回数据
 			},
-			AddFriends: function(self_id, partner_id, reason) {
+			AddFriends: function(friend_insert) {
 				//AddFriends服务
-
-				var add_friends_data = {
-					'self_id': self_id,
-					'partner_id': partner_id
-				};
 				var addfriends_response = $http({
 					method: 'post',
 					url: Server + 'friend_list.do?method=imp_friend_list_insert',
-					data: add_friends_data
+					data: friend_insert
 				})
 					.then(function(response) {
 						response.data = decodeURIComponent(decodeURIComponent(response.data));
@@ -271,8 +282,39 @@ angular.module('QuickCastUser')
 				return apply_response;
 				//ApplyConfirm服务返回数据
 			},
-
-
+			SearchFriends: function(search_key) {
+				//SearchFriends服务
+				if (search_key.search_type === 'email') {
+					var search_data = {
+						'email': search_key.keyword
+					};
+					var searchfriends_response = $http({
+						method: 'post',
+						url: Server + 'friend_list.do?method=imp_friend_list_queryByEmail',
+						data: search_data
+					})
+						.then(function(response) {
+							response.data = decodeURIComponent(decodeURIComponent(response.data));
+							return response.data;
+						});
+					return searchfriends_response;
+				} else {
+					var search_data_name = {
+						'cn_tname': search_key.keyword
+					};
+					var searchfriends_response_name = $http({
+						method: 'post',
+						url: Server + 'friend_list.do?method=imp_friend_list_queryByName',
+						data: search_data_name
+					})
+						.then(function(response) {
+							response.data = decodeURIComponent(decodeURIComponent(response.data));
+							return response.data;
+						});
+					return searchfriends_response_name;
+				}
+				//SearchFriends服务返回数据
+			},
 		};
 		return UserService;
 	});

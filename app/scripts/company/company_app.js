@@ -13,44 +13,27 @@ angular.module('QuickCastCompany', [
     $urlRouterProvider.otherwise('404');
     $stateProvider
       .state('index', {
-        url: '/company/:user_id',
-        templateUrl: 'views/company/company_main.html',
-        controller: "CompanyCtrl"
+        url: '/user/{user_id:[0-9]{1,8}}',
+        templateUrl: 'views/company/company_main.html'
       })
-
-    .state('message', {
-      url: '/company/:user_id/message',
-      templateUrl: 'views/company/company_message.html',
-      controller: "CompanyCtrl"
-    })
-
-    .state('setting', {
-      url: '/company/:user_id/setting',
-      templateUrl: 'views/company/company_setting.html',
-      controller: "CompanyCtrl"
-    })
-
-    .state('friends', {
-      url: '/company/:user_id/friends',
-      templateUrl: 'views/company/company_friends.html',
-      controller: "CompanyCtrl"
-    })
-
-    .state('resume', {
-      url: '/company/:user_id/resume',
-      templateUrl: 'views/company/company_resume.html',
-      controller: "CompanyCtrl"
-    })
-    // $stateProvider
-    //   .state('null', {
-    //     url: '',
-    //     templateUrl: 'views/user/user_main.html',
-    //     controller: 'UserCtrl'
-    //   })
-    .state('404', {
-      url: '/404',
-      templateUrl: '404.html',
-      controller: "CompanyCtrl"
-    });
-
+      .state('message', {
+        url: '/user/{user_id:[0-9]{1,8}}/message',
+        templateUrl: 'views/company/company_message.html'
+      })
+      .state('setting', {
+        url: '/user/{user_id:[0-9]{1,8}}/setting',
+        templateUrl: 'views/company/company_setting.html'
+      })
+      .state('friends', {
+        url: '/user/{user_id:[0-9]{1,8}}/friends',
+        templateUrl: 'views/company/company_friends.html'
+      })
+      .state('resume', {
+        url: '/user/{user_id:[0-9]{1,8}}/resume',
+        templateUrl: 'views/company/company_resume.html'
+      })
+      .state('404', {
+        url: '/404',
+        templateUrl: '404.html'
+      });
   });
