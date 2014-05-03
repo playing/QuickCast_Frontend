@@ -25,6 +25,7 @@ angular.module('QuickCastUser')
 		$scope.search_key.search_type = 'email';
 		$scope.searchfriend_lists = [];
 		$scope.langs = [];
+		$scope.projects = [];
 		$scope.proficiencys = ['初级 (入门)', '中级 (日常会话)', '中高级 (商务会话)', '高级 (无障碍商务沟通)', '母语'];
 
 		var location_array = $location.path().split('/');
@@ -134,6 +135,15 @@ angular.module('QuickCastUser')
 		$scope.langs.push({
 			lang: '英语',
 			proficiency: '母语',
+		});
+		$scope.projects.push({
+			prj_name: '快投网',
+			prj_duty: '开发工程师',
+			start_time: '2013-7-8',
+			end_time: '2014-3-4',
+			prj_desc: '详细描述',
+			prj_achievement: 'www.playingcn.com'
+
 		});
 
 		$scope.logout = function() {
@@ -349,12 +359,13 @@ angular.module('QuickCastUser')
 			//手动删除错误信息
 		};
 
-
+		//简历编辑
 		$scope.dellangs = function(index) {
 			$scope.langs.splice(index, 1);
+
 		};
 		$scope.savelangs = function() {
-			// body...
+			// TODO
 		};
 		$scope.addlangs = function() {
 			$scope.langs.push({

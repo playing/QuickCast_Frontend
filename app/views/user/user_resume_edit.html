@@ -212,6 +212,7 @@
           <hr>
           <div collapse="!isCollapsed">Some content</div>
         </div>
+
         <div>
           <h4 class="icon_edu">
             教育背景
@@ -223,17 +224,31 @@
           <hr>
           <div collapse="!isCollapsed">Some content</div>
         </div>
-        <div>
+
+        <div id="project">
           <h4 class="icon_project">
             工作项目
-            <a class="pull-right" href="" ng-click="isCollapsed = !isCollapsed">
-              <span class="glyphicon  glyphicon-edit"></span>
-              编辑
+            <a class="pull-right" href="" ng-click="projectTab.edit='plus';">
+              <span class="glyphicon  glyphicon-plus"></span>
+              添加
             </a>
           </h4>
           <hr>
-          <div collapse="!isCollapsed">Some content</div>
+          <div class="animate-switch-container"
+    ng-switch on="projectTab.edit">
+            <div class="animate-switch" ng-switch-when="edit"></div>
+            <div class="animate-switch" ng-switch-default>
+              <div ng-repeat="project in projects">
+                <h3>
+                  <strong>{{project.lang}}</strong>
+                  |
+                  <small>{{project.proficiency}}</small>
+                </h3>
+              </div>
+            </div>
+          </div>
         </div>
+
         <div id="languages">
           <h4 class="icon_lang">
             语言能力
