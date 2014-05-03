@@ -190,31 +190,123 @@
           <p>软件开发工程师</p>
           <p>湖北 | 程序开发</p>
           <p>目前就职: XXXX</p>
-          <a class="btn btn-lg btn-success" ng-href="user.html#/user/{{user_id}}/resume/edit">编辑履历表</a>
+          <button class="btn btn-lg btn-primary" ng-click="editsave()">编辑完毕</button>
         </div>
+
       </div>
-      <div class="well well-lg">
+      <div class="well well-lg detailrow">
         <div class="page-header">
           <h3>
             个人履历
             <small>Curriculum Vitae</small>
           </h3>
         </div>
-       <h3>您的简历暂无内容,点击编辑来添加.</h3>
+        <div>
+          <h4 class="icon_work">
+            工作经历
+            <a class="pull-right" href="" ng-click="isCollapsed = !isCollapsed">
+              <span class="glyphicon  glyphicon-edit"></span>
+              编辑
+            </a>
+          </h4>
+          <hr>
+          <div collapse="!isCollapsed">Some content</div>
+        </div>
+        <div>
+          <h4 class="icon_edu">
+            教育背景
+            <a class="pull-right" href="" ng-click="isCollapsed = !isCollapsed">
+              <span class="glyphicon  glyphicon-edit"></span>
+              编辑
+            </a>
+          </h4>
+          <hr>
+          <div collapse="!isCollapsed">Some content</div>
+        </div>
+        <div>
+          <h4 class="icon_project">
+            工作项目
+            <a class="pull-right" href="" ng-click="isCollapsed = !isCollapsed">
+              <span class="glyphicon  glyphicon-edit"></span>
+              编辑
+            </a>
+          </h4>
+          <hr>
+          <div collapse="!isCollapsed">Some content</div>
+        </div>
+        <div id="languages">
+          <h4 class="icon_lang">
+            语言能力
+            <a class="pull-right" href="" ng-click="langTab.edit='edit';">
+              <span class="glyphicon  glyphicon-edit"></span>
+              编辑
+            </a>
+          </h4>
+          <hr>
+          <div class="animate-switch-container"
+    ng-switch on="langTab.edit">
+            <div class="animate-switch" ng-switch-when="edit">
+              <label >使用语言:</label>
+              <label class="labelmargin" >语言能力:</label>
+              <div ng-repeat="lang in langs" class="regbtn">
+                <form class="form-inline" role="form">
+                  <div class="form-group">
+                    <input type="text" class="form-control" ng-model="lang.lang" ></div>
+                  <div class="form-group">
+                    <select class="form-control" ng-model="lang.proficiency" ng-options="proficiency for proficiency in proficiencys"></select>
+                  </div>
+                  <button type="button" class="close" aria-hidden="true" ng-click="dellangs($index)">&times;</button>
+                </form>
+              </div>
+              <a href="" class="btn-block regbtn" ng-click="addlangs()">添加另一种语言</a>
+              <button class="btn btn-primary regbtn" ng-click="savelangs()">保存</button>
+              <button class="btn btn-default regbtn" ng-click="langTab.edit='other';">取消</button>
+            </div>
+            <div class="animate-switch" ng-switch-default>
+              <div class="col-md-5" ng-repeat="lang in langs">
+                <h3>
+                  <strong>{{lang.lang}}</strong>
+                  |
+                  <small>{{lang.proficiency}}</small>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <div class="col-md-4">
       <div>
-        <h3>可能认识的会员:</h3>
-        <div class="well well-sm" ng-repeat="recommend in recommends">
-          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
-          <a href="{{recommend.id}}">
-            <h4>{{recommend.title}}</h4>
+        <h3>立即添加:</h3>
+        <hr>
+        <div class="list-group">
+          <a href="" class="list-group-item ">
+            <h3 class="icon_work">
+              工作经历
+              <span class="glyphicon  glyphicon-plus pull-right"></span>
+            </h3>
           </a>
-          <p>{{recommend.company}}--{{recommend.city}}</p>
+          <a href="" class="list-group-item ">
+            <h3 class="icon_edu">
+              教育背景
+              <span class="glyphicon  glyphicon-plus pull-right"></span>
+            </h3>
+          </a>
+          <a href="" class="list-group-item ">
+            <h3 class="icon_project">
+              工作项目
+              <span class="glyphicon  glyphicon-plus pull-right"></span>
+            </h3>
+          </a>
+          <a href="" class="list-group-item ">
+            <h3 class="icon_lang">
+              语言能力
+              <span class="glyphicon  glyphicon-plus pull-right"></span>
+            </h3>
+          </a>
         </div>
-        <a href="" class="pull-right">更多职位</a>
       </div>
       <div class="footer">
         <p>

@@ -24,6 +24,8 @@ angular.module('QuickCastUser')
 		$scope.search_key = {};
 		$scope.search_key.search_type = 'email';
 		$scope.searchfriend_lists = [];
+		$scope.langs = [];
+		$scope.proficiencys = ['初级 (入门)', '中级 (日常会话)', '中高级 (商务会话)', '高级 (无障碍商务沟通)', '母语'];
 
 		var location_array = $location.path().split('/');
 
@@ -54,6 +56,9 @@ angular.module('QuickCastUser')
 				$scope.user = JSON.parse(response).user[0];
 			});
 
+			UserService.UserProfile(parseInt($scope.user_id)).then(function(response) {
+				//$scope.user = JSON.parse(response).user[0];
+			});
 
 			UserService.messageReceive($scope.user_id).then(function(response) {
 				var messageReceive = JSON.parse(response).message;
@@ -69,7 +74,7 @@ angular.module('QuickCastUser')
 			});
 			UserService.ApplysList(parseInt($scope.user_id)).then(function(response) {
 				var applylist = JSON.parse(response).friend_list;
-				
+
 				for (var i = 0; i < applylist.length; i++) {
 					if (applylist[i].friend_status === '1') {
 						$scope.applys.push({
@@ -121,6 +126,14 @@ angular.module('QuickCastUser')
 			name: '黄凯',
 			content: 'company',
 			city: 'wuhan.'
+		});
+		$scope.langs.push({
+			lang: '中文',
+			proficiency: '母语',
+		});
+		$scope.langs.push({
+			lang: '英语',
+			proficiency: '母语',
 		});
 
 		$scope.logout = function() {
@@ -335,6 +348,21 @@ angular.module('QuickCastUser')
 			$scope.alerts.splice(index, 1);
 			//手动删除错误信息
 		};
+
+
+		$scope.dellangs = function(index) {
+			$scope.langs.splice(index, 1);
+		};
+		$scope.savelangs = function() {
+			// body...
+		};
+		$scope.addlangs = function() {
+			$scope.langs.push({
+				lang: '',
+				proficiency: '',
+			});
+		};
+
 		$scope.$on('$stateChangeStart',
 			function() {
 				$scope.alerts = [];

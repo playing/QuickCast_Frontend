@@ -5,6 +5,81 @@ font-family:  "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 font-family:  "Hiragino Sans GB", "Microsoft YaHei","WenQuanYi Micro Hei", sans-serif;
 }
+
+
+
+.fileupload-buttonbar .btn,
+.fileupload-buttonbar .toggle {
+  margin-bottom: 5px;
+}
+.progress-animated .progress-bar,
+.progress-animated .bar {
+  background: url("../img/progressbar.gif") !important;
+  filter: none;
+}
+.fileupload-process {
+  float: right;
+  display: none;
+}
+.fileupload-processing .fileupload-process,
+.files .processing .preview {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url("../img/loading.gif") center no-repeat;
+  background-size: contain;
+}
+.files audio,
+.files video {
+  max-width: 300px;
+}
+
+@media (max-width: 767px) {
+  .fileupload-buttonbar .toggle,
+  .files .toggle,
+  .files .btn span {
+    display: none;
+  }
+  .files .name {
+    width: 80px;
+    word-wrap: break-word;
+  }
+  .files audio,
+  .files video {
+    max-width: 80px;
+  }
+  .files img,
+  .files canvas {
+    max-width: 100%;
+  }
+}
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+/* Fixes for IE < 8 */
+@media screen\9 {
+  .fileinput-button input {
+    filter: alpha(opacity=0);
+    font-size: 100%;
+    height: 100%;
+  }
+}
+
+
+
 .nav-btn {
   margin-top: 8px;
   margin-left: 15px;
@@ -85,4 +160,105 @@ margin-top: 50px;
 	margin-left: 25%;
 	margin-top: 25px;
 }
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.nav, .pagination, .carousel, .panel-title a {
+	cursor: pointer;
+ }
+ .resumeimg{
+ 	width: 200px;
+ }
+ .labelmargin{
+ 	margin-left: 110px;
+ }
+ .icon_lang{
+ 	background: url('/images/resume_icon.png') no-repeat;
+ 	background-position: 0 -515px;
+ 	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 0px;
+    font-weight: normal;
+    line-height: 18px;
+ }
+  .icon_work{
+ 	background: url('/images/resume_icon.png') no-repeat;
+ 	background-position: 0 -429px;
+ 	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 0px;
+    font-weight: normal;
+    line-height: 18px;
+ }
+  .icon_edu{
+ 	background: url('/images/resume_icon.png') no-repeat;
+ 	background-position: 0 -343px;
+ 	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 0px;
+    font-weight: normal;
+    line-height: 18px;
+ }
+   .icon_skill{
+ 	background: url('/images/resume_icon.png') no-repeat;
+ 	background-position: 0 -945px;
+ 	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 0px;
+    font-weight: normal;
+    line-height: 18px;
+ }
+   .icon_project{
+ 	background: url('/images/resume_icon.png') no-repeat;
+ 	background-position: 0 -773px;
+ 	padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 0px;
+    font-weight: normal;
+    line-height: 18px;
+ }
+ .shell{
+ 	position: absolute;
+bottom: 0;
+right: 10px;
+-o-border-radius: 0;
+border-radius: 0;
+box-shadow: none;
+width: 100%;
+background: transparent;
+text-indent: 0;
+text-align: center
+ }
+
+
+ .animate-switch-container {
+  position:relative;
+  min-height:150px;
+  overflow:hidden;
+}
+
+.animate-switch {
+  padding:10px;
+}
+
+.animate-switch.ng-animate {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+.animate-switch.ng-leave.ng-leave-active,
+.animate-switch.ng-enter {
+  top:-50px;
+}
+.animate-switch.ng-leave,
+.animate-switch.ng-enter.ng-enter-active {
+  top:0;
+}
