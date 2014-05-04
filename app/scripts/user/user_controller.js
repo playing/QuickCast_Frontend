@@ -5,6 +5,7 @@ angular.module('QuickCastUser')
 		$scope.active1 = 'active';
 		$scope.alerts = [];
 		$scope.user = {};
+		$scope.user_profile={};
 		$scope.messages = [];
 		$scope.seekerfriends = [];
 		$scope.headhunterfriends = [];
@@ -26,6 +27,8 @@ angular.module('QuickCastUser')
 		$scope.searchfriend_lists = [];
 		$scope.langs = [];
 		$scope.projects = [];
+		$scope.edus = [];
+		$scope.works = [];
 		$scope.proficiencys = ['初级 (入门)', '中级 (日常会话)', '中高级 (商务会话)', '高级 (无障碍商务沟通)', '母语'];
 
 		var location_array = $location.path().split('/');
@@ -46,9 +49,10 @@ angular.module('QuickCastUser')
 		};
 		var init = function() {
 			UserService.Receivenews(parseInt($scope.user_id)).then(function(response) {
-				$scope.updates = JSON.parse(response).news;
+
+				$scope.updates = JSON.parse(response.replace(/\+/g, " ")).news;
 				UserService.Friendnews(parseInt($scope.user_id)).then(function(response) {
-					var myself_updates = JSON.parse(response).news;
+					var myself_updates = JSON.parse(response.replace(/\+/g, " ")).news;
 					$scope.updates = $scope.updates.concat(myself_updates);
 				});
 			});
@@ -58,7 +62,8 @@ angular.module('QuickCastUser')
 			});
 
 			UserService.UserProfile(parseInt($scope.user_id)).then(function(response) {
-				//$scope.user = JSON.parse(response).user[0];
+				$scope.user_profile = JSON.parse(response).seeker_info[0];
+				console.log($scope.user_profile);
 			});
 
 			UserService.messageReceive($scope.user_id).then(function(response) {
@@ -92,27 +97,29 @@ angular.module('QuickCastUser')
 			UserService.FriendsList($scope.user_id).then(function(response) {
 				var friendlist = JSON.parse(response).friend_list;
 				for (var i = 0; i <= friendlist.length - 1; i++) {
-					if (friendlist[i].friendsgroup === '1') {
-						$scope.seekerfriends.push(friendlist[i]);
+					if (friendlist[i].friend_status === '1') {
+						friendlist.splice(i, 1);
 					} else {
-						if (friendlist[i].friendsgroup === '2') {
-							$scope.headhunterfriends.push(friendlist[i]);
+						if (friendlist[i].friendsgroup === '1') {
+							$scope.seekerfriends.push(friendlist[i]);
 						} else {
-							$scope.companyfriends.push(friendlist[i]);
+							if (friendlist[i].friendsgroup === '2') {
+								$scope.headhunterfriends.push(friendlist[i]);
+							} else {
+								$scope.companyfriends.push(friendlist[i]);
+							}
 						}
 					}
 				}
 			});
-
 			UserService.messageSend($scope.user_id).then(function(response) {
 				$scope.sendmessages = JSON.parse(response).message;
 			});
 			UserService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
 				console.log(JSON.parse(response));
 			});
-
-
 		};
+		//初始化
 		check_login();
 		init();
 
@@ -139,12 +146,40 @@ angular.module('QuickCastUser')
 		$scope.projects.push({
 			prj_name: '快投网',
 			prj_duty: '开发工程师',
-			start_time: '2013-7-8',
-			end_time: '2014-3-4',
+			start_time: '2013',
+			end_time: '2014',
 			prj_desc: '详细描述',
 			prj_achievement: 'www.playingcn.com'
 
 		});
+		$scope.projects.push({
+			prj_name: '轻松短租网网',
+			prj_duty: '前端工程师',
+			start_time: '2011',
+			end_time: '2012',
+			prj_desc: '详细描述2',
+			prj_achievement: 'www.playingcn.com'
+
+		});
+		$scope.edus.push({
+			school_name: '华中科技大学',
+			major: '软件工程',
+			study_start_time: '2011',
+			study_end_time: '2012',
+			edu_desc: '教育背景描述',
+			edu_bg: '学士学位'
+
+		});
+
+		$scope.works.push({
+			etp_name: '中国电信',
+			work_duty: '开发工程师',
+			start_time: '2010',
+			end_time: '2014',
+			profession: '职务描述',
+			work_place: '武汉'
+		});
+
 
 		$scope.logout = function() {
 			$cookieStore.remove('_UDATA');
@@ -345,7 +380,20 @@ angular.module('QuickCastUser')
 			friend_insert.partner_id = $scope.searchfriend_lists[index].partner_id;
 			UserService.AddFriends(friend_insert).then(function(response) {
 
-				console.log(response);
+				if (JSON.parse(response).result.data === 'success') {
+					$scope.alerts.push({
+						type: 'success',
+						msg: '发送成功,请等待对方确认.'
+					});
+
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '发送失败,请尝试重新发送.'
+					});
+
+
+				}
 
 			});
 		};
@@ -373,6 +421,56 @@ angular.module('QuickCastUser')
 				proficiency: '',
 			});
 		};
+
+		$scope.delprojects = function(index) {
+			$scope.projects.splice(index, 1);
+
+		};
+		$scope.saveprojects = function(newproject) {
+			$scope.projects.push({
+				prj_name: newproject.prj_name,
+				prj_duty: newproject.prj_duty,
+				start_time: newproject.start_time,
+				end_time: newproject.end_time,
+				prj_desc: newproject.prj_desc,
+				prj_achievement: newproject.prj_achievement
+			});
+		};
+
+		$scope.deledus = function(index) {
+			$scope.edus.splice(index, 1);
+
+		};
+		$scope.saveedus = function(newedu) {
+			$scope.edus.push({
+				school_name: newedu.school_name,
+				edu_bg: newedu.edu_bg,
+				study_start_time: newedu.study_start_time,
+				study_end_time: newedu.study_end_time,
+				edu_desc: newedu.edu_desc,
+				major: newedu.major
+			});
+		};
+		$scope.delworks = function(index) {
+			$scope.works.splice(index, 1);
+
+		};
+		$scope.saveworks = function(newwork) {
+			$scope.works.push({
+				etp_name: newedu.etp_name,
+				work_duty: newedu.work_duty,
+				start_time: newedu.start_time,
+				end_time: newedu.end_time,
+				profession: newedu.profession,
+				work_place: newedu.work_place
+			});
+		};
+		$scope.editsave = function() {
+
+
+			//TODO
+		};
+
 
 		$scope.$on('$stateChangeStart',
 			function() {

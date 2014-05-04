@@ -199,18 +199,17 @@
               <p>{{user.user_type|usertype}}</p>
               <h4>电子邮件:</h4>
               <p>{{user.email}}</p>
-              <h4>电话:</h4>
-              <p>{{user.mobile}}</p>
-              <h4>省份:</h4>
-              <p>{{user.work_place}}</p>
+
             </div>
             <div class="col-md-4">
               <h4>简历:</h4>
-              <p>您有{{"3"}}份简历在快投网.</p>
+              <p>您有{{"1"}}份简历在快投网.</p>
               <a href="">查看详情</a>
               <h4>联系人:</h4>
-              <p>您有{{"13"}}位联系人在快投网.</p>
-              <a href="">查看详情</a>
+              <p>
+                您有{{seekerfriends.length+companyfriends.length+headhunterfriends.length}}位联系人在快投网.
+              </p>
+              <a ng-href="user.html#/user/{{user_id}}/friends" >查看详情</a>
             </div>
           </div>
         </div>
@@ -222,20 +221,17 @@
               <p>{{cn_tname}}</p>
               <h4>英文名:</h4>
               <p>{{user.eng_name}}</p>
-              <h4>电子邮件:</h4>
-              <p>{{user.email}}</p>
               <h4>电话:</h4>
-              <p>{{user.mobile}}</p>
-              <h4>密码:</h4>
-              <a>{{user.work_place}}</a>
+              <p>{{user_profile.mobile}}</p>
+              <h4>工作省份:</h4>
+              <p>{{user_profile.work_place}}</p>
             </div>
             <div class="col-md-4">
-              <h4>简历:</h4>
-              <p>您有{{"3"}}份简历在快投网.</p>
-              <a href="">查看详情</a>
-              <h4>联系人:</h4>
-              <p>您有{{"13"}}位联系人在快投网.</p>
-              <a href="">查看详情</a>
+              <h4>所在行业:</h4>
+              <p>{{user_profile.etp_industry}}</p>
+
+              <h4>职位头衔:</h4>
+              <p>{{user_profile.seeker_profession}}</p>
             </div>
           </div>
         </div>

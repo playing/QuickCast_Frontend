@@ -161,11 +161,13 @@ angular.module('QuickCastUser')
 			},
 			UserProfile: function(user) {
 				//UserProfile服务
-
+				var user_profile_data = {
+					'user_id': user
+				};
 				var userprofile_response = $http({
 					method: 'post',
-					url: Server + 'message.do?method=imp_userreg_queryByUserId',
-					data: user
+					url: Server + 'info.do?method=queryBySeekerUserId',
+					data: user_profile_data
 				})
 					.then(function(response) {
 						response.data = decodeURIComponent(decodeURIComponent(response.data));
@@ -174,8 +176,6 @@ angular.module('QuickCastUser')
 				return userprofile_response;
 				//UserProfile服务返回数据
 			},
-
-
 
 			FriendsList: function(user_id) {
 				//UserProfile服务

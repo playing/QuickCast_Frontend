@@ -182,14 +182,14 @@
         </div>
         <div class="col-md-4">
           <p>
-            <strong>王一桐</strong>
+            <strong>{{cn_tname}}</strong>
           </p>
           <p>
-            <strong>Wang Yi tong</strong>
+            <strong>{{user.eng_name}}</strong>
           </p>
-          <p>软件开发工程师</p>
-          <p>湖北 | 程序开发</p>
-          <p>目前就职: XXXX</p>
+          <p>{{user_profile.seeker_profession}}</p>
+          <p>{{user_profile.work_place}} | {{user_profile.etp_industry}}</p>
+          <p>目前就职: {{user_profile.etp_name}}</p>
           <a class="btn btn-lg btn-success" ng-href="user.html#/user/{{user_id}}/resume/edit">编辑履历表</a>
         </div>
       </div>
@@ -200,7 +200,58 @@
             <small>Curriculum Vitae</small>
           </h3>
         </div>
-       <h3>您的简历暂无内容,点击编辑来添加.</h3>
+
+        <h4 class="icon_work">工作经历</h4>
+        <hr>
+        <div ng-repeat="work in works">
+          <h3>
+            <strong>{{work.etp_name}}</strong>
+            |
+            <small>{{work.work_duty}}</small>
+          </h3>
+          <strong>{{work.work_place}}</strong>
+          <p>{{work.start_time}}-{{work.end_time}}</p>
+          <p>{{work.profession}}</p>
+        </div>
+        <h4 class="icon_edu">教育背景</h4>
+        <hr>
+
+        <div ng-repeat="edu in edus">
+          <h3>
+            <strong>{{edu.school_name}}</strong>
+            |
+            <small>{{edu.major}}</small>
+          </h3>
+          <strong>{{edu.edu_bg}}</strong>
+          <p>{{edu.study_start_time}}-{{edu.study_end_time}}</p>
+          <p>{{edu.edu_desc}}</p>
+        </div>
+
+        <h4 class="icon_project">工作项目</h4>
+        <hr>
+        <div ng-repeat="project in projects">
+          <h3>
+            <a href="http://{{project.prj_achievement}}" target="_blank">
+              <strong>{{project.prj_name}}</strong>
+            </a>
+            |
+            <small>{{project.prj_duty}}</small>
+          </h3>
+          <p>{{project.start_time}}-{{project.end_time}}</p>
+          <p>{{project.prj_desc}}</p>
+        </div>
+
+        <h4 class="icon_lang">语言能力</h4>
+        <hr>
+        <div class="overflow">
+          <div class="col-md-5 " ng-repeat="lang in langs" >
+            <h3>
+              <strong>{{lang.lang}}</strong>
+              |
+              <small>{{lang.proficiency}}</small>
+            </h3>
+          </div>
+        </div>
       </div>
     </div>
 
