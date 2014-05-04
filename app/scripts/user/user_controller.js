@@ -5,7 +5,7 @@ angular.module('QuickCastUser')
 		$scope.active1 = 'active';
 		$scope.alerts = [];
 		$scope.user = {};
-		$scope.user_profile={};
+		$scope.user_profile = {};
 		$scope.messages = [];
 		$scope.seekerfriends = [];
 		$scope.headhunterfriends = [];
@@ -50,24 +50,23 @@ angular.module('QuickCastUser')
 		var init = function() {
 			UserService.Receivenews(parseInt($scope.user_id)).then(function(response) {
 
-				$scope.updates = JSON.parse(response.replace(/\+/g, " ")).news;
+				$scope.updates = response.news;
 				UserService.Friendnews(parseInt($scope.user_id)).then(function(response) {
-					var myself_updates = JSON.parse(response.replace(/\+/g, " ")).news;
+					var myself_updates = response.news;
 					$scope.updates = $scope.updates.concat(myself_updates);
 				});
 			});
 
 			UserService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
-				$scope.user = JSON.parse(response).user[0];
+				$scope.user = response.user[0];
 			});
 
 			UserService.UserProfile(parseInt($scope.user_id)).then(function(response) {
-				$scope.user_profile = JSON.parse(response).seeker_info[0];
-				console.log($scope.user_profile);
+				$scope.user_profile = response.seeker_info[0];
 			});
 
 			UserService.messageReceive($scope.user_id).then(function(response) {
-				var messageReceive = JSON.parse(response).message;
+				var messageReceive = response.message;
 				for (var i = 0; i <= messageReceive.length - 1; i++) {
 					if (messageReceive[i].message_type === '1') {
 						$scope.messages.push(messageReceive[i]);
@@ -79,7 +78,7 @@ angular.module('QuickCastUser')
 
 			});
 			UserService.ApplysList(parseInt($scope.user_id)).then(function(response) {
-				var applylist = JSON.parse(response).friend_list;
+				var applylist = response.friend_list;
 
 				for (var i = 0; i < applylist.length; i++) {
 					if (applylist[i].friend_status === '1') {
@@ -91,11 +90,11 @@ angular.module('QuickCastUser')
 							reason: applylist[i].reason,
 						});
 					}
-				};
+				}
 
 			});
 			UserService.FriendsList($scope.user_id).then(function(response) {
-				var friendlist = JSON.parse(response).friend_list;
+				var friendlist = response.friend_list;
 				for (var i = 0; i <= friendlist.length - 1; i++) {
 					if (friendlist[i].friend_status === '1') {
 						friendlist.splice(i, 1);
@@ -113,10 +112,24 @@ angular.module('QuickCastUser')
 				}
 			});
 			UserService.messageSend($scope.user_id).then(function(response) {
-				$scope.sendmessages = JSON.parse(response).message;
+				$scope.sendmessages = response.message;
 			});
 			UserService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
-				console.log(JSON.parse(response));
+				console.log(response);
+			});
+			UserService.WorkExpGet(parseInt($scope.user_id)).then(function(response) {
+				console.log(response);
+			});
+			UserService.PrjExpGet(parseInt($scope.user_id)).then(function(response) {
+				console.log(response);
+			});
+
+			UserService.EduExpGet(parseInt($scope.user_id)).then(function(response) {
+				console.log(response);
+			});
+
+			UserService.ResumeGet(parseInt($scope.user_id)).then(function(response) {
+				console.log(response);
 			});
 		};
 		//初始化
@@ -137,11 +150,11 @@ angular.module('QuickCastUser')
 		});
 		$scope.langs.push({
 			lang: '中文',
-			proficiency: '母语',
+			proficiency: '母语'
 		});
 		$scope.langs.push({
 			lang: '英语',
-			proficiency: '母语',
+			proficiency: '母语'
 		});
 		$scope.projects.push({
 			prj_name: '快投网',
@@ -149,7 +162,8 @@ angular.module('QuickCastUser')
 			start_time: '2013',
 			end_time: '2014',
 			prj_desc: '详细描述',
-			prj_achievement: 'www.playingcn.com'
+			prj_achievement: 'www.playingcn.com',
+			user_id: parseInt($scope.user_id)
 
 		});
 		$scope.projects.push({
@@ -158,7 +172,8 @@ angular.module('QuickCastUser')
 			start_time: '2011',
 			end_time: '2012',
 			prj_desc: '详细描述2',
-			prj_achievement: 'www.playingcn.com'
+			prj_achievement: 'www.playingcn.com',
+			user_id: parseInt($scope.user_id)
 
 		});
 		$scope.edus.push({
@@ -167,7 +182,8 @@ angular.module('QuickCastUser')
 			study_start_time: '2011',
 			study_end_time: '2012',
 			edu_desc: '教育背景描述',
-			edu_bg: '学士学位'
+			edu_bg: '学士学位',
+			user_id: parseInt($scope.user_id)
 
 		});
 
@@ -177,7 +193,8 @@ angular.module('QuickCastUser')
 			start_time: '2010',
 			end_time: '2014',
 			profession: '职务描述',
-			work_place: '武汉'
+			work_place: '武汉',
+			user_id: parseInt($scope.user_id)
 		});
 
 
@@ -192,11 +209,11 @@ angular.module('QuickCastUser')
 			publish.pub_time = timestamp.getTime();
 			publish.pub_type = '1';
 			UserService.Publishnews(publish).then(function(response) {
-				if (JSON.parse(response).result.data === 'success') {
+				if (response.result.data === 'success') {
 					UserService.Receivenews(parseInt($scope.user_id)).then(function(response) {
-						$scope.updates = JSON.parse(response).news;
+						$scope.updates = response.news;
 						UserService.Friendnews(parseInt($scope.user_id)).then(function(response) {
-							var myself_updates = JSON.parse(response).news;
+							var myself_updates = response.news;
 							$scope.updates = $scope.updates.concat(myself_updates);
 						});
 					});
@@ -218,7 +235,7 @@ angular.module('QuickCastUser')
 			newmessage_data.dispatch_time = timestamp.getTime();
 			newmessage_data.dispatch_id = $scope.user_id;
 			UserService.Newmessage(newmessage_data).then(function(response) {
-				if (JSON.parse(response).result.data === 'success') {
+				if (response.result.data === 'success') {
 					//$scope.updates.push(newmessage_data);
 				} else {
 					$scope.alerts.push({
@@ -234,7 +251,7 @@ angular.module('QuickCastUser')
 			if (method === 'receive') {
 				del_message_index = $scope.messages[index].msg_id;
 				UserService.Delmessage(del_message_index).then(function(response) {
-					response = JSON.parse(response);
+					response = response;
 
 					if (response.result.data === 'success') {
 						$scope.messages.splice(index, 1);
@@ -253,7 +270,7 @@ angular.module('QuickCastUser')
 			} else {
 				del_message_index = $scope.sendmessages[index].msg_id;
 				UserService.Delmessage(del_message_index).then(function(response) {
-					response = JSON.parse(response);
+					response = response;
 					if (response.result.data === 'success') {
 						$scope.sendmessages.splice(index, 1);
 						$scope.alerts.push({
@@ -315,8 +332,19 @@ angular.module('QuickCastUser')
 				}
 			}
 			UserService.DelFriends(parseInt($scope.user_id), del_friend_id).then(function(response) {
-				console.log(response);
+				if (response.result.data === 'success') {
+					$scope.alerts.push({
+						type: 'success',
+						msg: '删除成功'
+					});
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '删除失败'
+					});
 
+				}
+				
 			});
 
 		};
@@ -345,7 +373,7 @@ angular.module('QuickCastUser')
 				friend_status = '1';
 			}
 			UserService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
-				if (JSON.parse(response).result.data === 'success') {
+				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
 						msg: '操作成功.'
@@ -363,13 +391,13 @@ angular.module('QuickCastUser')
 
 		$scope.findfriend = function(search_key) {
 			UserService.SearchFriends(search_key).then(function(response) {
-				if (JSON.parse(response).hasOwnProperty('result')) {
+				if (response.hasOwnProperty('result')) {
 					$scope.alerts.push({
 						type: 'danger',
 						msg: '搜索失败,未能找到相应的用户.'
 					});
 				} else {
-					$scope.searchfriend_lists = JSON.parse(response).query;
+					$scope.searchfriend_lists = response.query;
 				}
 			});
 
@@ -380,7 +408,7 @@ angular.module('QuickCastUser')
 			friend_insert.partner_id = $scope.searchfriend_lists[index].partner_id;
 			UserService.AddFriends(friend_insert).then(function(response) {
 
-				if (JSON.parse(response).result.data === 'success') {
+				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
 						msg: '发送成功,请等待对方确认.'
@@ -419,6 +447,7 @@ angular.module('QuickCastUser')
 			$scope.langs.push({
 				lang: '',
 				proficiency: '',
+				user_id: parseInt($scope.user_id)
 			});
 		};
 
@@ -433,7 +462,8 @@ angular.module('QuickCastUser')
 				start_time: newproject.start_time,
 				end_time: newproject.end_time,
 				prj_desc: newproject.prj_desc,
-				prj_achievement: newproject.prj_achievement
+				prj_achievement: newproject.prj_achievement,
+				user_id: parseInt($scope.user_id)
 			});
 		};
 
@@ -448,7 +478,8 @@ angular.module('QuickCastUser')
 				study_start_time: newedu.study_start_time,
 				study_end_time: newedu.study_end_time,
 				edu_desc: newedu.edu_desc,
-				major: newedu.major
+				major: newedu.major,
+				user_id: parseInt($scope.user_id)
 			});
 		};
 		$scope.delworks = function(index) {
@@ -457,20 +488,38 @@ angular.module('QuickCastUser')
 		};
 		$scope.saveworks = function(newwork) {
 			$scope.works.push({
-				etp_name: newedu.etp_name,
-				work_duty: newedu.work_duty,
-				start_time: newedu.start_time,
-				end_time: newedu.end_time,
-				profession: newedu.profession,
-				work_place: newedu.work_place
+				etp_name: newwork.etp_name,
+				work_duty: newwork.work_duty,
+				start_time: newwork.start_time,
+				end_time: newwork.end_time,
+				profession: newwork.profession,
+				work_place: newwork.work_place,
+				user_id: parseInt($scope.user_id)
 			});
 		};
+
 		$scope.editsave = function() {
+			var language_skill = JSON.stringify($scope.langs);
+			var resume_update = {
+				user_id: parseInt($scope.user_id),
+				language_skill: language_skill
+			};
 
+			UserService.WorkExpUpdate($scope.works).then(function(response) {
 
-			//TODO
+			});
+			UserService.PrjExpUpdate($scope.projects).then(function(response) {
+
+			});
+
+			UserService.EduExpUpdate($scope.edus).then(function(response) {
+
+			});
+
+			UserService.ResumeUpdate(resume_update).then(function(response) {
+
+			});
 		};
-
 
 		$scope.$on('$stateChangeStart',
 			function() {

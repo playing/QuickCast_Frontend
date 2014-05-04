@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastUser')
 	.factory('UserService', function($http) {
-		var Server = 'http://192.168.191.1:8080/quickcast/';
+		var Server = 'http://192.168.1.108:8080/quickcast/';
 		var UserService = {
 
 			messageReceive: function(receive_id) {
@@ -15,8 +15,9 @@ angular.module('QuickCastUser')
 					data: message_receive_id
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return messagereceive_response;
 				//messagereceive服务返回数据
@@ -33,8 +34,9 @@ angular.module('QuickCastUser')
 					data: messagesend_dispatch_id
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return messagesend_response;
 				//messagesend服务返回数据
@@ -49,8 +51,9 @@ angular.module('QuickCastUser')
 					data: send_message
 				})
 					.then(function(response) {
-						//response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return newmessage_response;
 				//newmessage服务返回数据
@@ -67,8 +70,9 @@ angular.module('QuickCastUser')
 					data: del_message_msg_id
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return delmessage_response;
 				//delmessage服务返回数据
@@ -85,8 +89,9 @@ angular.module('QuickCastUser')
 					data: publish
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return publishnews_response;
 				//Publishnews服务返回数据
@@ -103,8 +108,9 @@ angular.module('QuickCastUser')
 					data: reveive_news_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
 					});
 				return receivenews_response;
 				//Receivenews服务返回数据
@@ -120,8 +126,9 @@ angular.module('QuickCastUser')
 					data: friend_news_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
 					});
 				return friendnews_response;
 				//Friendnews服务返回数据
@@ -135,8 +142,9 @@ angular.module('QuickCastUser')
 					data: news_id
 				})
 					.then(function(response) {
-						//response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return delnews_response;
 				//Delnews服务返回数据
@@ -153,8 +161,9 @@ angular.module('QuickCastUser')
 					data: user
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return userreg_response;
 				//UserReg服务返回数据
@@ -170,8 +179,9 @@ angular.module('QuickCastUser')
 					data: user_profile_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return userprofile_response;
 				//UserProfile服务返回数据
@@ -188,8 +198,9 @@ angular.module('QuickCastUser')
 					data: friend_list_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return friendslist_response;
 				//UserProfile服务返回数据
@@ -205,8 +216,9 @@ angular.module('QuickCastUser')
 					data: apply_list_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return applyslist_response;
 				//ApplysList服务返回数据
@@ -224,8 +236,9 @@ angular.module('QuickCastUser')
 					data: del_friends_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return delfriends_response;
 				//DelFriends服务返回数据
@@ -238,8 +251,9 @@ angular.module('QuickCastUser')
 					data: friend_insert
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return addfriends_response;
 				//AddFriends服务返回数据
@@ -255,8 +269,9 @@ angular.module('QuickCastUser')
 					data: friend_circle_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return friendcircle_response;
 				//Friendcircle服务返回数据
@@ -276,8 +291,9 @@ angular.module('QuickCastUser')
 					data: apply_data
 				})
 					.then(function(response) {
-						response.data = decodeURIComponent(decodeURIComponent(response.data));
-						return response.data;
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
 					});
 				return apply_response;
 				//ApplyConfirm服务返回数据
@@ -294,8 +310,9 @@ angular.module('QuickCastUser')
 						data: search_data
 					})
 						.then(function(response) {
-							response.data = decodeURIComponent(decodeURIComponent(response.data));
-							return response.data;
+							var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+							response_JSON = JSON.parse(response_JSON);
+							return response_JSON;
 						});
 					return searchfriends_response;
 				} else {
@@ -308,13 +325,139 @@ angular.module('QuickCastUser')
 						data: search_data_name
 					})
 						.then(function(response) {
-							response.data = decodeURIComponent(decodeURIComponent(response.data));
-							return response.data;
+							var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+							response_JSON = JSON.parse(response_JSON);
+							return response_JSON;
 						});
 					return searchfriends_response_name;
 				}
 				//SearchFriends服务返回数据
 			},
+
+
+			ResumeUpdate: function(resume_update) {
+				var resume_response = $http({
+					method: 'post',
+					url: Server + 'personal_rsm.do?method=imp_resume_update',
+					data: resume_update
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return resume_response;
+
+			},
+			WorkExpUpdate: function(workexp) {
+				var workexp_response = $http({
+					method: 'post',
+					url: Server + 'exp.do?method=workexp_insert',
+					data: workexp
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return workexp_response;
+
+			},
+			EduExpUpdate: function(eduexp) {
+				var eduexp_response = $http({
+					method: 'post',
+					url: Server + 'exp.do?method=eduexp_insert',
+					data: eduexp
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return eduexp_response;
+
+			},
+			PrjExpUpdate: function(prjexp) {
+				var prjexp_response = $http({
+					method: 'post',
+					url: Server + 'exp.do?method=prjexp_insert',
+					data: prjexp
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return prjexp_response;
+
+			},
+			WorkExpGet: function(user_id) {
+				var workexp_get_data = {
+					'user_id': user_id
+				};
+				var workexp_get_response = $http({
+					method: 'post',
+					url: Server + 'exp.do?method=queryByWorkuserId',
+					data: workexp_get_data
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return workexp_get_response;
+			},
+			EduExpGet: function(user_id) {
+				var eduexp_get_data = {
+					'user_id': user_id
+				};
+				var eduexp_get_response = $http({
+					method: 'post',
+					url: Server + 'exp.do?method=queryByEduuserId',
+					data: eduexp_get_data
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return eduexp_get_response;
+			},
+			PrjExpGet: function(user_id) {
+				var prjexp_get_data = {
+					'user_id': user_id
+				};
+				var prjexp_get_response = $http({
+					method: 'post',
+					url: Server + 'exp.do?method=queryByPrjuserId',
+					data: prjexp_get_data
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return prjexp_get_response;
+			},
+			ResumeGet: function(user_id) {
+				var resume_get_data = {
+					'user_id': user_id
+				};
+				var resume_get_response = $http({
+					method: 'post',
+					url: Server + 'personal_rsm.do?method=imp_resume_queryByUserId',
+					data: resume_get_data
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON);
+						return response_JSON;
+					});
+				return resume_get_response;
+			},
+
+
+
 		};
 		return UserService;
 	});
