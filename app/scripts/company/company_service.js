@@ -16,7 +16,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return messagereceive_response;
@@ -35,7 +35,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return messagesend_response;
@@ -52,7 +52,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return newmessage_response;
@@ -71,7 +71,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return delmessage_response;
@@ -90,7 +90,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return publishnews_response;
@@ -143,7 +143,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return delnews_response;
@@ -162,7 +162,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return userreg_response;
@@ -180,7 +180,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return userprofile_response;
@@ -199,7 +199,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return friendslist_response;
@@ -217,7 +217,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return applyslist_response;
@@ -237,7 +237,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return delfriends_response;
@@ -252,7 +252,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return addfriends_response;
@@ -270,7 +270,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return friendcircle_response;
@@ -292,7 +292,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return apply_response;
@@ -311,7 +311,7 @@ angular.module('QuickCastCompany')
 					})
 						.then(function(response) {
 							var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-							response_JSON = JSON.parse(response_JSON);
+							response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 							return response_JSON;
 						});
 					return searchfriends_response;
@@ -326,7 +326,7 @@ angular.module('QuickCastCompany')
 					})
 						.then(function(response) {
 							var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-							response_JSON = JSON.parse(response_JSON);
+							response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 							return response_JSON;
 						});
 					return searchfriends_response_name;
@@ -345,7 +345,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return workexp_get_response;
@@ -361,7 +361,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return eduexp_get_response;
@@ -377,7 +377,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return prjexp_get_response;
@@ -393,7 +393,7 @@ angular.module('QuickCastCompany')
 				})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
-						response_JSON = JSON.parse(response_JSON);
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
 						return response_JSON;
 					});
 				return resume_get_response;
