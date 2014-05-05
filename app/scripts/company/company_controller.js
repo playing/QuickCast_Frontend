@@ -5,6 +5,7 @@ angular.module('QuickCastCompany')
 		$scope.active1 = 'active';
 		$scope.alerts = [];
 		$scope.user = {};
+		$scope.user_profile = {};
 		$scope.messages = [];
 		$scope.seekerfriends = [];
 		$scope.headhunterfriends = [];
@@ -25,6 +26,7 @@ angular.module('QuickCastCompany')
 		$scope.search_key.search_type = 'email';
 		$scope.searchfriend_lists = [];
 
+
 		var location_array = $location.path().split('/');
 
 		var check_login = function() {
@@ -43,20 +45,23 @@ angular.module('QuickCastCompany')
 		};
 		var init = function() {
 			CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
-				$scope.updates = JSON.parse(response).news;
+				$scope.updates = response.news;
 				CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
-					var myself_updates = JSON.parse(response).news;
+					var myself_updates = response.news;
 					$scope.updates = $scope.updates.concat(myself_updates);
 				});
 			});
 
 			CompanyService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
-				$scope.user = JSON.parse(response).user[0];
+				$scope.user = response.user[0];
 			});
 
+			CompanyService.UserProfile(parseInt($scope.user_id)).then(function(response) {
+				$scope.user_profile = response.seeker_info[0];
+			});
 
 			CompanyService.messageReceive($scope.user_id).then(function(response) {
-				var messageReceive = JSON.parse(response).message;
+				var messageReceive = response.message;
 				for (var i = 0; i <= messageReceive.length - 1; i++) {
 					if (messageReceive[i].message_type === '1') {
 						$scope.messages.push(messageReceive[i]);
@@ -65,11 +70,10 @@ angular.module('QuickCastCompany')
 						$scope.notices.push(messageReceive[i]);
 					}
 				}
-
 			});
-			CompanyService.ApplysList(parseInt($scope.user_id)).then(function(response) {
-				var applylist = JSON.parse(response).friend_list;
 
+			CompanyService.ApplysList(parseInt($scope.user_id)).then(function(response) {
+				var applylist = response.friend_list;
 				for (var i = 0; i < applylist.length; i++) {
 					if (applylist[i].friend_status === '1') {
 						$scope.applys.push({
@@ -80,33 +84,38 @@ angular.module('QuickCastCompany')
 							reason: applylist[i].reason,
 						});
 					}
-				};
-
+				}
 			});
+
 			CompanyService.FriendsList($scope.user_id).then(function(response) {
-				var friendlist = JSON.parse(response).friend_list;
-				for (var i = 0; i <= friendlist.length - 1; i++) {
-					if (friendlist[i].friendsgroup === '1') {
-						$scope.seekerfriends.push(friendlist[i]);
+				$scope.friendlists = response.friend_list;
+				for (var i = 0; i <= $scope.friendlists.length - 1; i++) {
+					if ($scope.friendlists[i].friend_status === '1') {
+						$scope.friendlists.splice(i, 1);
 					} else {
-						if (friendlist[i].friendsgroup === '2') {
-							$scope.headhunterfriends.push(friendlist[i]);
+						if ($scope.friendlists[i].friendsgroup === '1') {
+							$scope.seekerfriends.push($scope.friendlists[i]);
 						} else {
-							$scope.companyfriends.push(friendlist[i]);
+							if ($scope.friendlists[i].friendsgroup === '2') {
+								$scope.headhunterfriends.push($scope.friendlists[i]);
+							} else {
+								$scope.companyfriends.push($scope.friendlists[i]);
+							}
 						}
 					}
 				}
 			});
 
 			CompanyService.messageSend($scope.user_id).then(function(response) {
-				$scope.sendmessages = JSON.parse(response).message;
-			});
-			CompanyService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
-				console.log(JSON.parse(response));
+				$scope.sendmessages = response.message;
 			});
 
+			CompanyService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
+				console.log(response);
+			});
 
 		};
+		//初始化
 		check_login();
 		init();
 
@@ -123,6 +132,7 @@ angular.module('QuickCastCompany')
 			city: 'wuhan.'
 		});
 
+
 		$scope.logout = function() {
 			$cookieStore.remove('_UDATA');
 			$window.location.href = 'http://127.0.0.1:9000/';
@@ -134,11 +144,11 @@ angular.module('QuickCastCompany')
 			publish.pub_time = timestamp.getTime();
 			publish.pub_type = '1';
 			CompanyService.Publishnews(publish).then(function(response) {
-				if (JSON.parse(response).result.data === 'success') {
+				if (response.result.data === 'success') {
 					CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
-						$scope.updates = JSON.parse(response).news;
+						$scope.updates = response.news;
 						CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
-							var myself_updates = JSON.parse(response).news;
+							var myself_updates = response.news;
 							$scope.updates = $scope.updates.concat(myself_updates);
 						});
 					});
@@ -158,10 +168,23 @@ angular.module('QuickCastCompany')
 		$scope.newmessage = function(newmessage_data) {
 			var timestamp = new Date();
 			newmessage_data.dispatch_time = timestamp.getTime();
-			newmessage_data.dispatch_id = $scope.user_id;
+			newmessage_data.dispatch_id = parseInt($scope.user_id);
+			newmessage_data.receive_id = newmessage_data.receive_info.partner_id;
+			newmessage_data.receive_info = undefined;
 			CompanyService.Newmessage(newmessage_data).then(function(response) {
-				if (JSON.parse(response).result.data === 'success') {
-					//$scope.updates.push(newmessage_data);
+				if (response.result.data === 'success') {
+					$scope.updates.push(newmessage_data);
+					$scope.$parent.messageswitch = {
+						messageTab: 'send'
+					};
+					$scope.alerts.push({
+						type: 'success',
+						msg: '发送成功.'
+					});
+					CompanyService.messageSend($scope.user_id).then(function(response) {
+						$scope.sendmessages = response.message;
+					});
+
 				} else {
 					$scope.alerts.push({
 						type: 'danger',
@@ -176,8 +199,6 @@ angular.module('QuickCastCompany')
 			if (method === 'receive') {
 				del_message_index = $scope.messages[index].msg_id;
 				CompanyService.Delmessage(del_message_index).then(function(response) {
-					response = JSON.parse(response);
-
 					if (response.result.data === 'success') {
 						$scope.messages.splice(index, 1);
 						$scope.alerts.push({
@@ -195,7 +216,7 @@ angular.module('QuickCastCompany')
 			} else {
 				del_message_index = $scope.sendmessages[index].msg_id;
 				CompanyService.Delmessage(del_message_index).then(function(response) {
-					response = JSON.parse(response);
+					response = response;
 					if (response.result.data === 'success') {
 						$scope.sendmessages.splice(index, 1);
 						$scope.alerts.push({
@@ -229,18 +250,18 @@ angular.module('QuickCastCompany')
 			//回复站内信信息
 		};
 		$scope.friendtomessage = function(index, method) {
-			var friend_message_name = '';
+			var friend_message_info = 0;
 			if (method === 'seeker') {
-				friend_message_name = $scope.seekerfriends[index].partner_name;
+				friend_message_info = $scope.seekerfriends[index];
 			} else {
 				if (method === 'headhunter') {
-					friend_message_name = $scope.headhunterfriends[index].partner_name;
+					friend_message_info = $scope.headhunterfriends[index];
 				} else {
-					friend_message_name = $scope.companyfriends[index].partner_name;
+					friend_message_info = $scope.companyfriends[index];
 				}
 			}
 			$location.path('user/' + $scope.user_id + '/message');
-			$scope.newmessage_data.receive_name = friend_message_name;
+			$scope.newmessage_data.receive_info = friend_message_info;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};
@@ -257,7 +278,18 @@ angular.module('QuickCastCompany')
 				}
 			}
 			CompanyService.DelFriends(parseInt($scope.user_id), del_friend_id).then(function(response) {
-				console.log(response);
+				if (response.result.data === 'success') {
+					$scope.alerts.push({
+						type: 'success',
+						msg: '删除成功'
+					});
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '删除失败'
+					});
+
+				}
 
 			});
 
@@ -287,7 +319,7 @@ angular.module('QuickCastCompany')
 				friend_status = '1';
 			}
 			CompanyService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
-				if (JSON.parse(response).result.data === 'success') {
+				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
 						msg: '操作成功.'
@@ -305,13 +337,13 @@ angular.module('QuickCastCompany')
 
 		$scope.findfriend = function(search_key) {
 			CompanyService.SearchFriends(search_key).then(function(response) {
-				if (JSON.parse(response).hasOwnProperty('result')) {
+				if (response.hasOwnProperty('result')) {
 					$scope.alerts.push({
 						type: 'danger',
 						msg: '搜索失败,未能找到相应的用户.'
 					});
 				} else {
-					$scope.searchfriend_lists = JSON.parse(response).query;
+					$scope.searchfriend_lists = response.query;
 				}
 			});
 
@@ -322,7 +354,20 @@ angular.module('QuickCastCompany')
 			friend_insert.partner_id = $scope.searchfriend_lists[index].partner_id;
 			CompanyService.AddFriends(friend_insert).then(function(response) {
 
-				console.log(response);
+				if (response.result.data === 'success') {
+					$scope.alerts.push({
+						type: 'success',
+						msg: '发送成功,请等待对方确认.'
+					});
+
+				} else {
+					$scope.alerts.push({
+						type: 'danger',
+						msg: '发送失败,请尝试重新发送.'
+					});
+
+
+				}
 
 			});
 		};
@@ -335,6 +380,9 @@ angular.module('QuickCastCompany')
 			$scope.alerts.splice(index, 1);
 			//手动删除错误信息
 		};
+
+
+
 		$scope.$on('$stateChangeStart',
 			function() {
 				$scope.alerts = [];

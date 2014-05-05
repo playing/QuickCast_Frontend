@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="user.html#/user/{{user_id}}">
+      <a class="navbar-brand" ng-href="company.html#/user/{{user_id}}">
         <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
@@ -23,32 +23,32 @@
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=1;searchicon='list-alt';" href="">
+                    <a ng-click="nav_search.search_type=1;searchicon='list-alt';" href="">
                       <span class="glyphicon glyphicon-list-alt"></span>
                       找职位
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=2;searchicon='briefcase';" href="">
+                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
                       <span class="glyphicon glyphicon-briefcase"></span>
                       找公司
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=3;searchicon='user';" href="">
+                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
                       <span class="glyphicon glyphicon-user"></span>
                       找猎头
                     </a>
                   </li>
                 </ul>
               </div>
-              <input type="text" class="form-control" ng-model="serach_key"></div>
+              <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(serach_key)">
+          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -62,20 +62,20 @@
             <span class="label label-primary">{{messages.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/message">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="company.html#/user/{{user_id}}/message">
               站内信
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
-            <a class="btn btn-default btn-sm pull-right btnmargin" ng-href="user.html#/user/{{user_id}}/message">
+            <a class="btn btn-default btn-sm pull-right btnmargin" ng-href="company.html#/user/{{user_id}}/message">
               <span class="glyphicon  glyphicon-share"></span>
             </a>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.title}}</strong>
+              <a ng-href="company.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.title}}</strong>
                 <p>发件人:{{message.dispatch_name}}</p>
                 <p>{{message.content}}</p>
               </a>
             </div>
-            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
+            <a ng-href="company.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
@@ -90,12 +90,12 @@
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </h5>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.title}}</strong>
+              <a ng-href="company.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.title}}</strong>
                 <p>发件人:{{notice.dispatch_name}}</p>
                 <p>{{notice.content}}</p>
               </a>
             </div>
-            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
+            <a ng-href="company.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
@@ -105,7 +105,7 @@
             <span class="label label-primary">{{applys.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/friends">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="company.html#/user/{{user_id}}/friends">
               好友管理
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
@@ -119,7 +119,7 @@
               </li>
             </ul>
             <p>找找谁已加入快投</p>
-            <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">查看更多</a>
+            <a ng-href="company.html#/user/{{user_id}}/friends" class="pull-right">查看更多</a>
           </div>
         </li>
         <li>
@@ -141,12 +141,12 @@
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-wrench"></span>
                 设置
-                <a ng-href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
+                <a ng-href="/company.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-folder-open"></span>
                 简历管理
-                <a ng-href="user.html#/user/{{user_id}}/resume" class="pull-right">查看</a>
+                <a ng-href="company.html#/user/{{user_id}}/resume" class="pull-right">查看</a>
               </li>
             </ul>
 
@@ -156,7 +156,6 @@
     </div>
   </div>
 </nav>
-
 <div class="container ">
 
   <div class="row">
@@ -164,14 +163,100 @@
       <div class="page-header">
         <h1>
           简历中心
-          <small>Curriculum Vitae</small>
+          <small>Resume</small>
         </h1>
       </div>
       <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
+      <div class="row">
+        <div class="col-md-4">
+          <div>
+            <img src="/images/ghost_person.png" alt="" class="img-rounded img-responsive resumeimg" >
+            <div class="shell">
+              <button class="btn btn-info " data-toggle="modal" data-target="#picturenodal">
+                <span class="glyphicon  glyphicon-plus"></span>
+                添加头像
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <p>
+            <strong>{{cn_tname}}</strong>
+          </p>
+          <p>
+            <strong>{{user.eng_name}}</strong>
+          </p>
+          <p>{{user_profile.seeker_profession}}</p>
+          <p>{{user_profile.work_place}} | {{user_profile.etp_industry}}</p>
+          <p>目前就职: {{user_profile.etp_name}}</p>
+          <a class="btn btn-lg btn-success" ng-href="company.html#/user/{{user_id}}/resume/edit">编辑履历表</a>
+        </div>
+      </div>
+      <div class="well well-lg detailrow">
+        <div class="page-header">
+          <h3>
+            个人履历
+            <small>Curriculum Vitae</small>
+          </h3>
+        </div>
+
+        <h4 class="icon_work">工作经历</h4>
+        <hr>
+        <div ng-repeat="work in works">
+          <h3>
+            <strong>{{work.etp_name}}</strong>
+            |
+            <small>{{work.work_duty}}</small>
+          </h3>
+          <strong>{{work.work_place}}</strong>
+          <p>{{work.start_time}}-{{work.end_time}}</p>
+          <p>{{work.profession}}</p>
+        </div>
+        <h4 class="icon_edu">教育背景</h4>
+        <hr>
+
+        <div ng-repeat="edu in edus">
+          <h3>
+            <strong>{{edu.school_name}}</strong>
+            |
+            <small>{{edu.major}}</small>
+          </h3>
+          <strong>{{edu.edu_bg}}</strong>
+          <p>{{edu.study_start_time}}-{{edu.study_end_time}}</p>
+          <p>{{edu.edu_desc}}</p>
+        </div>
+
+        <h4 class="icon_project">工作项目</h4>
+        <hr>
+        <div ng-repeat="project in projects">
+          <h3>
+            <a href="http://{{project.prj_achievement}}" target="_blank">
+              <strong>{{project.prj_name}}</strong>
+            </a>
+            |
+            <small>{{project.prj_duty}}</small>
+          </h3>
+          <p>{{project.start_time}}-{{project.end_time}}</p>
+          <p>{{project.prj_desc}}</p>
+        </div>
+
+        <h4 class="icon_lang">语言能力</h4>
+        <hr>
+        <div class="overflow">
+          <div class="col-md-5 " ng-repeat="lang in langs" >
+            <h3>
+              <strong>{{lang.lang}}</strong>
+              |
+              <small>{{lang.proficiency}}</small>
+            </h3>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div class="col-md-4">
       <div>
-        <h3>职位推荐:</h3>
+        <h3>可能认识的会员:</h3>
         <div class="well well-sm" ng-repeat="recommend in recommends">
           <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
           <a href="{{recommend.id}}">
@@ -188,7 +273,7 @@
           |
           <a ng-href="/">意见与反馈</a>
           |
-          <a ng-href="/user/about">关于我们</a>
+          <a ng-href="/#/about">关于我们</a>
         </p>
         <p>
           Designed and built with
@@ -210,6 +295,22 @@
     and
           <a href="http://yeoman.io/">Yeoman</a>
         </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="picturenodal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">上传新头像</h4>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">完成</button>
       </div>
     </div>
   </div>

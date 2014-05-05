@@ -23,32 +23,32 @@
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=1;searchicon='list-alt';" href="">
+                    <a ng-click="nav_search.search_type=1;searchicon='list-alt';" href="">
                       <span class="glyphicon glyphicon-list-alt"></span>
                       找职位
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=2;searchicon='briefcase';" href="">
+                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
                       <span class="glyphicon glyphicon-briefcase"></span>
                       找公司
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=3;searchicon='user';" href="">
+                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
                       <span class="glyphicon glyphicon-user"></span>
                       找猎头
                     </a>
                   </li>
                 </ul>
               </div>
-              <input type="text" class="form-control" ng-model="serach_key"></div>
+              <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(serach_key)">
+          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -156,7 +156,6 @@
     </div>
   </div>
 </nav>
-
 <div class="container index">
   <div class="row">
     <div class="col-md-8">
@@ -219,7 +218,7 @@
           |
           <a ng-href="/">意见与反馈</a>
           |
-          <a ng-href="/user/about">关于我们</a>
+          <a ng-href="/#/about">关于我们</a>
         </p>
         <p>
           Designed and built with

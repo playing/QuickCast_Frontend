@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" ng-href="user.html#/user/{{user_id}}">
+      <a class="navbar-brand" ng-href="headhunter.html#/user/{{user_id}}">
         <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" >
@@ -23,32 +23,32 @@
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=1;searchicon='list-alt';" href="">
+                    <a ng-click="nav_search.search_type=1;searchicon='list-alt';" href="">
                       <span class="glyphicon glyphicon-list-alt"></span>
                       找职位
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=2;searchicon='briefcase';" href="">
+                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
                       <span class="glyphicon glyphicon-briefcase"></span>
                       找公司
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=3;searchicon='user';" href="">
+                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
                       <span class="glyphicon glyphicon-user"></span>
                       找猎头
                     </a>
                   </li>
                 </ul>
               </div>
-              <input type="text" class="form-control" ng-model="serach_key"></div>
+              <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(serach_key)">
+          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -62,20 +62,20 @@
             <span class="label label-primary">{{messages.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/message">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="headhunter.html#/user/{{user_id}}/message">
               站内信
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
-            <a class="btn btn-default btn-sm pull-right btnmargin" ng-href="user.html#/user/{{user_id}}/message">
+            <a class="btn btn-default btn-sm pull-right btnmargin" ng-href="headhunter.html#/user/{{user_id}}/message">
               <span class="glyphicon  glyphicon-share"></span>
             </a>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.title}}</strong>
+              <a ng-href="headhunter.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="message in messages"> <strong class="list-group-item-heading">{{message.title}}</strong>
                 <p>发件人:{{message.dispatch_name}}</p>
                 <p>{{message.content}}</p>
               </a>
             </div>
-            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
+            <a ng-href="headhunter.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
@@ -90,12 +90,12 @@
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </h5>
             <div class="list-group nav-list">
-              <a ng-href="user.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.title}}</strong>
+              <a ng-href="headhunter.html#/user/{{user_id}}/message" class="list-group-item"  ng-repeat="notice in notices"> <strong class="list-group-item-heading">{{notice.title}}</strong>
                 <p>发件人:{{notice.dispatch_name}}</p>
                 <p>{{notice.content}}</p>
               </a>
             </div>
-            <a ng-href="user.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
+            <a ng-href="headhunter.html#/user/{{user_id}}/message" class="pull-right">查看更多</a>
           </div>
         </li>
         <li >
@@ -105,7 +105,7 @@
             <span class="label label-primary">{{applys.length}}</span>
           </a>
           <div class="dropdown-menu nav-dropdown" >
-            <a class="btn btn-default btn-sm btnmargin" ng-href="user.html#/user/{{user_id}}/friends">
+            <a class="btn btn-default btn-sm btnmargin" ng-href="headhunter.html#/user/{{user_id}}/friends">
               好友管理
               <span class="glyphicon  glyphicon-chevron-right"></span>
             </a>
@@ -119,7 +119,7 @@
               </li>
             </ul>
             <p>找找谁已加入快投</p>
-            <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">查看更多</a>
+            <a ng-href="headhunter.html#/user/{{user_id}}/friends" class="pull-right">查看更多</a>
           </div>
         </li>
         <li>
@@ -141,12 +141,12 @@
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-wrench"></span>
                 设置
-                <a ng-href="/user.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
+                <a ng-href="/headhunter.html#/user/{{user_id}}/setting" class=" pull-right">查看</a>
               </li>
               <li class="list-group-item">
                 <span class="glyphicon  glyphicon-folder-open"></span>
                 简历管理
-                <a ng-href="user.html#/user/{{user_id}}/resume" class="pull-right">查看</a>
+                <a ng-href="headhunter.html#/user/{{user_id}}/resume" class="pull-right">查看</a>
               </li>
             </ul>
 
@@ -354,7 +354,7 @@
       |
       <a ng-href="/">意见与反馈</a>
       |
-      <a ng-href="/user/about">关于我们</a>
+      <a ng-href="/#/about">关于我们</a>
     </p>
     <p>
       Designed and built with

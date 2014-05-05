@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastUser')
 	.factory('UserService', function($http) {
-		var Server = 'http://192.168.1.108:8080/quickcast/';
+		var Server = 'http://192.168.191.1:8080/quickcast/';
 		var UserService = {
 
 			messageReceive: function(receive_id) {
@@ -455,9 +455,7 @@ angular.module('QuickCastUser')
 					});
 				return resume_get_response;
 			},
-
-
-
+		
 		};
 		return UserService;
 	});

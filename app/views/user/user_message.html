@@ -23,32 +23,32 @@
                 <ul class="dropdown-menu">
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=1;searchicon='list-alt';" href="">
+                    <a ng-click="nav_search.search_type=1;searchicon='list-alt';" href="">
                       <span class="glyphicon glyphicon-list-alt"></span>
                       找职位
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=2;searchicon='briefcase';" href="">
+                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
                       <span class="glyphicon glyphicon-briefcase"></span>
                       找公司
                     </a>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="search_type=3;searchicon='user';" href="">
+                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
                       <span class="glyphicon glyphicon-user"></span>
                       找猎头
                     </a>
                   </li>
                 </ul>
               </div>
-              <input type="text" class="form-control" ng-model="serach_key"></div>
+              <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(serach_key)">
+          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -156,7 +156,6 @@
     </div>
   </div>
 </nav>
-
 <div class="container">
   <div class="page-header">
     <h1>
@@ -195,7 +194,7 @@
             <h4 class="form-control-static">发件人: {{cn_tname}}</h4>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control"  placeholder="收件人" ng-model="newmessage_data.receive_name" ></div>
+            <input type="text" class="form-control"  placeholder="收件人" ng-model="newmessage_data.receive_info" typeahead="friendlist as friendlist.partner_name for friendlist in friendlists | filter:$viewValue | limitTo:8" typeahead-editable="false" ></div>
           <div class="form-group">
             <input type="text" class="form-control"  placeholder="主题" ng-model="newmessage_data.title"></div>
           <textarea class="form-control" rows="5" placeholder="正文" ng-model="newmessage_data.content"></textarea>
@@ -247,7 +246,7 @@
     |
     <a ng-href="/">意见与反馈</a>
     |
-    <a ng-href="/user/about">关于我们</a>
+    <a ng-href="/#/about">关于我们</a>
   </p>
   <p>
     Designed and built with
