@@ -6,7 +6,8 @@ angular.module('QuickCast', [
   'ngSanitize',
   'ui.bootstrap',
   'ngAnimate',
-  'ui.router'
+  'ui.router',
+  'flow'
 ])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/404');

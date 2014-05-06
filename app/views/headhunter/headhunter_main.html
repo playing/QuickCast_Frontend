@@ -161,7 +161,178 @@
     <div class="col-md-8">
       <h3>{{cn_tname}} 快来分享你的新鲜动态.</h3>
       <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
-      <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+      <div ng-switch on="newsTab.newstype">
+        <div  ng-switch-when="2">
+          <div class="form-group">
+            <label >招聘职位:</label>
+            <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
+          <div class="form-group">
+            <label >所在行业:</label>
+            <select class="form-control prform" ng-model="user_profile.etp_industry">
+              <option value="0">选择...</option>
+              <option value="安全和调查">安全和调查</option>
+              <option value="半导体">半导体</option>
+              <option value="包装和集装箱">包装和集装箱</option>
+              <option value="保险">保险</option>
+              <option value="报纸">报纸</option>
+              <option value="玻璃、陶瓷和混凝土">玻璃、陶瓷和混凝土</option>
+              <option value="博彩">博彩</option>
+              <option value="博物馆和展览机构">博物馆和展览机构</option>
+              <option value="采矿/金属">采矿/金属</option>
+              <option value="餐饮服务">餐饮服务</option>
+              <option value="仓储">仓储</option>
+              <option value="超市">超市</option>
+              <option value="程序开发">程序开发</option>
+              <option value="出版">出版</option>
+              <option value="慈善">慈善</option>
+              <option value="电脑游戏">电脑游戏</option>
+              <option value="电器/电子制造">电器/电子制造</option>
+              <option value="电信">电信</option>
+              <option value="电子产品">电子产品</option>
+              <option value="动画">动画</option>
+              <option value="法律服务">法律服务</option>
+              <option value="翻译和本地化">翻译和本地化</option>
+              <option value="房地产">房地产</option>
+              <option value="纺织">纺织</option>
+              <option value="非营利组织管理">非营利组织管理</option>
+              <option value="风险投资和私募股权">风险投资和私募股权</option>
+              <option value="服务业">服务业</option>
+              <option value="服装和时尚">服装和时尚</option>
+              <option value="高等教育">高等教育</option>
+              <option value="工业自动化">工业自动化</option>
+              <option value="工艺美术">工艺美术</option>
+              <option value="公共安全">公共安全</option>
+              <option value="公共基础设施">公共基础设施</option>
+              <option value="公共政策">公共政策</option>
+              <option value="公关传播">公关传播</option>
+              <option value="管理咨询">管理咨询</option>
+              <option value="广电传媒">广电传媒</option>
+              <option value="国防和航空">国防和航空</option>
+              <option value="国际贸易和发展">国际贸易和发展</option>
+              <option value="国际事务">国际事务</option>
+              <option value="海事">海事</option>
+              <option value="航空航天">航空航天</option>
+              <option value="互联网">互联网</option>
+              <option value="化学">化学</option>
+              <option value="化妆品">化妆品</option>
+              <option value="环境服务">环境服务</option>
+              <option value="会计">会计</option>
+              <option value="活动服务">活动服务</option>
+              <option value="货物包装及运送">货物包装及运送</option>
+              <option value="机械">机械</option>
+              <option value="机械和工业设计">机械和工业设计</option>
+              <option value="集资">集资</option>
+              <option value="计算机和网络安全">计算机和网络安全</option>
+              <option value="计算机软件">计算机软件</option>
+              <option value="计算机网络">计算机网络</option>
+              <option value="计算机硬件">计算机硬件</option>
+              <option value="家具">家具</option>
+              <option value="家政服务">家政服务</option>
+              <option value="健康、运动和健身">健康、运动和健身</option>
+              <option value="建材">建材</option>
+              <option value="建筑">建筑</option>
+              <option value="建筑和规划">建筑和规划</option>
+              <option value="交通、汽车及铁路运输">交通、汽车及铁路运输</option>
+              <option value="教育管理">教育管理</option>
+              <option value="金融服务">金融服务</option>
+              <option value="进出口">进出口</option>
+              <option value="精细工艺">精细工艺</option>
+              <option value="酒店">酒店</option>
+              <option value="军事">军事</option>
+              <option value="可再生品和环境">可再生品和环境</option>
+              <option value="立法机关">立法机关</option>
+              <option value="零售">零售</option>
+              <option value="旅游观光">旅游观光</option>
+              <option value="律师">律师</option>
+              <option value="媒体制作">媒体制作</option>
+              <option value="民航/航空">民航/航空</option>
+              <option value="民间和社会组织">民间和社会组织</option>
+              <option value="牧业">牧业</option>
+              <option value="纳米技术">纳米技术</option>
+              <option value="酿酒">酿酒</option>
+              <option value="批发">批发</option>
+              <option value="平面设计">平面设计</option>
+              <option value="汽车">汽车</option>
+              <option value="人力资源">人力资源</option>
+              <option value="日用品">日用品</option>
+              <option value="乳业">乳业</option>
+              <option value="商业地产">商业地产</option>
+              <option value="商业用品和设备">商业用品和设备</option>
+              <option value="奢侈品和珠宝">奢侈品和珠宝</option>
+              <option value="摄影">摄影</option>
+              <option value="设计">设计</option>
+              <option value="设施服务">设施服务</option>
+              <option value="生物技术">生物技术</option>
+              <option value="石油和能源">石油和能源</option>
+              <option value="食品加工">食品加工</option>
+              <option value="食品饮料">食品饮料</option>
+              <option value="市场研究">市场研究</option>
+              <option value="市场营销与广告">市场营销与广告</option>
+              <option value="兽医">兽医</option>
+              <option value="数字化学习">数字化学习</option>
+              <option value="司法机关">司法机关</option>
+              <option value="塑料">塑料</option>
+              <option value="体育">体育</option>
+              <option value="体育器材">体育器材</option>
+              <option value="替代性纠纷解决">替代性纠纷解决</option>
+              <option value="替代医学">替代医学</option>
+              <option value="铁路设备制造">铁路设备制造</option>
+              <option value="投资管理">投资管理</option>
+              <option value="投资银行">投资银行</option>
+              <option value="图书馆">图书馆</option>
+              <option value="土木工程">土木工程</option>
+              <option value="外包/离岸外包">外包/离岸外包</option>
+              <option value="网络媒体">网络媒体</option>
+              <option value="无线通讯">无线通讯</option>
+              <option value="舞台表演">舞台表演</option>
+              <option value="物流和供应链管理">物流和供应链管理</option>
+              <option value="写作和编辑">写作和编辑</option>
+              <option value="心理保健">心理保健</option>
+              <option value="信息服务">信息服务</option>
+              <option value="信息技术和服务">信息技术和服务</option>
+              <option value="行政机关">行政机关</option>
+              <option value="休闲设施和服务">休闲设施和服务</option>
+              <option value="学术研究">学术研究</option>
+              <option value="烟草">烟草</option>
+              <option value="养殖">养殖</option>
+              <option value="医疗保健">医疗保健</option>
+              <option value="医疗服务">医疗服务</option>
+              <option value="医疗设备">医疗设备</option>
+              <option value="音乐">音乐</option>
+              <option value="银行">银行</option>
+              <option value="印刷">印刷</option>
+              <option value="影视">影视</option>
+              <option value="渔业">渔业</option>
+              <option value="娱乐">娱乐</option>
+              <option value="造船">造船</option>
+              <option value="招聘和猎聘">招聘和猎聘</option>
+              <option value="政府公关">政府公关</option>
+              <option value="政治组织">政治组织</option>
+              <option value="执法机关">执法机关</option>
+              <option value="执行机关">执行机关</option>
+              <option value="纸品与林木产品">纸品与林木产品</option>
+              <option value="制药">制药</option>
+              <option value="智囊团">智囊团</option>
+              <option value="中小学教育">中小学教育</option>
+              <option value="专业培训和指导">专业培训和指导</option>
+              <option value="资本市场">资本市场</option>
+              <option value="宗教机构">宗教机构</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >薪资:</label>
+            <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
+          <label >详情:</label>
+          <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+        </div>
+        <div  ng-switch-default>
+          <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+        </div>
+      </div>
+      <select class="form-control regbtn newselect" ng-model="newsTab.newstype">
+        <option value="1" selected="true">普通动态</option>
+        <option value="2">猎头信息</option>
+      </select>
       <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">
@@ -201,7 +372,7 @@
     </div>
     <div class="col-md-4">
       <div>
-        <h3>职位推荐:</h3>
+        <h4>职位推荐:</h4>
         <div class="well well-sm" ng-repeat="recommend in recommends">
           <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
           <a href="{{recommend.id}}">
@@ -210,6 +381,17 @@
           <p>{{recommend.company}}--{{recommend.city}}</p>
         </div>
         <a href="" class="pull-right">更多职位</a>
+      </div>
+      <div>
+        <h4>可能认识的会员:</h4>
+        <div class="well well-sm" ng-repeat="recommend in recommends">
+          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
+          <a href="{{recommend.id}}">
+            <h4></h4>
+          </a>
+          <p></p>
+        </div>
+        <a href="" class="pull-right">更多推荐</a>
       </div>
       <div class="footer">
         <p>

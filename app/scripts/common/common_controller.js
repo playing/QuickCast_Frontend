@@ -99,8 +99,9 @@ angular.module('QuickCast')
 						} else {
 							if (user_type === '2') {
 								$window.location.href = 'headhunter.html#/user/' + user_id;
+							} else {
+								$window.location.href = 'company.html#/user/' + user_id;
 							}
-							$window.location.href = 'company.html#/user/' + user_id;
 						}
 
 					}

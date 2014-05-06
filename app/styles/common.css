@@ -235,6 +235,9 @@ text-align: center
 .overflow{
 	overflow: hidden;
 }
+.newselect{
+  width:20%;
+}
 
  .animate-switch-container {
   position:relative;

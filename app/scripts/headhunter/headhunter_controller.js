@@ -25,6 +25,10 @@ angular.module('QuickCastHeadhunter')
 		$scope.search_key = {};
 		$scope.search_key.search_type = 'email';
 		$scope.searchfriend_lists = [];
+		$scope.newsTab = {
+			newstype: '1'
+		};
+
 
 
 		var location_array = $location.path().split('/');
@@ -57,7 +61,7 @@ angular.module('QuickCastHeadhunter')
 			});
 
 			HeadhunterService.UserProfile(parseInt($scope.user_id)).then(function(response) {
-				$scope.user_profile = response.seeker_info[0];
+				$scope.user_profile = response.hunter_info[0];
 			});
 
 			HeadhunterService.messageReceive($scope.user_id).then(function(response) {
@@ -169,9 +173,8 @@ angular.module('QuickCastHeadhunter')
 			var timestamp = new Date();
 			newmessage_data.dispatch_time = timestamp.getTime();
 			newmessage_data.dispatch_id = parseInt($scope.user_id);
-			newmessage_data.receive_id = newmessage_data.receive_info.partner_id;
 			newmessage_data.receive_info = undefined;
-			HeadhunterService.Newmessage(newmessage_data).then(function(response) {
+			UserService.Newmessage(newmessage_data).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.updates.push(newmessage_data);
 					$scope.$parent.messageswitch = {
@@ -181,7 +184,7 @@ angular.module('QuickCastHeadhunter')
 						type: 'success',
 						msg: '发送成功.'
 					});
-					HeadhunterService.messageSend($scope.user_id).then(function(response) {
+					UserService.messageSend($scope.user_id).then(function(response) {
 						$scope.sendmessages = response.message;
 					});
 
@@ -235,13 +238,17 @@ angular.module('QuickCastHeadhunter')
 		};
 
 		$scope.replay = function(index, method) {
+			var replay_message_id = 0;
 			var replay_message_name = '';
 			if (method === 'receive') {
+				replay_message_id = $scope.messages[index].dispatch_id;
 				replay_message_name = $scope.messages[index].dispatch_name;
 			} else {
+				replay_message_id = $scope.sendmessages[index].receive_id;
 				replay_message_name = $scope.sendmessages[index].receive_name;
 			}
-			$scope.newmessage_data.receive_name = replay_message_name;
+			$scope.newmessage_data.receive_id = replay_message_id;
+			$scope.newmessage_data.receive_info = replay_message_name;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};
@@ -250,18 +257,23 @@ angular.module('QuickCastHeadhunter')
 			//回复站内信信息
 		};
 		$scope.friendtomessage = function(index, method) {
-			var friend_message_info = 0;
+			var friend_message_id = 0;
+			var friend_message_name = '';
 			if (method === 'seeker') {
-				friend_message_info = $scope.seekerfriends[index];
+				friend_message_info = $scope.seekerfriends[index].partner_id;
+				friend_message_name = $scope.seekerfriends[index].partner_name;
 			} else {
 				if (method === 'headhunter') {
-					friend_message_info = $scope.headhunterfriends[index];
+					friend_message_info = $scope.headhunterfriends[index].partner_id;
+					friend_message_name = $scope.headhunterfriends[index].partner_name;
 				} else {
-					friend_message_info = $scope.companyfriends[index];
+					friend_message_info = $scope.companyfriends[index].partner_id;
+					friend_message_name = $scope.companyfriends[index].partner_name;
 				}
 			}
 			$location.path('user/' + $scope.user_id + '/message');
-			$scope.newmessage_data.receive_info = friend_message_info;
+			$scope.newmessage_data.receive_id = friend_message_id;
+			$scope.newmessage_data.receive_info = friend_message_name;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};

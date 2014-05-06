@@ -6,7 +6,8 @@ angular.module('QuickCastHeadhunter', [
   'ngSanitize',
   'ui.bootstrap',
   'ngAnimate',
-  'ui.router'
+  'ui.router',
+  'flow'
 ])
   .config(function($stateProvider, $urlRouterProvider) {
 
@@ -22,7 +23,7 @@ angular.module('QuickCastHeadhunter', [
       })
       .state('setting', {
         url: '/user/{user_id:[0-9]{1,8}}/setting',
-        templateUrl: 'views/headhunter/user_setting.html'
+        templateUrl: 'views/headhunter/headhunter_setting.html'
       })
       .state('friends', {
         url: '/user/{user_id:[0-9]{1,8}}/friends',

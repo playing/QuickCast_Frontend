@@ -1,0 +1,970 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"par",
+				"partner_name"
+			],
+			[
+				"for",
+				"for	for (…) {…} (Improved Native For-Loop)"
+			],
+			[
+				"scope",
+				"$scope	AngularJS"
+			],
+			[
+				"He",
+				"HeadhunterService"
+			],
+			[
+				"C",
+				"CompanyService"
+			],
+			[
+				"lang",
+				"language_skill"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"l",
+				"langs"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"t",
+				"target	Attr"
+			],
+			[
+				"parse",
+				"parseInt"
+			],
+			[
+				"sear",
+				"serach_type"
+			],
+			[
+				"rt",
+				"rlts_id"
+			],
+			[
+				"Parse",
+				"parseInt"
+			],
+			[
+				"get",
+				"getTime"
+			],
+			[
+				"time",
+				"timestamp"
+			],
+			[
+				"us",
+				"UserService"
+			],
+			[
+				"s",
+				"scope"
+			],
+			[
+				"lo",
+				"location"
+			],
+			[
+				"company",
+				"companyfriends"
+			],
+			[
+				"seeker",
+				"seekerfriends"
+			],
+			[
+				"rep",
+				"replay_message_name"
+			],
+			[
+				"if",
+				"ife	if … else"
+			],
+			[
+				"mess",
+				"messageTab"
+			],
+			[
+				"mes",
+				"messageTab"
+			],
+			[
+				"che",
+				"check_login"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
+				"push",
+				"push_native  (variable)"
+			],
+			[
+				"re",
+				"register"
+			],
+			[
+				"pro",
+				"profile"
+			],
+			[
+				"aler",
+				"alert"
+			],
+			[
+				"login",
+				"login_report"
+			],
+			[
+				"r",
+				"rows	Attr"
+			],
+			[
+				"hea",
+				"header	Tag"
+			],
+			[
+				"min",
+				"min-width"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"a",
+				"auto"
+			],
+			[
+				"pr",
+				"profile"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"f",
+				"f	Anonymous Function"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"fr",
+				"form	Tag"
+			],
+			[
+				"m",
+				"main	main()"
+			],
+			[
+				"i",
+				"if	If Condition"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"marin",
+				"margin-top"
+			],
+			[
+				"b",
+				"button	Tag"
+			],
+			[
+				"au",
+				"authStart"
+			],
+			[
+				"week",
+				"weekdayint"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"u",
+				"ul	Tag"
+			],
+			[
+				"fu",
+				"fun	Function"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "views/user/user_message.html",
+			"settings":
+			{
+				"buffer_size": 11187,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/user/user_main.html",
+			"settings":
+			{
+				"buffer_size": 9996,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/user/user_resume_edit.html",
+			"settings":
+			{
+				"buffer_size": 51717,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "views/user/user_resume.html",
+			"settings":
+			{
+				"buffer_size": 13348,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/user/user_controller.js",
+			"settings":
+			{
+				"buffer_size": 14164,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/user/user_service.js",
+			"settings":
+			{
+				"buffer_size": 13849,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "scripts/user/user_app.js",
+			"settings":
+			{
+				"buffer_size": 1242,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 150.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"",
+				"Autoprefix CSS"
+			],
+			[
+				"sftp",
+				"SFTP: Browse Server…"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"codein",
+				"Code Folding: Unfold All"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insat",
+				"Tag: Insert as Tag"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 424.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/common_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/flow.js/.bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/user.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/company.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/headhunter.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/ng-flow/.bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/styles/common.css",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/profile.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/common_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_controller.js",
+		"/G/server/index.html",
+		"/E/Hearthstone/DBF/CARD_BACK.xml",
+		"/E/Hearthstone/DBF/ACHIEVE.xml",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/user.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/0653f417.scripts.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/8b0b590d.vendor.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/styles/1104e95d.vendor.css",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/styles/e7f5a709.main.css",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/company/company_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/user/user_message.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/about.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/admin.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/index.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/company.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_friends.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_setting.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_message.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_message.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_resume.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_setting.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_friends.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_resume.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_setting.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_message.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_friends.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume_edit.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume.html",
+		"/C/Users/playing/Desktop/ga.js",
+		"/C/Users/playing/Downloads/Analytics 全部网站数据 受众群体概览 20140403-20140503.csv",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/upload/upload.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/fileform.html",
+		"/C/Users/playing/Downloads/jQuery-File-Upload-9.5.7/jQuery-File-Upload-9.5.7/js/jquery.fileupload-angular.js",
+		"/C/Users/playing/Downloads/jQuery-File-Upload-9.5.7/jQuery-File-Upload-9.5.7/js/jquery.fileupload.js",
+		"/C/Users/playing/Downloads/jQuery-File-Upload-9.5.7/jQuery-File-Upload-9.5.7/angularjs.html",
+		"/C/Users/playing/Downloads/jQuery-File-Upload-9.5.7/jQuery-File-Upload-9.5.7/js/jquery.fileupload-image.js",
+		"/C/Users/playing/Downloads/jQuery-File-Upload-9.5.7/jQuery-File-Upload-9.5.7/Gruntfile.js",
+		"/C/Users/playing/Desktop/weibo/app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-scenario/angular-scenario.js",
+		"/C/users/playing/appdata/local/temp/sublime-sftp-browse-1398090078/playingcn/var/www/quickcast/company.html",
+		"/C/Users/playing/AppData/Roaming/Sublime Text 3/Packages/User/sftp_servers/playingcn",
+		"/G/server/my.cnf",
+		"/C/Users/playing/Documents/GitHub/linux-dash-master/index.html",
+		"/C/Users/playing/Documents/GitHub/linux-dash-master/js/dashboard.js",
+		"/C/Users/playing/Documents/GitHub/linux-dash-master/js/base.js",
+		"/C/Users/playing/Documents/GitHub/linux-dash-master/js/odometer.js",
+		"/C/Users/playing/Documents/GitHub/linux-dash-master/sh/hostname.php",
+		"/C/Users/playing/Documents/GitHub/linux-dash-master/sh/df.php",
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/npm-debug.log",
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/package.json",
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/bower.json",
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/index.html.hbs",
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/views/search.js",
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/views/account_security.js",
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/Gruntfile.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/admin.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/index.html",
+		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/modal.js",
+		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/popover.min.js.map",
+		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/affix.min.js.map",
+		"/C/Users/playing/Documents/GitHub/angular-strap-master/Gruntfile.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/.jshintrc",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/karma.conf.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/Gruntfile.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/07d827e6.scripts.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/user/user_resume.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/register.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/profile.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/headhunter.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/package.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-ui-router/.bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/bootstrap/.bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular/.bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/admin/admin_app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/admin/admin_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/admin/admin_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/node_modules/grunt-contrib-htmlmin/tasks/htmlmin.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/node_modules/grunt-contrib-htmlmin/Gruntfile.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/node_modules/grunt-google-cdn/tasks/cdnify.js",
+		"/G/server/web.xml",
+		"/D/prime/MvcPrime/Web.config",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-bootstrap/.bower.json",
+		"/C/Users/playing/Documents/GitHub/Ghost/node_modules/unidecode/data/x00.js",
+		"/C/Users/playing/Documents/GitHub/Ghost/core/client/router.js",
+		"/C/Users/playing/Documents/GitHub/Ghost/core/bootstrap.js",
+		"/C/Users/playing/Documents/GitHub/Ghost/core/index.js",
+		"/C/Users/playing/Documents/GitHub/Ghost/core/server.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/es5-shim/README.md",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/register.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular/angular.js",
+		"/D/prime/MvcPrime/Views/DCenter/Case.cshtml",
+		"/D/prime/MvcPrime/Views/DCenter/Res.cshtml",
+		"/C/Users/playing/Desktop/manglebot-2.0.4/bot.au3",
+		"/C/Users/playing/Desktop/slick-master/slick/slick.js",
+		"/C/Users/playing/Desktop/slick-master/slick/slick.css",
+		"/D/Tencent/379377034/FileRecv/bootstrap-3.0.3/examples/2014-4-6夜跑页面/css_pirobox/css.css",
+		"/D/Tencent/379377034/FileRecv/bootstrap-3.0.3/examples/2014-4-6夜跑页面/runhtml.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/09363af4.scripts.js",
+		"/D/Tencent/379377034/FileRecv/bootstrap-3.0.3/examples/2014-4-6夜跑页面/css_pirobox/demo3/style.css",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/jquery/jquery.js",
+		"/C/Users/playing/workspace/quickcast/WebRoot/app/scripts/common/common_service.js",
+		"/C/Users/playing/Desktop/test.js",
+		"/C/Users/playing/Desktop/毕业设计/Project/team1/DevLib/05_Implement/01_Coding/quickcast/.project",
+		"/G/server/tomcat-users.xml"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"newmessage",
+			"sendmessage",
+			"partner_name",
+			"name",
+			"apply",
+			"response_JSON = JSON.parse(response_JSON);",
+			"UserService",
+			"user.html",
+			">",
+			"user.html",
+			"search_data",
+			"search_type",
+			"profile",
+			"console",
+			"partner_id",
+			"friend_message_id",
+			"partner_name",
+			"friend_message_name",
+			"frienlist",
+			"friend_list",
+			"friendlist",
+			"href",
+			"state",
+			"delfriend",
+			"Update",
+			"POST",
+			"oc()",
+			"x",
+			"UA",
+			"response",
+			"JSON.parse(response)",
+			"JSON.parse",
+			"response.data = decodeURIComponent(decodeURIComponent(response.data));\n						return response.data;",
+			"response.data = decodeURIComponent(decodeURIComponent(response.data));return response.data;",
+			"response.data = decodeURIComponent(decodeURIComponent(response.data));\n						return response.data;",
+			"workexp",
+			"prjexp",
+			"Work",
+			"work",
+			"Work",
+			"work",
+			"Work",
+			"work",
+			"searchfriends_response_name",
+			"console",
+			"newedu",
+			"edu",
+			"eduEditTab",
+			"newedu",
+			"eduTab",
+			"newproject",
+			"project",
+			"projectEditTab",
+			"project",
+			"newproject",
+			"lang",
+			"a",
+			"button",
+			"templates",
+			"a",
+			"div",
+			"p",
+			"UserService",
+			"user",
+			"console",
+			"friendlist",
+			"UserProfile",
+			"apply",
+			"friend",
+			"AddFriends",
+			"';\n",
+			"rlts_id",
+			"delmessage",
+			"Friendcircle",
+			"receivenews",
+			"reveive",
+			"lower",
+			"agree",
+			"friendsTab",
+			"\"",
+			"apply_response",
+			"friendsTab",
+			"name",
+			"friend_message_name",
+			"tab",
+			"tabs",
+			"type",
+			"user_id",
+			"cn_tname",
+			"user_id",
+			"ugl",
+			"uglify",
+			"build",
+			"controller: \"UserCtrl\"",
+			"root",
+			"controller: \"CommonCtrl\"",
+			"/';\n",
+			"send",
+			"write",
+			"messageTab",
+			"h3",
+			"send",
+			"write",
+			"messageTab",
+			"headhunter",
+			"user",
+			"index",
+			"\"",
+			">\n",
+			"digest",
+			"core",
+			"({\n",
+			"small",
+			"a",
+			"tabindex=\"-1\"",
+			"role=\"menuitem\"",
+			"role=\"presentation\"",
+			"\"",
+			"append",
+			"appendto",
+			"append",
+			"textarea",
+			"ajax",
+			"meta",
+			"head"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "views/user/user_message.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11187,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4290,
+								4290
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1260.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "views/user/user_main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9996,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8521,
+								8521
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2941.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/user/user_resume_edit.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 51717,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51717,
+								49391
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 14609.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "views/user/user_resume.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13348,
+								13348
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4488.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "scripts/user/user_controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4311,
+								4320
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1800.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "scripts/user/user_service.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 13849,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								141,
+								105
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "scripts/user/user_app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1242,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1242,
+								1242
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 100.0
+	},
+	"project": "quickcast.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\playing\\Desktop\\choujiang\\app.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 179.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

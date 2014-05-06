@@ -31,6 +31,7 @@ angular.module('QuickCastUser')
 		$scope.works = [];
 		$scope.proficiencys = ['初级(入门)', '中级(日常会话)', '中高级(商务会话)', '高级(无障碍商务沟通)', '母语'];
 
+
 		var location_array = $location.path().split('/');
 
 		var check_login = function() {
@@ -135,6 +136,7 @@ angular.module('QuickCastUser')
 		//初始化
 		check_login();
 		init();
+		$scope.image_url = 'http://192.168.191.1:8080/quickcast/upload/' + $scope.user_id + '.jpg';
 
 		$scope.recommends.push({
 			id: '12344',
@@ -186,7 +188,6 @@ angular.module('QuickCastUser')
 			var timestamp = new Date();
 			newmessage_data.dispatch_time = timestamp.getTime();
 			newmessage_data.dispatch_id = parseInt($scope.user_id);
-			newmessage_data.receive_id = newmessage_data.receive_info.partner_id;
 			newmessage_data.receive_info = undefined;
 			UserService.Newmessage(newmessage_data).then(function(response) {
 				if (response.result.data === 'success') {
@@ -252,13 +253,17 @@ angular.module('QuickCastUser')
 		};
 
 		$scope.replay = function(index, method) {
+			var replay_message_id = 0;
 			var replay_message_name = '';
 			if (method === 'receive') {
+				replay_message_id = $scope.messages[index].dispatch_id;
 				replay_message_name = $scope.messages[index].dispatch_name;
 			} else {
+				replay_message_id = $scope.sendmessages[index].receive_id;
 				replay_message_name = $scope.sendmessages[index].receive_name;
 			}
-			$scope.newmessage_data.receive_name = replay_message_name;
+			$scope.newmessage_data.receive_id = replay_message_id;
+			$scope.newmessage_data.receive_info = replay_message_name;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};
@@ -267,18 +272,23 @@ angular.module('QuickCastUser')
 			//回复站内信信息
 		};
 		$scope.friendtomessage = function(index, method) {
-			var friend_message_info = 0;
+			var friend_message_id = 0;
+			var friend_message_name = '';
 			if (method === 'seeker') {
-				friend_message_info = $scope.seekerfriends[index];
+				friend_message_info = $scope.seekerfriends[index].partner_id;
+				friend_message_name = $scope.seekerfriends[index].partner_name;
 			} else {
 				if (method === 'headhunter') {
-					friend_message_info = $scope.headhunterfriends[index];
+					friend_message_info = $scope.headhunterfriends[index].partner_id;
+					friend_message_name = $scope.headhunterfriends[index].partner_name;
 				} else {
-					friend_message_info = $scope.companyfriends[index];
+					friend_message_info = $scope.companyfriends[index].partner_id;
+					friend_message_name = $scope.companyfriends[index].partner_name;
 				}
 			}
 			$location.path('user/' + $scope.user_id + '/message');
-			$scope.newmessage_data.receive_info = friend_message_info;
+			$scope.newmessage_data.receive_id = friend_message_id;
+			$scope.newmessage_data.receive_info = friend_message_name;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};
@@ -482,7 +492,6 @@ angular.module('QuickCastUser')
 			UserService.ResumeUpdate(resume_update).then(function(response) {
 
 			});
-
 		};
 
 		$scope.$on('$stateChangeStart',
@@ -490,7 +499,6 @@ angular.module('QuickCastUser')
 				$scope.alerts = [];
 				//视图切换时清空错误信息
 			});
-
 	})
 	.filter('usertype', function() {
 		return function(input) {

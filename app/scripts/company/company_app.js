@@ -6,7 +6,8 @@ angular.module('QuickCastCompany', [
   'ngSanitize',
   'ui.bootstrap',
   'ngAnimate',
-  'ui.router'
+  'ui.router',
+  'flow'
 ])
   .config(function($stateProvider, $urlRouterProvider) {
 
