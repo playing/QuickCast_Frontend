@@ -122,7 +122,7 @@ angular.module('QuickCastHeadhunter')
 		//初始化
 		check_login();
 		init();
-
+		$scope.image_url = 'http://192.168.191.1:8080/quickcast/upload/' + $scope.user_id + '.jpg';
 		$scope.recommends.push({
 			id: '12344',
 			title: '开发工程师',

@@ -227,15 +227,7 @@
 			"file": "views/user/user_message.html",
 			"settings":
 			{
-				"buffer_size": 11187,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "views/user/user_main.html",
-			"settings":
-			{
-				"buffer_size": 9996,
+				"buffer_size": 11168,
 				"line_ending": "Windows"
 			}
 		},
@@ -243,39 +235,47 @@
 			"file": "views/user/user_resume_edit.html",
 			"settings":
 			{
-				"buffer_size": 51717,
+				"buffer_size": 51720,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "views/user/user_resume.html",
+			"file": "views/user/user_main.html",
 			"settings":
 			{
-				"buffer_size": 13348,
+				"buffer_size": 11286,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "scripts/user/user_controller.js",
+			"file": "views/headhunter/headhunter_main.html",
 			"settings":
 			{
-				"buffer_size": 14164,
+				"buffer_size": 19655,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "scripts/user/user_service.js",
+			"file": "views/company/company_main.html",
 			"settings":
 			{
-				"buffer_size": 13849,
+				"buffer_size": 16963,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "scripts/user/user_app.js",
+			"file": "views/user/user_setting.html",
 			"settings":
 			{
-				"buffer_size": 1242,
+				"buffer_size": 9992,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "styles/common.css",
+			"settings":
+			{
+				"buffer_size": 5042,
 				"line_ending": "Windows"
 			}
 		}
@@ -352,12 +352,27 @@
 	},
 	"file_history":
 	[
+		"/C/Users/playing/AppData/Roaming/Sublime Text 3/Packages/Tag/Tag Package.sublime-settings",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-ui-router/src/state.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/admin.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular/angular.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-scenario/jstd-scenario-adapter.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/es5-shim/tests/spec/s-array.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-scenario/jstd-scenario-adapter-config.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume_edit.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/profile.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/common_service.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/flow.js/.bower.json",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/app.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_app.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_app.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_app.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/user.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/company.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/headhunter.html",
@@ -365,17 +380,11 @@
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/ng-flow/.bower.json",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/main.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_controller.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_controller.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_service.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_service.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/styles/common.css",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_service.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/profile.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/common_controller.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_controller.js",
 		"/G/server/index.html",
 		"/E/Hearthstone/DBF/CARD_BACK.xml",
 		"/E/Hearthstone/DBF/ACHIEVE.xml",
@@ -401,8 +410,6 @@
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_setting.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_message.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_friends.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume_edit.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume.html",
 		"/C/Users/playing/Desktop/ga.js",
 		"/C/Users/playing/Downloads/Analytics 全部网站数据 受众群体概览 20140403-20140503.csv",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/upload/upload.js",
@@ -430,7 +437,6 @@
 		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/views/search.js",
 		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/views/account_security.js",
 		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/Gruntfile.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/admin.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/index.html",
 		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/modal.js",
 		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/popover.min.js.map",
@@ -465,7 +471,6 @@
 		"/C/Users/playing/Documents/GitHub/Ghost/core/server.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/es5-shim/README.md",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/register.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular/angular.js",
 		"/D/prime/MvcPrime/Views/DCenter/Case.cshtml",
 		"/D/prime/MvcPrime/Views/DCenter/Res.cshtml",
 		"/C/Users/playing/Desktop/manglebot-2.0.4/bot.au3",
@@ -474,12 +479,7 @@
 		"/D/Tencent/379377034/FileRecv/bootstrap-3.0.3/examples/2014-4-6夜跑页面/css_pirobox/css.css",
 		"/D/Tencent/379377034/FileRecv/bootstrap-3.0.3/examples/2014-4-6夜跑页面/runhtml.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/09363af4.scripts.js",
-		"/D/Tencent/379377034/FileRecv/bootstrap-3.0.3/examples/2014-4-6夜跑页面/css_pirobox/demo3/style.css",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/jquery/jquery.js",
-		"/C/Users/playing/workspace/quickcast/WebRoot/app/scripts/common/common_service.js",
-		"/C/Users/playing/Desktop/test.js",
-		"/C/Users/playing/Desktop/毕业设计/Project/team1/DevLib/05_Implement/01_Coding/quickcast/.project",
-		"/G/server/tomcat-users.xml"
+		"/D/Tencent/379377034/FileRecv/bootstrap-3.0.3/examples/2014-4-6夜跑页面/css_pirobox/demo3/style.css"
 	],
 	"find":
 	{
@@ -497,6 +497,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"100px",
+			"headhunter",
+			"user",
+			"return",
 			"newmessage",
 			"sendmessage",
 			"partner_name",
@@ -620,8 +624,7 @@
 			"append",
 			"textarea",
 			"ajax",
-			"meta",
-			"head"
+			"meta"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -639,7 +642,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -648,15 +651,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11187,
+						"buffer_size": 11168,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4290,
-								4290
+								11168,
+								11168
 							]
 						],
 						"settings":
@@ -670,61 +673,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1260.0,
+						"translation.y": 3721.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "views/user/user_main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9996,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8521,
-								8521
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"is_xml": false,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2941.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "views/user/user_resume_edit.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 51717,
+						"buffer_size": 51720,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								51717,
-								49391
+								7479,
+								7479
 							]
 						],
 						"settings":
@@ -738,7 +707,41 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 14609.0,
+						"translation.y": 2328.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/user/user_main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11286,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8824,
+								8319
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"is_xml": false,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2578.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -746,19 +749,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "views/user/user_resume.html",
+					"file": "views/headhunter/headhunter_main.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13348,
+						"buffer_size": 19655,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13348,
-								13348
+								17146,
+								17146
 							]
 						],
 						"settings":
@@ -772,7 +775,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4488.0,
+						"translation.y": 4874.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -780,99 +783,103 @@
 				},
 				{
 					"buffer": 4,
-					"file": "scripts/user/user_controller.js",
+					"file": "views/company/company_main.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14164,
+						"buffer_size": 16963,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4311,
-								4320
+								1401,
+								1401
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
+							"is_xml": false,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1800.0,
+						"translation.y": 3555.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "scripts/user/user_service.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 13849,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								141,
-								105
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "scripts/user/user_app.js",
+					"file": "views/user/user_setting.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1242,
+						"buffer_size": 9992,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1242,
-								1242
+								8223,
+								8223
 							]
 						],
 						"settings":
 						{
 							"incomplete_sync": null,
+							"is_xml": false,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2737.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "styles/common.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5042,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4312,
+								4312
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3258.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -919,7 +926,7 @@
 	},
 	"output.unsaved_changes":
 	{
-		"height": 100.0
+		"height": 84.0
 	},
 	"project": "quickcast.sublime-project",
 	"replace":
@@ -934,7 +941,7 @@
 		[
 			[
 				"",
-				"C:\\Users\\playing\\Desktop\\choujiang\\app.js"
+				"scripts\\user\\user_service.js"
 			]
 		],
 		"width": 0.0

@@ -156,6 +156,7 @@
     </div>
   </div>
 </nav>
+
 <div class="container index">
   <div class="row">
     <div class="col-md-8">
@@ -188,11 +189,17 @@
         </ul>
       </div>
       <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
-        <a ng-href="user.html#/user/{{update.pub_id}}">
-          <h5>{{update.pub_name}}</h5>
-        </a>
-        <p>{{update.content}}</p>
-        <p>{{update.pub_time|date:'yyyy-MM-dd HH:mm:ss'}}</p>
+        <div class="row">
+          <div class="col-md-2">
+            <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+          <div class="col-md-10">
+            <a ng-href="user.html#/user/{{update.pub_id}}">
+              <h5>{{update.pub_name}}</h5>
+            </a>
+            <p>{{update.content}}</p>
+            <p>{{update.pub_time|date:'yyyy-MM-dd HH:mm:ss'}}</p>
+          </div>
+        </div>
       </div>
       <button class="btn btn-info btn-block newsspan" ng-click="morenews()">
         更多动态
@@ -200,8 +207,28 @@
       </button>
     </div>
     <div class="col-md-4">
+      <div class="row regbtn">
+        <div class="col-md-4">
+          <img ng-src="{{image_url}}" alt="" class="main_img img-rounded img-responsive"></div>
+        <div class="col-md-8">
+          <p>{{cn_tname}}</p>
+
+        </div>
+        <p>
+          您有
+          <a ng-href="user.html#/user/{{user_id}}/message">
+            {{seekerfriends.length+companyfriends.length+headhunterfriends.length}}位
+          </a>
+          联系人在快投网.
+        </p>
+        <p>
+          您有
+          <a ng-href="user.html#/user/{{user_id}}/friends">{{messages.length}}条</a>
+          信息在快投网.
+        </p>
+      </div>
       <div>
-        <h3>职位推荐:</h3>
+        <h4>职位推荐:</h4>
         <div class="well well-sm" ng-repeat="recommend in recommends">
           <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
           <a href="{{recommend.id}}">
@@ -210,6 +237,14 @@
           <p>{{recommend.company}}--{{recommend.city}}</p>
         </div>
         <a href="" class="pull-right">更多职位</a>
+      </div>
+      <div>
+        <h4>可能认识的会员:</h4>
+        <div class="well well-sm" ng-repeat="recommend in recommends">
+          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
+          <a ng-href="{{recommend.id}}"></a>
+        </div>
+        <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">更多推荐</a>
       </div>
       <div class="footer">
         <p>

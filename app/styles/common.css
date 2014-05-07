@@ -238,7 +238,15 @@ text-align: center
 .newselect{
   width:20%;
 }
+.main_img{
+  width:100px; 
+  height: 100px;
+}
+.new_img{
+    width:80px; 
+  height: 80px;
 
+}
  .animate-switch-container {
   position:relative;
   min-height:150px;
