@@ -2,7 +2,6 @@
 
 angular.module('QuickCastUser', [
   'ngCookies',
-  'ngResource',
   'ngSanitize',
   'ui.bootstrap',
   'ngAnimate',

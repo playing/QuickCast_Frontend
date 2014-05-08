@@ -2,7 +2,6 @@
 
 angular.module('QuickCastHeadhunter', [
   'ngCookies',
-  'ngResource',
   'ngSanitize',
   'ui.bootstrap',
   'ngAnimate',
