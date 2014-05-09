@@ -10,6 +10,7 @@ Need
   - git
   - grunt
   - bower
+  - Quickcast_Backend
 
 
 Installation
@@ -17,7 +18,7 @@ Installation
 
 ```sh
 npm install
-grunt test
+bower install
 grunt server
 ```
 
