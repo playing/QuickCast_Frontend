@@ -174,10 +174,7 @@
             <a href="" ng-click="search.pub_type=1;newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
           </li>
           <li>
-            <a href="" ng-click="search.pub_type=2;newsbutton='猎头信息';search.pub_id=undefined;">猎头信息</a>
-          </li>
-          <li>
-            <a href="" ng-click="search.pub_type=3;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
+            <a href="" ng-click="search.pub_type=2;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
           </li>
           <li>
             <a href="" ng-click="search.pub_id=user_id;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
@@ -191,12 +188,17 @@
       <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
         <div class="row">
           <div class="col-md-2">
-            <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+            <img ng-src="http://192.168.1.104:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
           <div class="col-md-10">
             <a ng-href="user.html#/user/{{update.pub_id}}">
               <h5>{{update.pub_name}}</h5>
             </a>
-            <p>{{update.content}}</p>
+            <p ng-if="update.pub_type-1">{{update.pub_name}}刚刚发布了新职位:</p>
+            <p ng-if="update.pub_type-1">
+              <a ng-href="search.html#/job/{{update.info_id}}">{{update.content}}</a>
+            </p>
+            <p ng-if="update.pub_type-1">{{update.etp_name}} -- {{update.work_place}}</p>
+            <p ng-if="!(update.pub_type-1)">{{update.content}}</p>
             <p>{{update.pub_time|date:'yyyy-MM-dd HH:mm:ss'}}</p>
           </div>
         </div>

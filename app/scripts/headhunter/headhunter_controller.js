@@ -56,9 +56,6 @@ angular.module('QuickCastHeadhunter')
 				});
 			});
 
-			HeadhunterService.Receiverecruits(parseInt($scope.user_id)).then(function(response) {
-				console.log(response);
-			});
 
 			HeadhunterService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
 				$scope.user = response.user[0];
@@ -176,14 +173,6 @@ angular.module('QuickCastHeadhunter')
 				publish.user_id = parseInt($scope.user_id);
 				publish.issue_time = timestamp.getTime();
 				publish.pub_type = undefined;
-				var recruitnews = {
-					pub_id: publish.user_id,
-					pub_time: publish.issue_time,
-					content: publish.job,
-					pub_type: "2"
-				};
-				HeadhunterService.Publishnews(recruitnews).then(function() {});
-
 				HeadhunterService.Publishrecruits(publish).then(function(response) {
 					if (response.result.data === 'success') {
 						HeadhunterService.Receivenews(parseInt($scope.user_id)).then(function(response) {

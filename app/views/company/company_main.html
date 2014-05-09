@@ -164,6 +164,9 @@
       <div ng-switch on="newsTab.newstype">
         <div  ng-switch-when="2">
           <div class="form-group">
+            <label >公司名称:</label>
+            <input type="text" class="form-control prform"  ng-model="publish.etp_name"></div>
+          <div class="form-group">
             <label >招聘职位:</label>
             <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
           <div class="form-group">
@@ -322,6 +325,9 @@
           <div class="form-group">
             <label >薪资:</label>
             <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
+          <div class="form-group">
+            <label >工作地点:</label>
+            <input type="text" class="form-control prform"  ng-model="publish.work_place"></div>
           <label >详情:</label>
           <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
           <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
@@ -345,10 +351,7 @@
             <a href="" ng-click="search.pub_type=1;newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
           </li>
           <li>
-            <a href="" ng-click="search.pub_type=2;newsbutton='猎头信息';search.pub_id=undefined;">猎头信息</a>
-          </li>
-          <li>
-            <a href="" ng-click="search.pub_type=3;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
+            <a href="" ng-click="search.pub_type=2;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
           </li>
           <li>
             <a href="" ng-click="search.pub_id=user_id;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
@@ -367,7 +370,12 @@
             <a ng-href="user.html#/user/{{update.pub_id}}">
               <h5>{{update.pub_name}}</h5>
             </a>
-            <p>{{update.content}}</p>
+            <p ng-if="update.pub_type-1">{{update.pub_name}}刚刚发布了新职位:</p>
+            <p ng-if="update.pub_type-1">
+              <a ng-href="search.html#/job/{{update.info_id}}">{{update.content}}</a>
+            </p>
+            <p ng-if="update.pub_type-1">{{update.etp_name}} -- {{update.work_place}}</p>
+            <p ng-if="!(update.pub_type-1)">{{update.content}}</p>
             <p>{{update.pub_time|date:'yyyy-MM-dd HH:mm:ss'}}</p>
           </div>
         </div>

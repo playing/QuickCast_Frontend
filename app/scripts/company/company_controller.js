@@ -193,6 +193,7 @@ angular.module('QuickCastCompany')
 				});
 			}
 		};
+
 		$scope.morenews = function() {
 			$scope.newsquantity = $scope.newsquantity + 5;
 		};
