@@ -143,26 +143,55 @@ angular.module('QuickCastCompany')
 
 		$scope.publishnews = function(publish) {
 			var timestamp = new Date();
-			publish.pub_id = $scope.user_id;
-			publish.pub_time = timestamp.getTime();
-			publish.pub_type = '1';
-			CompanyService.Publishnews(publish).then(function(response) {
-				if (response.result.data === 'success') {
-					CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
-						$scope.updates = response.news;
-						CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
-							var myself_updates = response.news;
-							$scope.updates = $scope.updates.concat(myself_updates);
+			publish.pub_type = $scope.newsTab.newstype;
+			if (publish.pub_type === '1') {
+				publish.pub_id = parseInt($scope.user_id);
+				publish.pub_time = timestamp.getTime();
+				CompanyService.Publishnews(publish).then(function(response) {
+					if (response.result.data === 'success') {
+						CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+							$scope.updates = response.news;
+							CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+								var myself_updates = response.news;
+								$scope.updates = $scope.updates.concat(myself_updates);
+							});
 						});
-					});
-
-				} else {
-					$scope.alerts.push({
-						type: 'danger',
-						msg: '发送失败,请尝试重新发送.'
-					});
-				}
-			});
+						$scope.alerts.push({
+							type: 'success',
+							msg: '发送成功.'
+						});
+					} else {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '发送失败,请尝试重新发送.'
+						});
+					}
+				});
+			} else {
+				publish.user_id = parseInt($scope.user_id);
+				publish.issue_time = timestamp.getTime();
+				publish.pub_type = undefined;
+				CompanyService.Publishrecruits(publish).then(function(response) {
+					if (response.result.data === 'success') {
+						CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+							$scope.updates = response.news;
+							CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+								var myself_updates = response.news;
+								$scope.updates = $scope.updates.concat(myself_updates);
+							});
+						});
+						$scope.alerts.push({
+							type: 'success',
+							msg: '发送成功.'
+						});
+					} else {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '发送失败,请尝试重新发送.'
+						});
+					}
+				});
+			}
 		};
 		$scope.morenews = function() {
 			$scope.newsquantity = $scope.newsquantity + 5;
@@ -173,7 +202,7 @@ angular.module('QuickCastCompany')
 			newmessage_data.dispatch_time = timestamp.getTime();
 			newmessage_data.dispatch_id = parseInt($scope.user_id);
 			newmessage_data.receive_info = undefined;
-			UserService.Newmessage(newmessage_data).then(function(response) {
+			CompanyService.Newmessage(newmessage_data).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.updates.push(newmessage_data);
 					$scope.$parent.messageswitch = {
@@ -183,7 +212,7 @@ angular.module('QuickCastCompany')
 						type: 'success',
 						msg: '发送成功.'
 					});
-					UserService.messageSend($scope.user_id).then(function(response) {
+					CompanyService.messageSend($scope.user_id).then(function(response) {
 						$scope.sendmessages = response.message;
 					});
 
@@ -256,7 +285,7 @@ angular.module('QuickCastCompany')
 			//回复站内信信息
 		};
 		$scope.friendtomessage = function(index, method) {
-			var friend_message_id = 0;
+			var friend_message_info = 0;
 			var friend_message_name = '';
 			if (method === 'seeker') {
 				friend_message_info = $scope.seekerfriends[index].partner_id;
@@ -271,7 +300,7 @@ angular.module('QuickCastCompany')
 				}
 			}
 			$location.path('user/' + $scope.user_id + '/message');
-			$scope.newmessage_data.receive_id = friend_message_id;
+			$scope.newmessage_data.receive_id = friend_message_info;
 			$scope.newmessage_data.receive_info = friend_message_name;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'

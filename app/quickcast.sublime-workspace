@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"$par",
+				"$parent"
+			],
+			[
+				"newst",
+				"newstype"
+			],
+			[
 				"par",
 				"partner_name"
 			],
@@ -224,42 +232,26 @@
 	"buffers":
 	[
 		{
-			"file": "scripts/company/company_app.js",
+			"file": "views/main.html",
 			"settings":
 			{
-				"buffer_size": 1055,
+				"buffer_size": 3929,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "scripts/admin/admin_app.js",
+			"file": "scripts/headhunter/headhunter_controller.js",
 			"settings":
 			{
-				"buffer_size": 673,
+				"buffer_size": 12948,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "views/admin/admin_main.html",
+			"file": "views/headhunter/headhunter_main.html",
 			"settings":
 			{
-				"buffer_size": 1438,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 3261,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/playing/Documents/GitHub/QuickCast_Frontend/Gruntfile.js",
-			"settings":
-			{
-				"buffer_size": 8623,
+				"buffer_size": 19874,
 				"line_ending": "Windows"
 			}
 		}
@@ -352,8 +344,70 @@
 	},
 	"file_history":
 	[
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-bootstrap/bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/profile.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/index.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/about.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_friends.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_setting.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume_edit.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_friends.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_message.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_message.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_setting.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_resume.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/common_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_setting.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_resume.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_message.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_friends.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_service.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/register.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_controller.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/user.html",
+		"/C/Users/playing/Desktop/test.css",
+		"/C/Users/playing/Desktop/新建文本文档 (2).css",
+		"/C/Program Files/nodejs/playingblog/app.js",
+		"/C/Users/playing/Documents/GitHub/my-project/public/css/themes/default.less",
+		"/C/Users/playing/Documents/GitHub/my-project/public/css/themes/flatly.less",
+		"/C/Users/playing/Documents/GitHub/my-project/public/css/themes/ios7.less",
+		"/C/Users/playing/Documents/GitHub/my-project/public/css/lib/animate.css",
+		"/C/Users/playing/Documents/GitHub/my-project/controllers/api.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/styles/common.css",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/admin.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/headhunter.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/company.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/admin/admin_app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/Gruntfile.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/13a2656a.scripts.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/0a86d69c.vendor.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/styles/1104e95d.vendor.css",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/styles/2a9497c0.main.css",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/about.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/admin/admin_serve.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/404.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/user.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/index.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/headhunter.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/company.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/admin.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/admin/admin_main.html",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_app.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/ng-flow/.bower.json",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/bower.json",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/smoothscroll/smoothscroll.js",
+		"/C/Users/playing/Desktop/upload/webuploader-master/examples/upload.js",
+		"/C/Users/playing/Desktop/upload/webuploader-master/Gruntfile.js",
+		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-bootstrap/bower.json",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/admin/admin_serve.html",
 		"/C/users/playing/appdata/local/temp/sublime-sftp-browse-1399536593/playingcn/var/www/quickcast/views/admin/admin_serve.html",
 		"/C/users/playing/appdata/local/temp/sublime-sftp-browse-1399535725/playingcn/var/www/quickcast/views/admin/admin_main.html",
@@ -361,22 +415,12 @@
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/admin/dash.min.js",
 		"/C/users/playing/appdata/local/temp/sublime-sftp-browse-1399533217/playingcn/var/www/quickcast/js/dashboard.js",
 		"/C/users/playing/appdata/local/temp/sublime-sftp-browse-1399529248/playingcn/var/www/quickcast/views/admin/admin_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/styles/common.css",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/admin/admin_main.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/js/dashboard.js",
 		"/C/users/playing/appdata/local/temp/sublime-sftp-browse-1399467724/playingcn/var/www/quickcast/views/admin/admin_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/app.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/admin/admin_app.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/admin/admin_controller.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/admind.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_app.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_app.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_message.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_setting.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume_edit.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/.git/logs/refs/remotes/origin/master",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/.git/logs/refs/remotes/origin/HEAD",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/.git/objects/0e/0bdb5d3e5874a946ba4908a76830abb212869d",
@@ -390,52 +434,21 @@
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/.git/hooks/pre-commit.sample",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/.git/hooks/commit-msg.sample",
 		"/C/Users/playing/AppData/Roaming/Sublime Text 3/Packages/Tag/Tag Package.sublime-settings",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_controller.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_controller.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_service.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-ui-router/src/state.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/admin.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular/angular.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-scenario/jstd-scenario-adapter.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/es5-shim/tests/spec/s-array.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-scenario/jstd-scenario-adapter-config.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/user/user_controller.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_resume.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/profile.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/common_service.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/flow.js/.bower.json",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_app.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/user.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/company.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/headhunter.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/ng-flow/.bower.json",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/company/company_service.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/headhunter/headhunter_service.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/common/common_controller.js",
 		"/G/server/index.html",
 		"/E/Hearthstone/DBF/CARD_BACK.xml",
 		"/E/Hearthstone/DBF/ACHIEVE.xml",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/user.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/0653f417.scripts.js",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/8b0b590d.vendor.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/styles/1104e95d.vendor.css",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/styles/e7f5a709.main.css",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/company/company_main.html",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/user/user_message.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/about.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/admin.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/index.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/company.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/user/user_friends.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_message.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_resume.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_setting.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/headhunter/headhunter_friends.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_resume.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_setting.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_message.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/views/company/company_friends.html",
 		"/C/Users/playing/Desktop/ga.js",
 		"/C/Users/playing/Downloads/Analytics 全部网站数据 受众群体概览 20140403-20140503.csv",
 		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/scripts/upload/upload.js",
@@ -458,28 +471,7 @@
 		"/C/Users/playing/Documents/GitHub/linux-dash-master/sh/df.php",
 		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/npm-debug.log",
 		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/package.json",
-		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/bower.json",
-		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/index.html.hbs",
-		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/views/search.js",
-		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/app/views/account_security.js",
-		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/Gruntfile.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/index.html",
-		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/modal.js",
-		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/popover.min.js.map",
-		"/C/Users/playing/Documents/GitHub/angular-strap-master/dist/modules/affix.min.js.map",
-		"/C/Users/playing/Documents/GitHub/angular-strap-master/Gruntfile.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/.jshintrc",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/karma.conf.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/Gruntfile.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/scripts/07d827e6.scripts.js",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/user/user_resume.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/register.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/profile.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/views/main.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/dist/headhunter.html",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/package.json",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/angular-ui-router/.bower.json",
-		"/C/Users/playing/Documents/GitHub/QuickCast_Frontend/app/bower_components/bootstrap/.bower.json"
+		"/C/Users/playing/Documents/GitHub/balanced-dashboard-master/bower.json"
 	],
 	"find":
 	{
@@ -497,6 +489,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"UserService",
+			"HeadhunterService",
+			"HeadhunterSer",
+			"Headhunter",
+			"publishnews",
 			"index",
 			"cursor",
 			"ps",
@@ -619,12 +616,7 @@
 			"send",
 			"write",
 			"messageTab",
-			"h3",
-			"send",
-			"write",
-			"messageTab",
-			"headhunter",
-			"user"
+			"h3"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -642,90 +634,24 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "scripts/company/company_app.js",
+					"file": "views/main.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1055,
+						"buffer_size": 3929,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								468,
-								468
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "scripts/admin/admin_app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 673,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								248,
-								248
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "views/admin/admin_main.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1438,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								904,
-								904
+								3475,
+								3475
 							]
 						],
 						"settings":
@@ -739,27 +665,59 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 982.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "index.html",
-					"semi_transient": true,
+					"buffer": 1,
+					"file": "scripts/headhunter/headhunter_controller.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3261,
+						"buffer_size": 12948,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1976,
-								1976
+								5472,
+								5472
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2411.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "views/headhunter/headhunter_main.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16904,
+								16910
 							]
 						],
 						"settings":
@@ -769,47 +727,14 @@
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 540.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/C/Users/playing/Documents/GitHub/QuickCast_Frontend/Gruntfile.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8623,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3328,
-								3333
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1803.0,
+						"translation.y": 5163.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

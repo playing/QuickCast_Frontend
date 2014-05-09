@@ -165,10 +165,10 @@
         <div  ng-switch-when="2">
           <div class="form-group">
             <label >招聘职位:</label>
-            <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
+            <input type="text" class="form-control prform"  ng-model="publish.recruit_job"></div>
           <div class="form-group">
             <label >所在行业:</label>
-            <select class="form-control prform" ng-model="user_profile.etp_industry">
+            <select class="form-control prform" ng-model="publish.recruit_industry">
               <option value="0">选择...</option>
               <option value="安全和调查">安全和调查</option>
               <option value="半导体">半导体</option>
@@ -321,19 +321,22 @@
           </div>
           <div class="form-group">
             <label >薪资:</label>
-            <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
+            <input type="text" class="form-control prform"  ng-model="publish.salary"></div>
           <label >详情:</label>
-          <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+          <textarea rows="4" cols="40" class="form-control" ng-model="publish.recruit_detail"></textarea>
+          <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
         </div>
         <div  ng-switch-default>
           <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+          <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
         </div>
+
       </div>
       <select class="form-control regbtn newselect" ng-model="newsTab.newstype">
         <option value="1" selected="true">普通动态</option>
-        <option value="2">猎头信息</option>
+        <option value="2">招聘信息</option>
       </select>
-      <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
+
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">
           {{newsbutton}}
@@ -361,7 +364,7 @@
       <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
         <div class="row">
           <div class="col-md-2">
-            <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+            <img ng-src="http://192.168.1.104:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
           <div class="col-md-10">
             <a ng-href="user.html#/user/{{update.pub_id}}">
               <h5>{{update.pub_name}}</h5>
@@ -424,6 +427,8 @@
           <a ng-href="/">意见与反馈</a>
           |
           <a ng-href="/#/about">关于我们</a>
+          |
+          <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14030615号</a>
         </p>
         <p>
           Designed and built with

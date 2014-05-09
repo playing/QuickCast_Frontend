@@ -166,7 +166,6 @@
   </div>
   <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
   <div class="row">
-
     <div class="col-md-3">
       <button class="btn  btn-lg btn-block btn-success" ng-click="friendSwitch.friendsTab='search';active1='';active2='';">
         <span class="glyphicon glyphicon-search"></span>
@@ -193,9 +192,10 @@
     </div>
 
     <div class="col-md-9">
-
       <div ng-switch on="friendSwitch.friendsTab">
+
         <div  ng-switch-when="search">
+
           <h3>认识的人都加入快投了吗？立即搜索邮箱或姓名找到他们。</h3>
           <div class="input-group regbtn">
             <div class="input-group-btn">
@@ -218,6 +218,7 @@
                 </ul>
               </div>
               <input type="text" class="form-control" ng-model="search_key.keyword" placeholder="通过邮箱或姓名找到好友!"></div>
+
             <div class="row regbtn">
               <div class="col-md-4" ng-repeat="searchfriend_list in searchfriend_lists">
                 <div class="panel panel-default">
@@ -233,6 +234,7 @@
                 </div>
               </div>
             </div>
+
             <h3 class="regbtn">你可能认识这些人,赶紧和他们成为好友!</h3>
             <div class="row">
               <div class="col-md-4" ng-repeat="friendcircle in friendcircles">
@@ -245,8 +247,10 @@
                 </div>
               </div>
             </div>
+
             <button class="btn btn-primary messagebtn" ng-click="findfriend(search_key)">搜索</button>
             <button class="btn btn-info messagebtn" ng-click="friendSwitch.friendsTab='other';">取消</button>
+
           </div>
 
           <div  ng-switch-when="list">
@@ -319,7 +323,6 @@
                 </div>
               </tab>
             </tabset>
-
           </div>
 
           <div  ng-switch-default>
@@ -355,6 +358,8 @@
       <a ng-href="/">意见与反馈</a>
       |
       <a ng-href="/#/about">关于我们</a>
+      |
+      <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14030615号</a>
     </p>
     <p>
       Designed and built with

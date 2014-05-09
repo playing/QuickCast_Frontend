@@ -272,7 +272,7 @@ angular.module('QuickCastUser')
 			//回复站内信信息
 		};
 		$scope.friendtomessage = function(index, method) {
-			var friend_message_id = 0;
+			var friend_message_info = 0;
 			var friend_message_name = '';
 			if (method === 'seeker') {
 				friend_message_info = $scope.seekerfriends[index].partner_id;
@@ -287,7 +287,7 @@ angular.module('QuickCastUser')
 				}
 			}
 			$location.path('user/' + $scope.user_id + '/message');
-			$scope.newmessage_data.receive_id = friend_message_id;
+			$scope.newmessage_data.receive_id = friend_message_info;
 			$scope.newmessage_data.receive_info = friend_message_name;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
@@ -478,18 +478,18 @@ angular.module('QuickCastUser')
 				language_skill: language_skill
 			};
 
-			UserService.WorkExpUpdate($scope.works).then(function(response) {
+			UserService.WorkExpUpdate($scope.works).then(function() {
 
 			});
-			UserService.PrjExpUpdate($scope.projects).then(function(response) {
-
-			});
-
-			UserService.EduExpUpdate($scope.edus).then(function(response) {
+			UserService.PrjExpUpdate($scope.projects).then(function() {
 
 			});
 
-			UserService.ResumeUpdate(resume_update).then(function(response) {
+			UserService.EduExpUpdate($scope.edus).then(function() {
+
+			});
+
+			UserService.ResumeUpdate(resume_update).then(function() {
 
 			});
 		};

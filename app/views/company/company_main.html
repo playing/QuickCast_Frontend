@@ -324,16 +324,17 @@
             <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
           <label >详情:</label>
           <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+          <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
         </div>
         <div  ng-switch-default>
           <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+          <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
         </div>
       </div>
       <select class="form-control regbtn newselect" ng-model="newsTab.newstype">
         <option value="1" selected="true">普通动态</option>
-        <option value="2">猎头信息</option>
+        <option value="2">招聘信息</option>
       </select>
-      <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">
           {{newsbutton}}
@@ -424,6 +425,8 @@
           <a ng-href="/">意见与反馈</a>
           |
           <a ng-href="/#/about">关于我们</a>
+          |
+          <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备14030615号</a>
         </p>
         <p>
           Designed and built with

@@ -56,6 +56,10 @@ angular.module('QuickCastHeadhunter')
 				});
 			});
 
+			HeadhunterService.Receiverecruits(parseInt($scope.user_id)).then(function(response) {
+				console.log(response);
+			});
+
 			HeadhunterService.UserReg($cookieStore.get('_UDATA')).then(function(response) {
 				$scope.user = response.user[0];
 			});
@@ -122,7 +126,7 @@ angular.module('QuickCastHeadhunter')
 		//初始化
 		check_login();
 		init();
-		$scope.image_url = 'http://192.168.191.1:8080/quickcast/upload/' + $scope.user_id + '.jpg';
+		$scope.image_url = 'http://192.168.1.104:8080/quickcast/upload/' + $scope.user_id + '.jpg';
 		$scope.recommends.push({
 			id: '12344',
 			title: '开发工程师',
@@ -144,26 +148,63 @@ angular.module('QuickCastHeadhunter')
 
 		$scope.publishnews = function(publish) {
 			var timestamp = new Date();
-			publish.pub_id = $scope.user_id;
-			publish.pub_time = timestamp.getTime();
-			publish.pub_type = '1';
-			HeadhunterService.Publishnews(publish).then(function(response) {
-				if (response.result.data === 'success') {
-					HeadhunterService.Receivenews(parseInt($scope.user_id)).then(function(response) {
-						$scope.updates = response.news;
-						HeadhunterService.Friendnews(parseInt($scope.user_id)).then(function(response) {
-							var myself_updates = response.news;
-							$scope.updates = $scope.updates.concat(myself_updates);
+			publish.pub_type = $scope.newsTab.newstype;
+			if (publish.pub_type === '1') {
+				publish.pub_id = parseInt($scope.user_id);
+				publish.pub_time = timestamp.getTime();
+				HeadhunterService.Publishnews(publish).then(function(response) {
+					if (response.result.data === 'success') {
+						HeadhunterService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+							$scope.updates = response.news;
+							HeadhunterService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+								var myself_updates = response.news;
+								$scope.updates = $scope.updates.concat(myself_updates);
+							});
 						});
-					});
+						$scope.alerts.push({
+							type: 'success',
+							msg: '发送成功.'
+						});
+					} else {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '发送失败,请尝试重新发送.'
+						});
+					}
+				});
+			} else {
+				publish.user_id = parseInt($scope.user_id);
+				publish.issue_time = timestamp.getTime();
+				publish.pub_type = undefined;
+				var recruitnews = {
+					pub_id: publish.user_id,
+					pub_time: publish.issue_time,
+					content: publish.job,
+					pub_type: "2"
+				};
+				HeadhunterService.Publishnews(recruitnews).then(function() {});
 
-				} else {
-					$scope.alerts.push({
-						type: 'danger',
-						msg: '发送失败,请尝试重新发送.'
-					});
-				}
-			});
+				HeadhunterService.Publishrecruits(publish).then(function(response) {
+					if (response.result.data === 'success') {
+						HeadhunterService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+							$scope.updates = response.news;
+							HeadhunterService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+								var myself_updates = response.news;
+								$scope.updates = $scope.updates.concat(myself_updates);
+							});
+						});
+						$scope.alerts.push({
+							type: 'success',
+							msg: '发送成功.'
+						});
+					} else {
+						$scope.alerts.push({
+							type: 'danger',
+							msg: '发送失败,请尝试重新发送.'
+						});
+					}
+				});
+			}
 		};
 		$scope.morenews = function() {
 			$scope.newsquantity = $scope.newsquantity + 5;
@@ -174,7 +215,7 @@ angular.module('QuickCastHeadhunter')
 			newmessage_data.dispatch_time = timestamp.getTime();
 			newmessage_data.dispatch_id = parseInt($scope.user_id);
 			newmessage_data.receive_info = undefined;
-			UserService.Newmessage(newmessage_data).then(function(response) {
+			HeadhunterService.Newmessage(newmessage_data).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.updates.push(newmessage_data);
 					$scope.$parent.messageswitch = {
@@ -184,7 +225,7 @@ angular.module('QuickCastHeadhunter')
 						type: 'success',
 						msg: '发送成功.'
 					});
-					UserService.messageSend($scope.user_id).then(function(response) {
+					HeadhunterService.messageSend($scope.user_id).then(function(response) {
 						$scope.sendmessages = response.message;
 					});
 
@@ -257,7 +298,7 @@ angular.module('QuickCastHeadhunter')
 			//回复站内信信息
 		};
 		$scope.friendtomessage = function(index, method) {
-			var friend_message_id = 0;
+			var friend_message_info = 0;
 			var friend_message_name = '';
 			if (method === 'seeker') {
 				friend_message_info = $scope.seekerfriends[index].partner_id;
@@ -272,7 +313,7 @@ angular.module('QuickCastHeadhunter')
 				}
 			}
 			$location.path('user/' + $scope.user_id + '/message');
-			$scope.newmessage_data.receive_id = friend_message_id;
+			$scope.newmessage_data.receive_id = friend_message_info;
 			$scope.newmessage_data.receive_info = friend_message_name;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'

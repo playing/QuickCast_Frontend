@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastCompany')
 	.factory('CompanyService', function($http) {
-		var Server = 'http://192.168.191.1:8080/quickcast/';
+		var Server = 'http://192.168.1.104:8080/quickcast/';
 		var CompanyService = {
 
 			messageReceive: function(receive_id) {
@@ -95,6 +95,41 @@ angular.module('QuickCastCompany')
 					});
 				return publishnews_response;
 				//Publishnews服务返回数据
+			},
+
+			Publishrecruits: function(publish) {
+				//PPublishrecruits服务
+
+				var Publishrecruits_response = $http({
+					method: 'post',
+					url: Server + 'recruitinfo.do?method=recruitinfo_insert',
+					data: publish
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
+					});
+				return Publishrecruits_response;
+				//Publishnews服务返回数据
+			},
+			Receiverecruits: function(user_id) {
+				//Receivenews服务
+				var reveive_recruits_data = {
+					'user_id': user_id
+				};
+				var receiverecruits_response = $http({
+					method: 'post',
+					url: Server + 'recruitinfo.do?method=recruitinfo_queryByUserId',
+					data: reveive_recruits_data
+				})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
+					});
+				return receiverecruits_response;
+				//Receivenews服务返回数据
 			},
 
 			Receivenews: function(user_id) {
@@ -398,7 +433,7 @@ angular.module('QuickCastCompany')
 					});
 				return resume_get_response;
 			},
-		
+
 		};
 		return CompanyService;
 	});
