@@ -26,4 +26,8 @@ angular.module('QuickCastAdmin', [
         templateUrl: 'views/admin/admin_chart.html',
         controller: "AdminCtrl"
       })
+      .state('404', {
+        url: '/404',
+        templateUrl: '404.html',
+      });
   });
