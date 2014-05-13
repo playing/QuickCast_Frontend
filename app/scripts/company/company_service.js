@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastCompany')
 	.factory('CompanyService', function($http) {
-		var Server = 'http://192.168.1.104:8080/quickcast/';
+		var Server = 'http://192.168.191.1:8080/quickcast/';
 		var CompanyService = {
 
 			messageReceive: function(receive_id) {

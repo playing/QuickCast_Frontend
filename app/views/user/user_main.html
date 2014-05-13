@@ -188,7 +188,7 @@
       <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
         <div class="row">
           <div class="col-md-2">
-            <img ng-src="http://192.168.1.104:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+            <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
           <div class="col-md-10">
             <a ng-href="user.html#/user/{{update.pub_id}}">
               <h5>{{update.pub_name}}</h5>

@@ -13,7 +13,14 @@ angular.module('QuickCastSearch', [
       .state('index', {
         url: '/',
         templateUrl: 'views/search/search_main.html',
-        controller: 'SearchCtrl'
+      })
+      .state('job', {
+        url: '/job/{job_id:[0-9]{1,8}}',
+        templateUrl: 'views/search/search_job.html',
+      })
+      .state('member', {
+        url: '/member/{user_id:[0-9]{1,8}}',
+        templateUrl: 'views/search/search_member.html',
       })
       .state('404', {
         url: '/404',

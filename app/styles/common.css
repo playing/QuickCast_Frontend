@@ -173,6 +173,9 @@ text-align: center
   height: 80px;
 
 }
+.search_inline{
+  margin-bottom: 30px;
+}
 .dataTables_paginate a {
     cursor:pointer;
 margin-left: 8px;

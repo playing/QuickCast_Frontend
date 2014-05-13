@@ -136,7 +136,7 @@ angular.module('QuickCastUser')
 		//初始化
 		check_login();
 		init();
-		$scope.image_url = 'http://192.168.1.104:8080/quickcast/upload/' + $scope.user_id + '.jpg';
+		$scope.image_url = 'http://192.168.191.1:8080/quickcast/upload/' + $scope.user_id + '.jpg';
 
 		$scope.recommends.push({
 			id: '12344',
