@@ -9,6 +9,7 @@ angular.module('QuickCastSearch')
 		$scope.searchicon = 'list';
 		$scope.active1 = 'active';
 		$scope.searchnum = 10;
+
 		var init = function() {
 			SearchService.Etp().then(function(response) {
 				$scope.etps = response.etp;
@@ -32,4 +33,40 @@ angular.module('QuickCastSearch')
 		$scope.moresearch = function() {
 			$scope.searchnum = $scope.searchnum + 5;
 		};
+
+		$scope.back = function() {
+			var user_cookie = $cookieStore.get('_UDATA');
+			if (user_cookie.user_type === '1') {
+				$window.location.href = 'user.html#/user/' + user_cookie.user_id;
+
+			} else {
+				if (user_type === '2') {
+					$window.location.href = 'headhunter.html#/user/' + user_cookie.user_id;
+				} else {
+					$window.location.href = 'company.html#/user/' + user_cookie.user_id;
+				}
+			}
+		};
+
+		$scope.$on('$stateChangeStart',
+			function() {
+				var location_array = $location.path().split('/');
+				$scope.index_id = location_array[2];
+				if (location_array[1] === 'job') {
+					console.log(location_array[1]);
+					var info_id = {
+						info_id: parseInt($scope.index_id)
+					};
+					SearchService.SingleRecruit(info_id).then(function(response) {
+						$scope.singlerecruit=response.recruit_info[0];
+					});
+					
+				} else {
+					if (location_array[1] === 'member') {
+						console.log('member');
+
+					}
+				}
+				//视图切换时更新路径
+			});
 	});

@@ -13,38 +13,13 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav" >
-        <li>
-          <form class="navbar-form navbar-left" >
-            <div class="input-group nav-search" >
-              <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon  glyphicon-{{searchicon}}"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li class="divider"></li>
-                  <li>
-                    <a ng-click="nav_search.search_type=1;searchicon='list-alt';" href="">
-                      <span class="glyphicon glyphicon-list-alt"></span>
-                      找职位
-                    </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
-                      <span class="glyphicon glyphicon-user"></span>
-                      找会员
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <input type="text" class="form-control" ng-model="nav_search.serach_key" placeholder="搜索会员、职位、公司及更多"></div>
-          </form>
+        <li >
+          <a ng-href="search.html#/" >返回搜索</a>
         </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" >
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
-            <span class="glyphicon  glyphicon-search"></span>
-            搜索
-          </button>
+          <button class="btn btn-success nav-btn" ng-click="back()">返回个人主页</button>
         </li>
       </ul>
     </div>
@@ -90,7 +65,7 @@
           <div ng-repeat="recruit in recruits|orderBy:'issue_time':true|filter:recruit_search">
             <div class="row">
               <div class="col-md-2">
-                <img ng-src="http://192.168.1.107:8080/quickcast/upload/{{recruit.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{recruit.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
               <div class="col-md-10">
                 <a ng-href="search.html#/job/{{recruit.info_id}}">
                   <h5>{{recruit.recruit_job}}</h5>
@@ -155,7 +130,7 @@
             <div ng-repeat="seeker in seekers|orderBy:'user_id':false|filter:seeker_search|limitTo:searchnum" class="well">
               <div class="row">
                 <div class="col-md-2">
-                  <img ng-src="http://192.168.1.107:8080/quickcast/upload/{{seeker.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                  <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{seeker.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
                 <div class="col-md-10">
                   <a ng-href="search.html#/member/{{seeker.user_id}}">
                     <h5>{{seeker.cn_tname}}</h5>
@@ -173,7 +148,7 @@
             <div ng-repeat="hunter in hunters|orderBy:'user_id':false|filter:hunter_search|limitTo:searchnum" ng-if="userradio==='2'" class="well">
               <div class="row">
                 <div class="col-md-2">
-                  <img ng-src="http://192.168.1.107:8080/quickcast/upload/{{hunter.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                  <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{hunter.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
                 <div class="col-md-10">
                   <a ng-href="search.html#/member/{{hunter.user_id}}">
                     <h5>{{hunter.cn_tname}}</h5>
@@ -191,7 +166,7 @@
             <div ng-repeat="etp in etps|orderBy:'user_id':false|filter:etp_search|limitTo:searchnum" ng-if="userradio==='3'" class="well">
               <div class="row">
                 <div class="col-md-2">
-                  <img ng-src="http://192.168.1.107:8080/quickcast/upload/{{etp.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                  <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{etp.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
                 <div class="col-md-10">
                   <a ng-href="search.html#/member/{{etp.user_id}}">
                     <h5>{{etp.etp_name}}</h5>
