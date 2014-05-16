@@ -29,13 +29,11 @@
   <div class="row">
     <div class="col-md-8">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2 regbtn">
           <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{singlerecruit.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
         <div class="col-md-10">
-          <a ng-href="search.html#/job/{{recruit.info_id}}">
-            <h5>{{singlerecruit.recruit_job}}</h5>
-          </a>
-          <p> <strong>{{singlerecruit.etp_name}} -- {{singlerecruit.recruit_industry}}</strong>
+          <h3>{{singlerecruit.recruit_job}}</h3>
+          <p> <strong>{{singlerecruit.etp_name}} -- {{singlerecruit.recruit_industry}}</strong> 
           </p>
           <p> <strong>工作地点:</strong>
             {{singlerecruit.work_place}} --
@@ -43,10 +41,53 @@
             {{singlerecruit.salary}}
           </p>
           <pre>{{singlerecruit.recruit_detail}}</pre>
+          <button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#resumemodal" ng-if="user_cookie.user_type!=='3'">
+            投递简历
+            <span class="glyphicon glyphicon-send"></span>
+          </button>
         </div>
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div>
+        <h4>职位推荐:</h4>
+        <div class="well well-sm" ng-repeat="recommend in recommends">
+          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
+          <a href="{{recommend.id}}">
+            <h4>{{recommend.title}}</h4>
+          </a>
+          <p>{{recommend.company}}--{{recommend.city}}</p>
+        </div>
+        <a href="" class="pull-right">更多职位</a>
+      </div>
+    </div>
   </div>
 </div>
 <div class="footer" ng-include="'views/footer.html'"></div>
+<div class="modal fade" id="resumemodal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">投递信息确认</h4>
+      </div>
+      <div class="modal-body">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
+        <h4>请选择你要投递的简历</h4>
+        <ul>
+          <li ng-repeat="resume in resumes">
+            简历编号: {{resume.rsm_id}} | 姓名: {{resume.name}}
+            <button type="button" class="btn btn-success btn-sm" ng-model="resume.$checked" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">选择简历</button>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="deliver(singlerecruit.user_id,singlerecruit.user_type,singlerecruit.info_id)">
+          投递
+          <span class="glyphicon glyphicon-send"></span>
+        </button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">完成</button>
+      </div>
+    </div>
+  </div>
+</div>
