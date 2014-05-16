@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastCompany')
 	.factory('CompanyService', function($http) {
-		var Server = 'http://192.168.191.1:8080/quickcast/';
+		var Server = 'http://192.168.1.107:8080/quickcast/';
 		var CompanyService = {
 
 			messageReceive: function(receive_id) {
@@ -10,10 +10,10 @@ angular.module('QuickCastCompany')
 					'receive_id': receive_id
 				};
 				var messagereceive_response = $http({
-					method: 'post',
-					url: Server + 'message.do?method=imp_message_queryByReceiveId',
-					data: message_receive_id
-				})
+						method: 'post',
+						url: Server + 'message.do?method=imp_message_queryByReceiveId',
+						data: message_receive_id
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -29,10 +29,10 @@ angular.module('QuickCastCompany')
 					'dispatch_id': dispatch_id
 				};
 				var messagesend_response = $http({
-					method: 'post',
-					url: Server + 'message.do?method=imp_message_queryByDispatchId',
-					data: messagesend_dispatch_id
-				})
+						method: 'post',
+						url: Server + 'message.do?method=imp_message_queryByDispatchId',
+						data: messagesend_dispatch_id
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -46,10 +46,10 @@ angular.module('QuickCastCompany')
 				//newmessage服务
 
 				var newmessage_response = $http({
-					method: 'post',
-					url: Server + 'message.do?method=imp_message_insert',
-					data: send_message
-				})
+						method: 'post',
+						url: Server + 'message.do?method=imp_message_insert',
+						data: send_message
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -65,10 +65,10 @@ angular.module('QuickCastCompany')
 					'msg_id': del_message
 				};
 				var delmessage_response = $http({
-					method: 'post',
-					url: Server + 'message.do?method=imp_message_deleteByMsgId',
-					data: del_message_msg_id
-				})
+						method: 'post',
+						url: Server + 'message.do?method=imp_message_deleteByMsgId',
+						data: del_message_msg_id
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -84,10 +84,10 @@ angular.module('QuickCastCompany')
 				//Publishnews服务
 
 				var publishnews_response = $http({
-					method: 'post',
-					url: Server + 'news.do?method=imp_news_insert',
-					data: publish
-				})
+						method: 'post',
+						url: Server + 'news.do?method=imp_news_insert',
+						data: publish
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -101,10 +101,10 @@ angular.module('QuickCastCompany')
 				//PPublishrecruits服务
 
 				var Publishrecruits_response = $http({
-					method: 'post',
-					url: Server + 'recruitinfo.do?method=recruitinfo_insert',
-					data: publish
-				})
+						method: 'post',
+						url: Server + 'recruitinfo.do?method=recruitinfo_insert',
+						data: publish
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -119,10 +119,10 @@ angular.module('QuickCastCompany')
 					'user_id': user_id
 				};
 				var receiverecruits_response = $http({
-					method: 'post',
-					url: Server + 'recruitinfo.do?method=recruitinfo_queryByUserId',
-					data: reveive_recruits_data
-				})
+						method: 'post',
+						url: Server + 'recruitinfo.do?method=recruitinfo_queryByUserId',
+						data: reveive_recruits_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -138,10 +138,10 @@ angular.module('QuickCastCompany')
 					'pub_id': user_id
 				};
 				var receivenews_response = $http({
-					method: 'post',
-					url: Server + 'news.do?method=imp_news_display',
-					data: reveive_news_data
-				})
+						method: 'post',
+						url: Server + 'news.do?method=imp_news_display',
+						data: reveive_news_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -156,10 +156,10 @@ angular.module('QuickCastCompany')
 					'pub_id': user_id
 				};
 				var friendnews_response = $http({
-					method: 'post',
-					url: Server + 'news.do?method=imp_news_queryByPubId',
-					data: friend_news_data
-				})
+						method: 'post',
+						url: Server + 'news.do?method=imp_news_queryByPubId',
+						data: friend_news_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -172,10 +172,10 @@ angular.module('QuickCastCompany')
 				//Delnews服务
 
 				var delnews_response = $http({
-					method: 'post',
-					url: Server + 'news.do?method=imp_news_deleteByNewsId',
-					data: news_id
-				})
+						method: 'post',
+						url: Server + 'news.do?method=imp_news_deleteByNewsId',
+						data: news_id
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -191,10 +191,10 @@ angular.module('QuickCastCompany')
 				//UserReg服务
 
 				var userreg_response = $http({
-					method: 'post',
-					url: Server + 'user_reg.do?method=imp_userreg_queryByUserId',
-					data: user
-				})
+						method: 'post',
+						url: Server + 'user_reg.do?method=imp_userreg_queryByUserId',
+						data: user
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -209,10 +209,10 @@ angular.module('QuickCastCompany')
 					'user_id': user
 				};
 				var userprofile_response = $http({
-					method: 'post',
-					url: Server + 'info.do?method=queryByEtpUserId',
-					data: user_profile_data
-				})
+						method: 'post',
+						url: Server + 'info.do?method=queryByEtpUserId',
+						data: user_profile_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -228,10 +228,10 @@ angular.module('QuickCastCompany')
 					'self_id': user_id
 				};
 				var friendslist_response = $http({
-					method: 'post',
-					url: Server + 'friend_list.do?method=imp_friend_list_queryBySelfId',
-					data: friend_list_data
-				})
+						method: 'post',
+						url: Server + 'friend_list.do?method=imp_friend_list_queryBySelfId',
+						data: friend_list_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -246,10 +246,10 @@ angular.module('QuickCastCompany')
 					'partner_id': user_id
 				};
 				var applyslist_response = $http({
-					method: 'post',
-					url: Server + 'friend_list.do?method=imp_friend_list_apply',
-					data: apply_list_data
-				})
+						method: 'post',
+						url: Server + 'friend_list.do?method=imp_friend_list_apply',
+						data: apply_list_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -266,10 +266,10 @@ angular.module('QuickCastCompany')
 					'partner_id': partner_id
 				};
 				var delfriends_response = $http({
-					method: 'post',
-					url: Server + 'friend_list.do?method=imp_friend_list_deleteBySelfId',
-					data: del_friends_data
-				})
+						method: 'post',
+						url: Server + 'friend_list.do?method=imp_friend_list_deleteBySelfId',
+						data: del_friends_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -281,10 +281,10 @@ angular.module('QuickCastCompany')
 			AddFriends: function(friend_insert) {
 				//AddFriends服务
 				var addfriends_response = $http({
-					method: 'post',
-					url: Server + 'friend_list.do?method=imp_friend_list_insert',
-					data: friend_insert
-				})
+						method: 'post',
+						url: Server + 'friend_list.do?method=imp_friend_list_insert',
+						data: friend_insert
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -299,10 +299,10 @@ angular.module('QuickCastCompany')
 					'self_id': user_id
 				};
 				var friendcircle_response = $http({
-					method: 'post',
-					url: Server + 'friend_list.do?method=display_friendsarray',
-					data: friend_circle_data
-				})
+						method: 'post',
+						url: Server + 'friend_list.do?method=display_friendsarray',
+						data: friend_circle_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -321,10 +321,10 @@ angular.module('QuickCastCompany')
 					'rlts_id': rlts_id
 				};
 				var apply_response = $http({
-					method: 'post',
-					url: Server + 'friend_list.do?method=imp_friend_list_update',
-					data: apply_data
-				})
+						method: 'post',
+						url: Server + 'friend_list.do?method=imp_friend_list_update',
+						data: apply_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -340,10 +340,10 @@ angular.module('QuickCastCompany')
 						'email': search_key.keyword
 					};
 					var searchfriends_response = $http({
-						method: 'post',
-						url: Server + 'friend_list.do?method=imp_friend_list_queryByEmail',
-						data: search_data
-					})
+							method: 'post',
+							url: Server + 'friend_list.do?method=imp_friend_list_queryByEmail',
+							data: search_data
+						})
 						.then(function(response) {
 							var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 							response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -355,10 +355,10 @@ angular.module('QuickCastCompany')
 						'cn_tname': search_key.keyword
 					};
 					var searchfriends_response_name = $http({
-						method: 'post',
-						url: Server + 'friend_list.do?method=imp_friend_list_queryByName',
-						data: search_data_name
-					})
+							method: 'post',
+							url: Server + 'friend_list.do?method=imp_friend_list_queryByName',
+							data: search_data_name
+						})
 						.then(function(response) {
 							var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 							response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -374,10 +374,10 @@ angular.module('QuickCastCompany')
 					'user_id': user_id
 				};
 				var workexp_get_response = $http({
-					method: 'post',
-					url: Server + 'exp.do?method=queryByWorkuserId',
-					data: workexp_get_data
-				})
+						method: 'post',
+						url: Server + 'exp.do?method=queryByWorkuserId',
+						data: workexp_get_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -390,10 +390,10 @@ angular.module('QuickCastCompany')
 					'user_id': user_id
 				};
 				var eduexp_get_response = $http({
-					method: 'post',
-					url: Server + 'exp.do?method=queryByEduuserId',
-					data: eduexp_get_data
-				})
+						method: 'post',
+						url: Server + 'exp.do?method=queryByEduuserId',
+						data: eduexp_get_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -406,10 +406,10 @@ angular.module('QuickCastCompany')
 					'user_id': user_id
 				};
 				var prjexp_get_response = $http({
-					method: 'post',
-					url: Server + 'exp.do?method=queryByPrjuserId',
-					data: prjexp_get_data
-				})
+						method: 'post',
+						url: Server + 'exp.do?method=queryByPrjuserId',
+						data: prjexp_get_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -422,10 +422,10 @@ angular.module('QuickCastCompany')
 					'user_id': user_id
 				};
 				var resume_get_response = $http({
-					method: 'post',
-					url: Server + 'personal_rsm.do?method=imp_resume_queryByUserId',
-					data: resume_get_data
-				})
+						method: 'post',
+						url: Server + 'personal_rsm.do?method=imp_resume_queryByUserId',
+						data: resume_get_data
+					})
 					.then(function(response) {
 						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
 						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
@@ -433,6 +433,32 @@ angular.module('QuickCastCompany')
 					});
 				return resume_get_response;
 			},
+			DeliverRsm: function(user_id) {
+				var deliverrsm_response = $http({
+						method: 'post',
+						url: Server + 'rsm_deliver.do?method=imp_deliver_queryByEtpId',
+						data: user_id
+					})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
+					});
+				return deliverrsm_response;
+			},
+			Recommend: function(user_id) {
+				var recommend_response = $http({
+						method: 'post',
+						url: Server + 'recruitinfo.do?method=recruitinfo_recommend',
+						data: user_id
+					})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
+					});
+				return recommend_response;
+			}
 
 		};
 		return CompanyService;

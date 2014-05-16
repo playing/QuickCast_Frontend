@@ -28,6 +28,7 @@ angular.module('QuickCastCompany')
 		$scope.newsTab = {
 			newstype: '1'
 		};
+		$scope.delivers = [];
 
 
 		var location_array = $location.path().split('/');
@@ -60,7 +61,7 @@ angular.module('QuickCastCompany')
 			});
 
 			CompanyService.UserProfile(parseInt($scope.user_id)).then(function(response) {
-				$scope.user_profile = response.seeker_info[0];
+				$scope.user_profile = response.etp_info[0];
 			});
 
 			CompanyService.messageReceive($scope.user_id).then(function(response) {
@@ -114,27 +115,32 @@ angular.module('QuickCastCompany')
 			});
 
 			CompanyService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
-				console.log(response);
+				$scope.friendcircles = response.partner;
+			});
+			CompanyService.Recommend(parseInt($scope.user_id)).then(function(response) {
+				$scope.recommends = response.recruit_info;
+			});
+
+			CompanyService.DeliverRsm(parseInt($scope.user_id)).then(function(response) {
+				$scope.delivers = response.deliver;
+				for (var i = 0; i < $scope.delivers.length; i++) {
+					if ($scope.delivers[i].handle_status === '0') {
+						$scope.delivers[i].progress = 30;
+					} else {
+						if ($scope.delivers[i].handle_status === '1') {
+							$scope.delivers[i].progress = 60;
+						} else {
+							$scope.delivers[i].progress = 100;
+						}
+					}
+				};
 			});
 
 		};
 		//初始化
 		check_login();
 		init();
-		$scope.image_url = 'http://192.168.191.1:8080/quickcast/upload/' + $scope.user_id + '.jpg';
-		$scope.recommends.push({
-			id: '12344',
-			title: '开发工程师',
-			company: 'company',
-			city: 'wuhan.'
-		});
-		$scope.friendcircles.push({
-			id: '12344',
-			name: '黄凯',
-			content: 'company',
-			city: 'wuhan.'
-		});
-
+		$scope.image_url = 'http://192.168.1.107:8080/quickcast/upload/' + $scope.user_id + '.jpg';
 
 		$scope.logout = function() {
 			$cookieStore.remove('_UDATA');

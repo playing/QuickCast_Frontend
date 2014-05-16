@@ -170,7 +170,7 @@
       <div class="row">
         <div class="col-md-4">
           <div>
-            <img src="/images/ghost_person.png" alt="" class="img-rounded img-responsive resumeimg" >
+            <img ng-src="{{image_url}}" alt="" class="img-rounded img-responsive resumeimg" >
             <div class="shell">
               <button class="btn btn-info " data-toggle="modal" data-target="#picturenodal">
                 <span class="glyphicon  glyphicon-plus"></span>
@@ -186,69 +186,32 @@
           <p>
             <strong>{{user.eng_name}}</strong>
           </p>
-          <p>{{user_profile.seeker_profession}}</p>
-          <p>{{user_profile.work_place}} | {{user_profile.etp_industry}}</p>
+          <p >{{user_profile.etp_name}} | {{user_profile.etp_industry}}</p>
+          <p >{{user_profile.etp_nature}} | {{user_profile.etp_size}}</p>
           <p>目前就职: {{user_profile.etp_name}}</p>
-          <a class="btn btn-lg btn-success" ng-href="company.html#/user/{{user_id}}/resume/edit">编辑履历表</a>
         </div>
       </div>
       <div class="well well-lg detailrow">
         <div class="page-header">
           <h3>
-            个人履历
-            <small>Curriculum Vitae</small>
+            已收简历
+            <small>Resume</small>
           </h3>
         </div>
-
-        <h4 class="icon_work">工作经历</h4>
-        <hr>
-        <div ng-repeat="work in works">
-          <h3>
-            <strong>{{work.etp_name}}</strong>
-            |
-            <small>{{work.work_duty}}</small>
-          </h3>
-          <strong>{{work.work_place}}</strong>
-          <p>{{work.start_time}}-{{work.end_time}}</p>
-          <p>{{work.profession}}</p>
-        </div>
-        <h4 class="icon_edu">教育背景</h4>
-        <hr>
-
-        <div ng-repeat="edu in edus">
-          <h3>
-            <strong>{{edu.school_name}}</strong>
-            |
-            <small>{{edu.major}}</small>
-          </h3>
-          <strong>{{edu.edu_bg}}</strong>
-          <p>{{edu.study_start_time}}-{{edu.study_end_time}}</p>
-          <p>{{edu.edu_desc}}</p>
-        </div>
-
-        <h4 class="icon_project">工作项目</h4>
-        <hr>
-        <div ng-repeat="project in projects">
-          <h3>
-            <a href="http://{{project.prj_achievement}}" target="_blank">
-              <strong>{{project.prj_name}}</strong>
-            </a>
-            |
-            <small>{{project.prj_duty}}</small>
-          </h3>
-          <p>{{project.start_time}}-{{project.end_time}}</p>
-          <p>{{project.prj_desc}}</p>
-        </div>
-
-        <h4 class="icon_lang">语言能力</h4>
-        <hr>
-        <div class="overflow">
-          <div class="col-md-5 " ng-repeat="lang in langs" >
-            <h3>
-              <strong>{{lang.lang}}</strong>
-              |
-              <small>{{lang.proficiency}}</small>
-            </h3>
+        <legend>已收到简历</legend>
+        <div ng-repeat="deliver in delivers" ng-if="deliver.etp_id!==0">
+          <h5>职位: {{deliver.recruit_job}}</h5>
+          <p>
+            来源:
+            <a ng-href="search.html#/member/{{deliver.rsm_id}}">{{deliver.rsm_name}}</a>
+          </p>
+          <p>投递进度:</p>
+          <div ng-class="['progress', 'progress-striped','active']">
+            <div ng-class="['progress-bar', 'progress-bar-info']" ng-style="{width: deliver.progress + '%'}">
+              <div ng-if="deliver.handle_status==='0'">已投递,待查看.</div>
+              <div ng-if="deliver.handle_status==='1'">已查看,待回复.</div>
+              <div ng-if="deliver.handle_status==='2'">已回复.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -256,15 +219,18 @@
 
     <div class="col-md-4">
       <div>
-        <h3>可能认识的会员:</h3>
-        <div class="well well-sm" ng-repeat="recommend in recommends">
-          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
-          <a href="{{recommend.id}}">
-            <h4>{{recommend.title}}</h4>
-          </a>
-          <p>{{recommend.company}}--{{recommend.city}}</p>
+        <h4>可能认识的会员:</h4>
+        <div class="well well-sm" ng-repeat="friendcircle in friendcircles">
+          <div class="row">
+            <div class="col-md-3">
+              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+            <div class="col-md-9">
+              <a ng-href="company.html#/job/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
+              <p>目前就职: {{friendcircle.etp_name}}</p>
+            </div>
+          </div>
         </div>
-        <a href="" class="pull-right">更多职位</a>
+        <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">更多推荐</a>
       </div>
       <div class="footer" ng-include="'views/footer.html'"></div>
     </div>
@@ -278,10 +244,40 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">上传新头像</h4>
       </div>
-      <div class="modal-body"></div>
+      <div class="modal-body">
+        <div flow-init="{singleFile:true,target:'http://192.168.1.104:8080/quickcast/upload.do?method=image',query:{upload_token:user_id}}" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-complete="$parent.image_url=image_url+'?';" class="ng-scope">
+          <h3>
+            <a name="image-example" class="anchor" href="#image-example">
+              <span class="octicon octicon-link"></span>
+            </a>
+            请选择图片来上传
+          </h3>
+          <div class="thumbnail" ng-show="!$flow.files.length">
+            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image"></div>
+          <div class="thumbnail ng-hide" ng-show="$flow.files.length">
+            <img flow-img="$flow.files[0]"></div>
+          <div class="progress progress-striped" ng-class="{active: $flow.files[0].isUploading()}">
+            <div class="progress-bar" role="progressbar"
+             aria-valuenow="{{$flow.files[0].progress() * 100}}"
+             aria-valuemin="0"
+             aria-valuemax="100"
+             ng-style="{width: ($flow.files[0].progress() * 100) + '%'}">
+              <span class="sr-only">{{$flow.files[0].progress()}}% Complete</span>
+            </div>
+          </div>
+          <div>
+            <span class="btn btn-primary" ng-show="!$flow.files.length" flow-btn="">
+              选择图片
+              <input type="file" style="visibility: hidden; position: absolute;"></span>
+            <span class="btn btn-info ng-hide" ng-show="$flow.files.length" flow-btn="">
+              更换图片
+              <input type="file" style="visibility: hidden; position: absolute;"></span>
+          </div>
+          <p>请上传PNG,JPG,JEPG 格式的图片.大小不超过200X200像素</p>
+        </div>
+      </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button type="button" class="btn btn-primary">完成</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">完成</button>
       </div>
     </div>
   </div>

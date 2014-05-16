@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastSearch')
 	.factory('SearchService', function($http) {
-		var Server = 'http://192.168.191.1:8080/quickcast/';
+		var Server = 'http://192.168.1.105:8080/quickcast/';
 		var SearchService = {
 			Recruit: function() {
 				var recruit_response = $http({
@@ -167,6 +167,37 @@ angular.module('QuickCastSearch')
 						return response_JSON;
 					});
 				return deliverrsm_response;
+			},
+			Recommend: function(user_id) {
+				var recommend_response = $http({
+						method: 'post',
+						url: Server + 'recruitinfo.do?method=recruitinfo_recommend',
+						data: user_id
+					})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
+					});
+				return recommend_response;
+			},
+			Friendcircle: function(user_id) {
+				//Friendcircle服务
+				var friend_circle_data = {
+					'self_id': user_id
+				};
+				var friendcircle_response = $http({
+						method: 'post',
+						url: Server + 'friend_list.do?method=display_friendsarray',
+						data: friend_circle_data
+					})
+					.then(function(response) {
+						var response_JSON = decodeURIComponent(decodeURIComponent(response.data));
+						response_JSON = JSON.parse(response_JSON.replace(/\+/g, ' '));
+						return response_JSON;
+					});
+				return friendcircle_response;
+				//Friendcircle服务返回数据
 			}
 		};
 		return SearchService;

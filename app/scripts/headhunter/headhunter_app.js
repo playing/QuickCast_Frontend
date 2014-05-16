@@ -32,6 +32,10 @@ angular.module('QuickCastHeadhunter', [
         url: '/user/{user_id:[0-9]{1,8}}/resume',
         templateUrl: 'views/headhunter/headhunter_resume.html'
       })
+      .state('deliver', {
+        url: '/user/{user_id:[0-9]{1,8}}/resume/deliver',
+        templateUrl: 'views/headhunter/headhunter_resume_deliver.html'
+      })
       .state('404', {
         url: '/404',
         templateUrl: '404.html'

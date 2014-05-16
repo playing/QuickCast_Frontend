@@ -35,6 +35,10 @@ angular.module('QuickCastUser', [
         url: '/user/{user_id:[0-9]{1,8}}/resume/edit',
         templateUrl: 'views/user/user_resume_edit.html'
       })
+      .state('deliver', {
+        url: '/user/{user_id:[0-9]{1,8}}/resume/deliver',
+        templateUrl: 'views/user/user_resume_deliver.html'
+      })
       .state('404', {
         url: '/404',
         templateUrl: '404.html'

@@ -52,13 +52,26 @@
       <div>
         <h4>职位推荐:</h4>
         <div class="well well-sm" ng-repeat="recommend in recommends">
-          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
-          <a href="{{recommend.id}}">
-            <h4>{{recommend.title}}</h4>
-          </a>
-          <p>{{recommend.company}}--{{recommend.city}}</p>
+          <div class="row">
+            <div class="col-md-3">
+              <img ng-src="http://192.168.1.107:8080/quickcast/upload/{{recommend.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+            <div class="col-md-9">
+              <a ng-href="search.html#/job/{{recommend.info_id}}">
+                <h5>{{recommend.recruit_job}}</h5>
+              </a>
+              <p>
+                <strong>{{recommend.etp_name}} -- {{recommend.recruit_industry}}</strong>
+              </p>
+              <p>
+                <strong>工作地点:</strong>
+                {{recommend.work_place}} --
+                <strong>薪资:</strong>
+                {{recommend.salary}}
+              </p>
+            </div>
+          </div>
         </div>
-        <a href="" class="pull-right">更多职位</a>
+        <a ng-href="search.html#/" class="pull-right">更多职位</a>
       </div>
     </div>
   </div>

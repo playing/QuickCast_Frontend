@@ -30,7 +30,7 @@ angular.module('QuickCastUser')
 		$scope.edus = [];
 		$scope.works = [];
 		$scope.proficiencys = ['初级(入门)', '中级(日常会话)', '中高级(商务会话)', '高级(无障碍商务沟通)', '母语'];
-
+		$scope.delivers = [];
 
 		var location_array = $location.path().split('/');
 
@@ -116,7 +116,10 @@ angular.module('QuickCastUser')
 			});
 
 			UserService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
-				console.log(response);
+				$scope.friendcircles = response.partner;
+			});
+			UserService.Recommend(parseInt($scope.user_id)).then(function(response) {
+				$scope.recommends = response.recruit_info;
 			});
 			UserService.WorkExpGet(parseInt($scope.user_id)).then(function(response) {
 				$scope.works = response.work_exp;
@@ -132,25 +135,25 @@ angular.module('QuickCastUser')
 			UserService.ResumeGet(parseInt($scope.user_id)).then(function(response) {
 				$scope.langs = JSON.parse(response.resume[0].language_skill);
 			});
+			UserService.DeliverRsm(parseInt($scope.user_id)).then(function(response) {
+				$scope.delivers = response.deliver;
+				for (var i = 0; i < $scope.delivers.length; i++) {
+					if ($scope.delivers[i].handle_status === '0') {
+						$scope.delivers[i].progress = 30;
+					} else {
+						if ($scope.delivers[i].handle_status === '1') {
+							$scope.delivers[i].progress = 60;
+						} else {
+							$scope.delivers[i].progress = 100;
+						}
+					}
+				};
+			});
 		};
 		//初始化
 		check_login();
 		init();
 		$scope.image_url = 'http://192.168.191.1:8080/quickcast/upload/' + $scope.user_id + '.jpg';
-
-		$scope.recommends.push({
-			id: '12344',
-			title: '开发工程师',
-			company: 'company',
-			city: 'wuhan.'
-		});
-		$scope.friendcircles.push({
-			id: '12344',
-			name: '黄凯',
-			content: 'company',
-			city: 'wuhan.'
-		});
-
 
 		$scope.logout = function() {
 			$cookieStore.remove('_UDATA');

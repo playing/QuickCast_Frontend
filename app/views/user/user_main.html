@@ -148,6 +148,11 @@
                 简历管理
                 <a ng-href="user.html#/user/{{user_id}}/resume" class="pull-right">查看</a>
               </li>
+              <li class="list-group-item">
+                <span class="glyphicon  glyphicon-tasks"></span>
+                简历投递
+                <a ng-href="user.html#/user/{{user_id}}/resume/deliver" class="pull-right">查看</a>
+              </li>
             </ul>
 
           </div>
@@ -214,37 +219,55 @@
           <img ng-src="{{image_url}}" alt="" class="main_img img-rounded img-responsive"></div>
         <div class="col-md-8">
           <p>{{cn_tname}}</p>
-
         </div>
         <p>
           您有
-          <a ng-href="user.html#/user/{{user_id}}/message">
+          <a ng-href="user.html#/user/{{user_id}}/friends">
             {{seekerfriends.length+companyfriends.length+headhunterfriends.length}}位
           </a>
           联系人在快投网.
         </p>
         <p>
           您有
-          <a ng-href="user.html#/user/{{user_id}}/friends">{{messages.length}}条</a>
+          <a ng-href="user.html#/user/{{user_id}}/message">{{messages.length}}条</a>
           信息在快投网.
         </p>
       </div>
       <div>
         <h4>职位推荐:</h4>
         <div class="well well-sm" ng-repeat="recommend in recommends">
-          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
-          <a href="{{recommend.id}}">
-            <h4>{{recommend.title}}</h4>
-          </a>
-          <p>{{recommend.company}}--{{recommend.city}}</p>
+          <div class="row">
+            <div class="col-md-3">
+              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{recommend.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+            <div class="col-md-9">
+              <a ng-href="search.html#/job/{{recommend.info_id}}">
+                <h5>{{recommend.recruit_job}}</h5>
+              </a>
+              <p>
+                <strong>{{recommend.etp_name}} -- {{recommend.recruit_industry}}</strong>
+              </p>
+              <p>
+                <strong>工作地点:</strong>
+                {{recommend.work_place}} --
+                <strong>薪资:</strong>
+                {{recommend.salary}}
+              </p>
+            </div>
+          </div>
         </div>
-        <a href="" class="pull-right">更多职位</a>
+        <a ng-href="search.html#/" class="pull-right">更多职位</a>
       </div>
       <div>
         <h4>可能认识的会员:</h4>
-        <div class="well well-sm" ng-repeat="recommend in recommends">
-          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
-          <a ng-href="{{recommend.id}}"></a>
+        <div class="well well-sm" ng-repeat="friendcircle in friendcircles">
+          <div class="row">
+            <div class="col-md-3">
+              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+            <div class="col-md-9">
+              <a ng-href="search.html#/job/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
+              <p>目前就职: {{friendcircle.etp_name}}</p>
+            </div>
+          </div>
         </div>
         <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">更多推荐</a>
       </div>

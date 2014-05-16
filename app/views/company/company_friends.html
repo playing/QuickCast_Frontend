@@ -237,10 +237,10 @@
             <div class="row">
               <div class="col-md-4" ng-repeat="friendcircle in friendcircles">
                 <div class="panel panel-default">
-                  <div class="panel-heading">{{friendcircle.name}}</div>
+                  <div class="panel-heading">{{friendcircle.cn_tname}}</div>
                   <div class="panel-body">
-                    <p>{{friendcircle.content}}</p>
-                    <button type="button" class="btn btn-danger" ng-click="circleapply($index)">add</button>
+                    <p>目前就职: {{friendcircle.etp_name}}</p>
+                    <p>电子邮件: {{friendcircle.email}}</p>
                   </div>
                 </div>
               </div>

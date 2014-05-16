@@ -41,7 +41,6 @@
           </p>
           <p>用户类型: {{singleuser.user_type|usertype}}</p>
           <p>{{singleuser.seeker_profession}}</p>
-          <p ng-if="singleuser.user_type==='2'">职业猎头</p>
           <p ng-if="singleuser.user_type==='1'">{{singleuser.work_place}} | {{singleuser.etp_industry}}</p>
           <p ng-if="singleuser.user_type==='3'">{{singleuser.etp_name}} | {{singleuser.etp_industry}}</p>
           <p ng-if="singleuser.user_type==='3'">{{singleuser.etp_nature}} | {{singleuser.etp_size}}</p>
@@ -133,16 +132,20 @@
           </div>
         </div>
       </div>
-
     </div>
     <div class="col-md-4">
       <div>
         <h4>可能认识的会员:</h4>
-        <div class="well well-sm" ng-repeat="recommend in recommends">
-          <button type="button" class="close" aria-hidden="true" ng-click="del_recommend($index)">&times;</button>
-          <a ng-href="{{recommend.id}}"></a>
+        <div class="well well-sm" ng-repeat="friendcircle in friendcircles">
+          <div class="row">
+            <div class="col-md-3">
+              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+            <div class="col-md-9">
+              <a ng-href="search.html#/job/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
+              <p>目前就职: {{friendcircle.etp_name}}</p>
+            </div>
+          </div>
         </div>
-        <a ng-href="user.html#/user/{{user_id}}/friends" class="pull-right">更多推荐</a>
       </div>
     </div>
   </div>

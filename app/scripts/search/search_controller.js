@@ -16,6 +16,9 @@ angular.module('QuickCastSearch')
 		$scope.user_cookie = $cookieStore.get('_UDATA');
 		$scope.resumes = [];
 		$scope.alerts = [];
+		$scope.recommends = [];
+		$scope.friendcircles = [];
+		
 		var init = function() {
 			SearchService.Etp().then(function(response) {
 				$scope.etps = response.etp;
@@ -30,6 +33,12 @@ angular.module('QuickCastSearch')
 			});
 			SearchService.Seeker().then(function(response) {
 				$scope.seekers = response.seeker;
+			});
+			SearchService.Friendcircle(parseInt($scope.user_cookie.user_id)).then(function(response) {
+				$scope.friendcircles = response.partner;
+			});
+			SearchService.Recommend(parseInt($scope.user_cookie.user_id)).then(function(response) {
+				$scope.recommends = response.recruit_info;
 			});
 		};
 		//初始化
