@@ -30,25 +30,19 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
-                      <span class="glyphicon glyphicon-briefcase"></span>
-                      找公司
+                    <a ng-click="nav_search.search_type=2;searchicon='user';" href="">
+                      <span class="glyphicon glyphicon-user"></span>
+                      找会员
                     </a>
                   </li>
                   <li class="divider"></li>
-                  <li>
-                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
-                      <span class="glyphicon glyphicon-user"></span>
-                      找猎头
-                    </a>
-                  </li>
                 </ul>
               </div>
               <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
+          <button class="btn btn-default nav-btn" ng-click="navsearch(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -168,6 +162,7 @@
       <h3>{{cn_tname}} 快来分享你的新鲜动态.</h3>
       <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
       <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+      {{publish}}
       <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">
@@ -176,13 +171,13 @@
         </button>
         <ul class="dropdown-menu" role="menu">
           <li>
-            <a href="" ng-click="search.pub_type=1;newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
+            <a href="" ng-click="search.pub_type='1';newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
           </li>
           <li>
-            <a href="" ng-click="search.pub_type=2;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
+            <a href="" ng-click="search.pub_type='2';newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
           </li>
           <li>
-            <a href="" ng-click="search.pub_id=user_id;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
+            <a href="" ng-click="search.pub_id=user_id_int;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
           </li>
           <li class="divider"></li>
           <li>
@@ -190,10 +185,10 @@
           </li>
         </ul>
       </div>
-      <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
+      <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search:true|limitTo:newsquantity">
         <div class="row">
           <div class="col-md-2">
-            <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+            <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
           <div class="col-md-10">
             <a ng-href="search.html#/member/{{update.pub_id}}">
               <h5>{{update.pub_name}}</h5>
@@ -238,7 +233,7 @@
         <div class="well well-sm" ng-repeat="recommend in recommends">
           <div class="row">
             <div class="col-md-3">
-              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{recommend.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+              <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{recommend.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
             <div class="col-md-9">
               <a ng-href="search.html#/job/{{recommend.info_id}}">
                 <h5>{{recommend.recruit_job}}</h5>
@@ -262,9 +257,9 @@
         <div class="well well-sm" ng-repeat="friendcircle in friendcircles">
           <div class="row">
             <div class="col-md-3">
-              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+              <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
             <div class="col-md-9">
-              <a ng-href="search.html#/job/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
+              <a ng-href="search.html#/member/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
               <p>目前就职: {{friendcircle.etp_name}}</p>
             </div>
           </div>

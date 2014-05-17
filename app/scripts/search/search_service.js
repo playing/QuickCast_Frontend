@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastSearch')
 	.factory('SearchService', function($http) {
-		var Server = 'http://192.168.1.105:8080/quickcast/';
+		var Server = 'http://www.playingcn.com:8080/quickcast/';
 		var SearchService = {
 			Recruit: function() {
 				var recruit_response = $http({

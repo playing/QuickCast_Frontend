@@ -15,12 +15,12 @@
       <ul class="nav navbar-nav navbar-right" >
         <form class="navbar-form navbar-left" >
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="账号"></div>
+            <input type="text" class="form-control" placeholder="账号" ng-model="user_login.user_name"></div>
           <div class="form-group">
-            <input type="password" class="form-control" placeholder="密码"></div>
+            <input type="password" class="form-control" placeholder="密码" ng-model="user_login.password"></div>
         </form>
         <li >
-          <button class="btn btn-info nav-btn" ng-click="login()">登录快投</button>
+          <button class="btn btn-info nav-btn" ng-click="login(user_login)">登录快投</button>
         </li>
         <li >
           <button class="btn btn-default nav-btn" ng-click="resetpassword()">忘记密码</button>
@@ -75,5 +75,4 @@
   </div>
 </div>
 
-<div class="footer" ng-include="'views/footer.html'">
-</div>
+<div class="footer" ng-include="'views/footer.html'"></div>

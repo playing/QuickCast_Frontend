@@ -30,25 +30,19 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
-                      <span class="glyphicon glyphicon-briefcase"></span>
-                      找公司
+                    <a ng-click="nav_search.search_type=2;searchicon='user';" href="">
+                      <span class="glyphicon glyphicon-user"></span>
+                      找会员
                     </a>
                   </li>
                   <li class="divider"></li>
-                  <li>
-                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
-                      <span class="glyphicon glyphicon-user"></span>
-                      找猎头
-                    </a>
-                  </li>
                 </ul>
               </div>
               <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
+          <button class="btn btn-default nav-btn" ng-click="navsearch(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -205,9 +199,9 @@
         <div class="well well-sm" ng-repeat="friendcircle in friendcircles">
           <div class="row">
             <div class="col-md-3">
-              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+              <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
             <div class="col-md-9">
-              <a ng-href="search.html#/job/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
+              <a ng-href="search.html#/member/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
               <p>目前就职: {{friendcircle.etp_name}}</p>
             </div>
           </div>
@@ -227,7 +221,7 @@
         <h4 class="modal-title" id="myModalLabel">上传新头像</h4>
       </div>
       <div class="modal-body">
-        <div flow-init="{singleFile:true,target:'http://192.168.1.104:8080/quickcast/upload.do?method=image',query:{upload_token:user_id}}" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-complete="$parent.image_url=image_url+'?';" class="ng-scope">
+        <div flow-init="{singleFile:true,target:'http://www.playingcn.com:8080/quickcast/upload.do?method=image',query:{upload_token:user_id}}" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-complete="$parent.image_url=image_url+'?';" class="ng-scope">
           <h3>
             <a name="image-example" class="anchor" href="#image-example">
               <span class="octicon octicon-link"></span>

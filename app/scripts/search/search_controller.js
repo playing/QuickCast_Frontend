@@ -18,11 +18,10 @@ angular.module('QuickCastSearch')
 		$scope.alerts = [];
 		$scope.recommends = [];
 		$scope.friendcircles = [];
-		
+
 		var init = function() {
 			SearchService.Etp().then(function(response) {
 				$scope.etps = response.etp;
-
 			});
 			SearchService.Recruit().then(function(response) {
 				$scope.recruits = response.recruit_info;
@@ -41,8 +40,28 @@ angular.module('QuickCastSearch')
 				$scope.recommends = response.recruit_info;
 			});
 		};
+		var check_search = function() {
+			var search_word = $location.hash();
+			var search_type = $location.path().split('/')[2];
+			if (search_type === 'job') {
+				$scope.recruit_search = {
+					$: search_word
+				};
+			} else {
+				if (search_type === 'member') {
+					$scope.searchTab = 'member';
+					$scope.active2 = 'active';
+					$scope.active1 = '';
+					$scope.userradio = '1';
+					$scope.seeker_search = {
+						$: search_word
+					};
+				}
+			}
+		};
 		//初始化
 		init();
+		check_search();
 
 		$scope.moresearch = function() {
 			$scope.searchnum = $scope.searchnum + 5;
@@ -61,9 +80,11 @@ angular.module('QuickCastSearch')
 		};
 
 		$scope.deliver = function(target_id, target_type, info_id) {
+			var resume_checked_flag = 0;
 			for (var i = 0; i < $scope.resumes.length; i++) {
 				if ($scope.resumes[i].$checked) {
 					var deliver_rsm = {};
+					resume_checked_flag = 1;
 					if (target_type === '2') {
 						deliver_rsm = {
 							rsm_id: $scope.resumes[i].rsm_id,
@@ -94,7 +115,13 @@ angular.module('QuickCastSearch')
 					});
 				}
 			}
+			if (resume_checked_flag === 0) {
+				$scope.alerts.push({
+					type: 'danger',
+					msg: '请选择至少一份简历.'
+				});
 
+			}
 		};
 
 		$scope.tship = function(hunter_id) {
