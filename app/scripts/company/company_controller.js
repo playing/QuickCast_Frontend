@@ -36,13 +36,13 @@ angular.module('QuickCastCompany')
 		var check_login = function() {
 			var check = $cookieStore.get('_UDATA');
 			if (check === undefined) {
-				$window.location.href = 'http://127.0.0.1:9000/';
+				$window.location.href = 'http://www.playingcn.com/quickcast';
 				//cookie校验
 			} else {
 				$scope.user_id = location_array[2];
 				$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
 				if (check.user_id === $scope.user_id) {} else {
-					$window.location.href = 'http://127.0.0.1:9000/';
+					$window.location.href = 'http://www.playingcn.com/quickcast';
 				}
 
 			}
@@ -140,11 +140,11 @@ angular.module('QuickCastCompany')
 		//初始化
 		check_login();
 		init();
-		$scope.image_url = 'http://192.168.1.107:8080/quickcast/upload/' + $scope.user_id + '.jpg';
+		$scope.image_url = 'http://www.playingcn.com:8080/quickcast/upload/' + $scope.user_id + '.jpg';
 
 		$scope.logout = function() {
 			$cookieStore.remove('_UDATA');
-			$window.location.href = 'http://127.0.0.1:9000/';
+			$window.location.href = 'http://www.playingcn.com/quickcast';
 		};
 
 		$scope.publishnews = function(publish) {
@@ -342,19 +342,7 @@ angular.module('QuickCastCompany')
 
 		};
 		$scope.friendpage = function(index, method) {
-			var firend_page_id = '';
-			if (method === 'seeker') {
-				firend_page_id = $scope.seekerfriends[index].partner_id;
-				$window.open('http://127.0.0.1:9000/user.html#/user/' + firend_page_id);
-			} else {
-				if (method === 'headhunter') {
-					firend_page_id = $scope.headhunterfriends[index].partner_id;
-					$window.open('http://127.0.0.1:9000/headhunter.html#/user/' + firend_page_id);
-				} else {
-					firend_page_id = $scope.companyfriends[index].partner_id;
-					$window.open('http://127.0.0.1:9000/company.html#/user/' + firend_page_id);
-				}
-			}
+			$window.open('http://www.playingcn.com/quickcast/search.html#/member/' + $scope.seekerfriends[index].partner_id);
 
 		};
 

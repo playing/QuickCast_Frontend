@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCast')
 	.factory('CommonService', function($http) {
-		var Server = 'http://192.168.1.105:8080/quickcast/';
+		var Server = 'http://www.playingcn.com:8080/quickcast/';
 		var CommonService = {
 			login: function(user_login) {
 				//login服务

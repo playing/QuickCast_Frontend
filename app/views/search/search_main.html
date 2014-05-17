@@ -60,7 +60,7 @@
           <div ng-repeat="recruit in recruits|orderBy:'issue_time':true|filter:recruit_search">
             <div class="row">
               <div class="col-md-2">
-                <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{recruit.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{recruit.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
               <div class="col-md-10">
                 <a ng-href="search.html#/job/{{recruit.info_id}}">
                   <h5>{{recruit.recruit_job}}</h5>
@@ -125,7 +125,7 @@
             <div ng-repeat="seeker in seekers|orderBy:'user_id':false|filter:seeker_search|limitTo:searchnum" class="well">
               <div class="row">
                 <div class="col-md-2">
-                  <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{seeker.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                  <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{seeker.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
                 <div class="col-md-10">
                   <a ng-href="search.html#/member/{{seeker.user_id}}">
                     <h5>{{seeker.cn_tname}}</h5>
@@ -143,7 +143,7 @@
             <div ng-repeat="hunter in hunters|orderBy:'user_id':false|filter:hunter_search|limitTo:searchnum" ng-if="userradio==='2'" class="well">
               <div class="row">
                 <div class="col-md-2">
-                  <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{hunter.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                  <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{hunter.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
                 <div class="col-md-10">
                   <a ng-href="search.html#/member/{{hunter.user_id}}">
                     <h5>{{hunter.cn_tname}}</h5>
@@ -161,7 +161,7 @@
             <div ng-repeat="etp in etps|orderBy:'user_id':false|filter:etp_search|limitTo:searchnum" ng-if="userradio==='3'" class="well">
               <div class="row">
                 <div class="col-md-2">
-                  <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{etp.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
+                  <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{etp.user_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
                 <div class="col-md-10">
                   <a ng-href="search.html#/member/{{etp.user_id}}">
                     <h5>{{etp.etp_name}}</h5>

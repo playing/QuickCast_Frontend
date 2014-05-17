@@ -977,7 +977,7 @@
         <h4 class="modal-title" id="myModalLabel">上传新头像</h4>
       </div>
       <div class="modal-body">
-        <div flow-init="{singleFile:true,target:'http://192.168.191.1:8080/quickcast/upload.do?method=image',query:{upload_token:user_id}}" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-complete="$parent.image_url=image_url+'?new';" class="ng-scope">
+        <div flow-init="{singleFile:true,target:'http://www.playingcn.com:8080/quickcast/upload.do?method=image',query:{upload_token:user_id}}" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-complete="$parent.image_url=image_url+'?new';" class="ng-scope">
           <h3>
             <a name="image-example" class="anchor" href="#image-example">
               <span class="octicon octicon-link"></span>

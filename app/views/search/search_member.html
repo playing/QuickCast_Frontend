@@ -32,7 +32,7 @@
       <div class="row detailrow">
         <div class="col-md-4">
           <div>
-            <img ng-src="http://192.168.191.1:8080/quickcast/upload/{{singleuser.user_id}}.jpg" alt="{{singleuser.cn_tname}}" class="img-rounded img-responsive resumeimg" ></div>
+            <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{singleuser.user_id}}.jpg" alt="{{singleuser.cn_tname}}" class="img-rounded img-responsive resumeimg" ></div>
         </div>
         <div class="col-md-4">
           <p> <strong>{{singleuser.cn_tname}}</strong>
@@ -139,7 +139,7 @@
         <div class="well well-sm" ng-repeat="friendcircle in friendcircles">
           <div class="row">
             <div class="col-md-3">
-              <img ng-src="http://192.168.1.105:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
+              <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
             <div class="col-md-9">
               <a ng-href="search.html#/job/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
               <p>目前就职: {{friendcircle.etp_name}}</p>
