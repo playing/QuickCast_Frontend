@@ -30,25 +30,19 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
-                      <span class="glyphicon glyphicon-briefcase"></span>
-                      找公司
+                    <a ng-click="nav_search.search_type=2;searchicon='user';" href="">
+                      <span class="glyphicon glyphicon-user"></span>
+                      找会员
                     </a>
                   </li>
                   <li class="divider"></li>
-                  <li>
-                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
-                      <span class="glyphicon glyphicon-user"></span>
-                      找猎头
-                    </a>
-                  </li>
                 </ul>
               </div>
               <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
+          <button class="btn btn-default nav-btn" ng-click="navsearch(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -168,6 +162,7 @@
       <h3>{{cn_tname}} 快来分享你的新鲜动态.</h3>
       <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
       <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+      {{publish}}
       <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">

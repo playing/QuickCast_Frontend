@@ -175,7 +175,7 @@ angular.module('QuickCastUser')
 							$scope.updates = $scope.updates.concat(myself_updates);
 						});
 					});
-
+					publish.content = undefined;
 				} else {
 					$scope.alerts.push({
 						type: 'danger',
@@ -414,10 +414,6 @@ angular.module('QuickCastUser')
 			});
 		};
 
-		$scope.circleapply = function(index) {
-			// body...
-		};
-
 		$scope.delalert = function(index) {
 			$scope.alerts.splice(index, 1);
 			//手动删除错误信息
@@ -428,9 +424,7 @@ angular.module('QuickCastUser')
 			$scope.langs.splice(index, 1);
 
 		};
-		$scope.savelangs = function() {
-			// TODO
-		};
+
 		$scope.addlangs = function() {
 			if ($scope.langs === null) {
 				$scope.langs = [];
@@ -510,6 +504,14 @@ angular.module('QuickCastUser')
 			UserService.ResumeUpdate(resume_update).then(function() {
 
 			});
+		};
+
+		$scope.navsearch = function(nav_search) {
+			if (nav_search.search_type === 1) {
+				$window.open('http://www.playingcn.com/quickcast/search.html#/search/job#' + nav_search.serach_key);
+			} else {
+				$window.open('http://www.playingcn.com/quickcast/search.html#/search/member#' + nav_search.serach_key);
+			}
 		};
 
 		$scope.$on('$stateChangeStart',

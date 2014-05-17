@@ -26,13 +26,13 @@
     <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked blockquote">
         <li class="{{active1}}">
-          <a href="" ng-click="searchSwitch.searchsTab='other';active1='active';active2='';">
+          <a href="" ng-click="searchTab='other';active1='active';active2='';">
             <span class="glyphicon glyphicon-list-alt"></span>
             职位
           </a>
         </li>
         <li class="{{active2}}">
-          <a href="" ng-click="searchSwitch.searchsTab='member';active2='active';active1='';" >
+          <a href="" ng-click="searchTab='member';active2='active';active1='';" >
             <span class="glyphicon glyphicon-user"></span>
             会员
           </a>
@@ -41,7 +41,7 @@
       </ul>
     </div>
     <div class="col-md-9">
-      <div ng-switch on="searchSwitch.searchsTab" class="blockquote">
+      <div ng-switch on="searchTab" class="blockquote">
         <div ng-switch-default>
           <div class="page-header">
             <h4>{{recruits.length}}条搜索结果</h4>

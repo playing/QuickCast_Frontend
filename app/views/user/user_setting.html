@@ -30,25 +30,19 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
-                      <span class="glyphicon glyphicon-briefcase"></span>
-                      找公司
+                    <a ng-click="nav_search.search_type=2;searchicon='user';" href="">
+                      <span class="glyphicon glyphicon-user"></span>
+                      找会员
                     </a>
                   </li>
                   <li class="divider"></li>
-                  <li>
-                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
-                      <span class="glyphicon glyphicon-user"></span>
-                      找猎头
-                    </a>
-                  </li>
                 </ul>
               </div>
               <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
+          <button class="btn btn-default nav-btn" ng-click="navsearch(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -173,21 +167,15 @@
     <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked blockquote">
         <li class="{{active1}}">
-          <a href="" ng-click="settingTab='other';active1='active';active2='';active3='';">
+          <a href="" ng-click="settingTab='other';active1='active';active2='';">
             <span class="glyphicon glyphicon-user"></span>
             基本信息
           </a>
         </li>
         <li class="{{active2}}">
-          <a href="" ng-click="settingTab='reg';active2='active';active1='';active3='';" >
+          <a href="" ng-click="settingTab='reg';active2='active';active1='';" >
             <span class="glyphicon glyphicon-log-in"></span>
             账户信息
-          </a>
-        </li>
-        <li class="{{active3}}">
-          <a href="" ng-click="settingTab='profile';active3='active';active2='';active1='';">
-            <span class="glyphicon glyphicon-list-alt"></span>
-            详细资料
           </a>
         </li>
       </ul>
@@ -203,7 +191,6 @@
               <p>{{user.user_type|usertype}}</p>
               <h4>电子邮件:</h4>
               <p>{{user.email}}</p>
-
             </div>
             <div class="col-md-4">
               <h4>简历:</h4>
@@ -217,7 +204,6 @@
             </div>
           </div>
         </div>
-        <div  ng-switch-when="profile"></div>
         <div  ng-switch-default>
           <div class="row">
             <div class="col-md-5">

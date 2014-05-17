@@ -170,6 +170,7 @@ angular.module('QuickCastHeadhunter')
 							type: 'success',
 							msg: '发送成功.'
 						});
+						publish.content = undefined;
 					} else {
 						$scope.alerts.push({
 							type: 'danger',
@@ -194,6 +195,7 @@ angular.module('QuickCastHeadhunter')
 							type: 'success',
 							msg: '发送成功.'
 						});
+						publish.content = undefined;
 					} else {
 						$scope.alerts.push({
 							type: 'danger',
@@ -429,15 +431,17 @@ angular.module('QuickCastHeadhunter')
 			});
 		};
 
-		$scope.circleapply = function(index) {
-			// body...
-		};
-
 		$scope.delalert = function(index) {
 			$scope.alerts.splice(index, 1);
 			//手动删除错误信息
 		};
-
+		$scope.navsearch = function(nav_search) {
+			if (nav_search.search_type === 1) {
+				$window.open('http://www.playingcn.com/quickcast/search.html#/search/job#' + nav_search.serach_key);
+			} else {
+				$window.open('http://www.playingcn.com/quickcast/search.html#/search/member#' + nav_search.serach_key);
+			}
+		};
 
 
 		$scope.$on('$stateChangeStart',

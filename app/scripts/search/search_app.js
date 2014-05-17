@@ -22,6 +22,10 @@ angular.module('QuickCastSearch', [
         url: '/member/{user_id:[0-9]{1,8}}',
         templateUrl: 'views/search/search_member.html',
       })
+      .state('search', {
+        url: '/search/{search_key}',
+        templateUrl: 'views/search/search_main.html',
+      })
       .state('404', {
         url: '/404',
         templateUrl: '404.html',

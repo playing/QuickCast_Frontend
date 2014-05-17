@@ -30,25 +30,19 @@
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <a ng-click="nav_search.search_type=2;searchicon='briefcase';" href="">
-                      <span class="glyphicon glyphicon-briefcase"></span>
-                      找公司
+                    <a ng-click="nav_search.search_type=2;searchicon='user';" href="">
+                      <span class="glyphicon glyphicon-user"></span>
+                      找会员
                     </a>
                   </li>
                   <li class="divider"></li>
-                  <li>
-                    <a ng-click="nav_search.search_type=3;searchicon='user';" href="">
-                      <span class="glyphicon glyphicon-user"></span>
-                      找猎头
-                    </a>
-                  </li>
                 </ul>
               </div>
               <input type="text" class="form-control" ng-model="nav_search.serach_key"></div>
           </form>
         </li>
         <li>
-          <button class="btn btn-default nav-btn" ng-click="search(nav_search)">
+          <button class="btn btn-default nav-btn" ng-click="navsearch(nav_search)">
             <span class="glyphicon  glyphicon-search"></span>
             搜索
           </button>
@@ -174,21 +168,15 @@
     <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked blockquote">
         <li class="{{active1}}">
-          <a href="" ng-click="settingTab='other';active1='active';active2='';active3='';">
+          <a href="" ng-click="settingTab='other';active1='active';active2='';">
             <span class="glyphicon glyphicon-user"></span>
             基本信息
           </a>
         </li>
         <li class="{{active2}}">
-          <a href="" ng-click="settingTab='reg';active2='active';active1='';active3='';" >
+          <a href="" ng-click="settingTab='reg';active2='active';active1='';" >
             <span class="glyphicon glyphicon-log-in"></span>
             账户信息
-          </a>
-        </li>
-        <li class="{{active3}}">
-          <a href="" ng-click="settingTab='profile';active3='active';active2='';active1='';">
-            <span class="glyphicon glyphicon-list-alt"></span>
-            详细资料
           </a>
         </li>
       </ul>
@@ -208,8 +196,8 @@
             </div>
             <div class="col-md-4">
               <h4>简历:</h4>
-              <p>您有{{"1"}}份简历在快投网.</p>
-              <a href="">查看详情</a>
+              <p>您有{{delivers.length}}份简历在快投网.</p>
+              <a ng-href="headhunter.html#/user/{{user_id}}/resume/deliver">查看详情</a>
               <h4>联系人:</h4>
               <p>
                 您有{{seekerfriends.length+companyfriends.length+headhunterfriends.length}}位联系人在快投网.
@@ -229,14 +217,13 @@
               <h4>电话:</h4>
               <p>{{user_profile.mobile}}</p>
               <h4>工作省份:</h4>
-              <p>{{user_profile.work_place}}</p>
+              <p>{{user_profile.work_city}}</p>
             </div>
             <div class="col-md-4">
               <h4>所在行业:</h4>
-              <p>{{user_profile.etp_industry}}</p>
-
-              <h4>职位头衔:</h4>
-              <p>{{user_profile.seeker_profession}}</p>
+              <p>{{user_profile.t_area}}</p>
+              <h4>所在公司:</h4>
+              <p>{{user_profile.etp_name}}</p>
             </div>
           </div>
         </div>
