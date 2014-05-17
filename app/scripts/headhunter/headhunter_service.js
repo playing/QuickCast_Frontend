@@ -1,7 +1,7 @@
 'use strict';
 angular.module('QuickCastHeadhunter')
 	.factory('HeadhunterService', function($http) {
-		var Server = 'http://www.playingcn.com/quickcast/';
+		var Server = 'http://www.playingcn.com:8080/quickcast/';
 		var HeadhunterService = {
 
 			messageReceive: function(receive_id) {

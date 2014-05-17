@@ -41,6 +41,7 @@ angular.module('QuickCastUser')
 				//cookie校验
 			} else {
 				$scope.user_id = location_array[2];
+				$scope.user_id_int = parseInt($scope.user_id);
 				$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
 				if (check.user_id === $scope.user_id) {} else {
 					$window.location.href = 'http://www.playingcn.com/quickcast';
@@ -49,9 +50,9 @@ angular.module('QuickCastUser')
 			}
 		};
 		var init = function() {
-			UserService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+			UserService.Receivenews($scope.user_id_int).then(function(response) {
 				$scope.updates = response.news;
-				UserService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+				UserService.Friendnews($scope.user_id_int).then(function(response) {
 					var myself_updates = response.news;
 					$scope.updates = $scope.updates.concat(myself_updates);
 				});
@@ -61,7 +62,7 @@ angular.module('QuickCastUser')
 				$scope.user = response.user[0];
 			});
 
-			UserService.UserProfile(parseInt($scope.user_id)).then(function(response) {
+			UserService.UserProfile($scope.user_id_int).then(function(response) {
 				$scope.user_profile = response.seeker_info[0];
 			});
 
@@ -77,7 +78,7 @@ angular.module('QuickCastUser')
 				}
 			});
 
-			UserService.ApplysList(parseInt($scope.user_id)).then(function(response) {
+			UserService.ApplysList($scope.user_id_int).then(function(response) {
 				var applylist = response.friend_list;
 				for (var i = 0; i < applylist.length; i++) {
 					if (applylist[i].friend_status === '1') {
@@ -115,27 +116,27 @@ angular.module('QuickCastUser')
 				$scope.sendmessages = response.message;
 			});
 
-			UserService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
+			UserService.Friendcircle($scope.user_id_int).then(function(response) {
 				$scope.friendcircles = response.partner;
 			});
-			UserService.Recommend(parseInt($scope.user_id)).then(function(response) {
+			UserService.Recommend($scope.user_id_int).then(function(response) {
 				$scope.recommends = response.recruit_info;
 			});
-			UserService.WorkExpGet(parseInt($scope.user_id)).then(function(response) {
+			UserService.WorkExpGet($scope.user_id_int).then(function(response) {
 				$scope.works = response.work_exp;
 			});
-			UserService.PrjExpGet(parseInt($scope.user_id)).then(function(response) {
+			UserService.PrjExpGet($scope.user_id_int).then(function(response) {
 				$scope.projects = response.prj_exp;
 			});
 
-			UserService.EduExpGet(parseInt($scope.user_id)).then(function(response) {
+			UserService.EduExpGet($scope.user_id_int).then(function(response) {
 				$scope.edus = response.edu_exp;
 			});
 
-			UserService.ResumeGet(parseInt($scope.user_id)).then(function(response) {
+			UserService.ResumeGet($scope.user_id_int).then(function(response) {
 				$scope.langs = JSON.parse(response.resume[0].language_skill);
 			});
-			UserService.DeliverRsm(parseInt($scope.user_id)).then(function(response) {
+			UserService.DeliverRsm($scope.user_id_int).then(function(response) {
 				$scope.delivers = response.deliver;
 				for (var i = 0; i < $scope.delivers.length; i++) {
 					if ($scope.delivers[i].handle_status === '0') {
@@ -167,9 +168,9 @@ angular.module('QuickCastUser')
 			publish.pub_type = '1';
 			UserService.Publishnews(publish).then(function(response) {
 				if (response.result.data === 'success') {
-					UserService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+					UserService.Receivenews($scope.user_id_int).then(function(response) {
 						$scope.updates = response.news;
-						UserService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+						UserService.Friendnews($scope.user_id_int).then(function(response) {
 							var myself_updates = response.news;
 							$scope.updates = $scope.updates.concat(myself_updates);
 						});
@@ -190,7 +191,8 @@ angular.module('QuickCastUser')
 		$scope.newmessage = function(newmessage_data) {
 			var timestamp = new Date();
 			newmessage_data.dispatch_time = timestamp.getTime();
-			newmessage_data.dispatch_id = parseInt($scope.user_id);
+			newmessage_data.dispatch_id = $scope.user_id_int;
+			newmessage_data.receive_id = newmessage_data.receive_info.partner_id;
 			newmessage_data.receive_info = undefined;
 			UserService.Newmessage(newmessage_data).then(function(response) {
 				if (response.result.data === 'success') {
@@ -307,7 +309,7 @@ angular.module('QuickCastUser')
 					del_friend_id = $scope.companyfriends[index].partner_id;
 				}
 			}
-			UserService.DelFriends(parseInt($scope.user_id), del_friend_id).then(function(response) {
+			UserService.DelFriends($scope.user_id_int, del_friend_id).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
@@ -336,13 +338,35 @@ angular.module('QuickCastUser')
 			} else {
 				friend_status = '1';
 			}
-			UserService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
+			UserService.ApplyConfirm($scope.user_id_int, $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
 						msg: '操作成功.'
 					});
 					$scope.applys.splice(index, 1);
+					UserService.FriendsList($scope.user_id).then(function(response) {
+						$scope.friendlists = response.friend_list;
+						$scope.seekerfriends = [];
+						$scope.headhunterfriends = [];
+						$scope.companyfriends = [];
+						for (var i = 0; i <= $scope.friendlists.length - 1; i++) {
+							if ($scope.friendlists[i].friend_status === '1') {
+								$scope.friendlists.splice(i, 1);
+							} else {
+								if ($scope.friendlists[i].friendsgroup === '1') {
+									$scope.seekerfriends.push($scope.friendlists[i]);
+								} else {
+									if ($scope.friendlists[i].friendsgroup === '2') {
+										$scope.headhunterfriends.push($scope.friendlists[i]);
+									} else {
+										$scope.companyfriends.push($scope.friendlists[i]);
+									}
+								}
+							}
+						}
+					});
+
 				} else {
 					$scope.alerts.push({
 						type: 'danger',
@@ -368,7 +392,7 @@ angular.module('QuickCastUser')
 		};
 
 		$scope.searchapply = function(index, friend_insert) {
-			friend_insert.self_id = parseInt($scope.user_id);
+			friend_insert.self_id = $scope.user_id_int;
 			friend_insert.partner_id = $scope.searchfriend_lists[index].partner_id;
 			UserService.AddFriends(friend_insert).then(function(response) {
 
@@ -408,10 +432,13 @@ angular.module('QuickCastUser')
 			// TODO
 		};
 		$scope.addlangs = function() {
+			if ($scope.langs === null) {
+				$scope.langs = [];
+			}
 			$scope.langs.push({
 				lang: '',
 				proficiency: '',
-				user_id: parseInt($scope.user_id)
+				user_id: $scope.user_id_int
 			});
 		};
 
@@ -427,7 +454,7 @@ angular.module('QuickCastUser')
 				end_time: newproject.end_time,
 				prj_desc: newproject.prj_desc,
 				prj_achievement: newproject.prj_achievement,
-				user_id: parseInt($scope.user_id)
+				user_id: $scope.user_id_int
 			});
 		};
 
@@ -443,7 +470,7 @@ angular.module('QuickCastUser')
 				study_end_time: newedu.study_end_time,
 				edu_desc: newedu.edu_desc,
 				major: newedu.major,
-				user_id: parseInt($scope.user_id)
+				user_id: $scope.user_id_int
 			});
 		};
 		$scope.delworks = function(index) {
@@ -458,14 +485,14 @@ angular.module('QuickCastUser')
 				end_time: newwork.end_time,
 				profession: newwork.profession,
 				work_place: newwork.work_place,
-				user_id: parseInt($scope.user_id)
+				user_id: $scope.user_id_int
 			});
 		};
 
 		$scope.editsave = function() {
 			var language_skill = JSON.stringify($scope.langs);
 			var resume_update = {
-				user_id: parseInt($scope.user_id),
+				user_id: $scope.user_id_int,
 				language_skill: language_skill
 			};
 

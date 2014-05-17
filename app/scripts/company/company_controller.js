@@ -40,6 +40,7 @@ angular.module('QuickCastCompany')
 				//cookie校验
 			} else {
 				$scope.user_id = location_array[2];
+				$scope.user_id_int = parseInt($scope.user_id);
 				$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
 				if (check.user_id === $scope.user_id) {} else {
 					$window.location.href = 'http://www.playingcn.com/quickcast';
@@ -48,9 +49,9 @@ angular.module('QuickCastCompany')
 			}
 		};
 		var init = function() {
-			CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+			CompanyService.Receivenews($scope.user_id_int).then(function(response) {
 				$scope.updates = response.news;
-				CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+				CompanyService.Friendnews($scope.user_id_int).then(function(response) {
 					var myself_updates = response.news;
 					$scope.updates = $scope.updates.concat(myself_updates);
 				});
@@ -60,7 +61,7 @@ angular.module('QuickCastCompany')
 				$scope.user = response.user[0];
 			});
 
-			CompanyService.UserProfile(parseInt($scope.user_id)).then(function(response) {
+			CompanyService.UserProfile($scope.user_id_int).then(function(response) {
 				$scope.user_profile = response.etp_info[0];
 			});
 
@@ -76,7 +77,7 @@ angular.module('QuickCastCompany')
 				}
 			});
 
-			CompanyService.ApplysList(parseInt($scope.user_id)).then(function(response) {
+			CompanyService.ApplysList($scope.user_id_int).then(function(response) {
 				var applylist = response.friend_list;
 				for (var i = 0; i < applylist.length; i++) {
 					if (applylist[i].friend_status === '1') {
@@ -114,14 +115,14 @@ angular.module('QuickCastCompany')
 				$scope.sendmessages = response.message;
 			});
 
-			CompanyService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
+			CompanyService.Friendcircle($scope.user_id_int).then(function(response) {
 				$scope.friendcircles = response.partner;
 			});
-			CompanyService.Recommend(parseInt($scope.user_id)).then(function(response) {
+			CompanyService.Recommend($scope.user_id_int).then(function(response) {
 				$scope.recommends = response.recruit_info;
 			});
 
-			CompanyService.DeliverRsm(parseInt($scope.user_id)).then(function(response) {
+			CompanyService.DeliverRsm($scope.user_id_int).then(function(response) {
 				$scope.delivers = response.deliver;
 				for (var i = 0; i < $scope.delivers.length; i++) {
 					if ($scope.delivers[i].handle_status === '0') {
@@ -151,13 +152,13 @@ angular.module('QuickCastCompany')
 			var timestamp = new Date();
 			publish.pub_type = $scope.newsTab.newstype;
 			if (publish.pub_type === '1') {
-				publish.pub_id = parseInt($scope.user_id);
+				publish.pub_id = $scope.user_id_int;
 				publish.pub_time = timestamp.getTime();
 				CompanyService.Publishnews(publish).then(function(response) {
 					if (response.result.data === 'success') {
-						CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+						CompanyService.Receivenews($scope.user_id_int).then(function(response) {
 							$scope.updates = response.news;
-							CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+							CompanyService.Friendnews($scope.user_id_int).then(function(response) {
 								var myself_updates = response.news;
 								$scope.updates = $scope.updates.concat(myself_updates);
 							});
@@ -174,14 +175,14 @@ angular.module('QuickCastCompany')
 					}
 				});
 			} else {
-				publish.user_id = parseInt($scope.user_id);
+				publish.user_id = $scope.user_id_int;
 				publish.issue_time = timestamp.getTime();
 				publish.pub_type = undefined;
 				CompanyService.Publishrecruits(publish).then(function(response) {
 					if (response.result.data === 'success') {
-						CompanyService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+						CompanyService.Receivenews($scope.user_id_int).then(function(response) {
 							$scope.updates = response.news;
-							CompanyService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+							CompanyService.Friendnews($scope.user_id_int).then(function(response) {
 								var myself_updates = response.news;
 								$scope.updates = $scope.updates.concat(myself_updates);
 							});
@@ -207,7 +208,8 @@ angular.module('QuickCastCompany')
 		$scope.newmessage = function(newmessage_data) {
 			var timestamp = new Date();
 			newmessage_data.dispatch_time = timestamp.getTime();
-			newmessage_data.dispatch_id = parseInt($scope.user_id);
+			newmessage_data.dispatch_id = $scope.user_id_int;
+			newmessage_data.receive_id = newmessage_data.receive_info.partner_id;
 			newmessage_data.receive_info = undefined;
 			CompanyService.Newmessage(newmessage_data).then(function(response) {
 				if (response.result.data === 'success') {
@@ -324,7 +326,7 @@ angular.module('QuickCastCompany')
 					del_friend_id = $scope.companyfriends[index].partner_id;
 				}
 			}
-			CompanyService.DelFriends(parseInt($scope.user_id), del_friend_id).then(function(response) {
+			CompanyService.DelFriends($scope.user_id_int, del_friend_id).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
@@ -353,13 +355,34 @@ angular.module('QuickCastCompany')
 			} else {
 				friend_status = '1';
 			}
-			CompanyService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
+			CompanyService.ApplyConfirm($scope.user_id_int, $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
 						msg: '操作成功.'
 					});
 					$scope.applys.splice(index, 1);
+					UserService.FriendsList($scope.user_id).then(function(response) {
+						$scope.friendlists = response.friend_list;
+						$scope.seekerfriends = [];
+						$scope.headhunterfriends = [];
+						$scope.companyfriends = [];
+						for (var i = 0; i <= $scope.friendlists.length - 1; i++) {
+							if ($scope.friendlists[i].friend_status === '1') {
+								$scope.friendlists.splice(i, 1);
+							} else {
+								if ($scope.friendlists[i].friendsgroup === '1') {
+									$scope.seekerfriends.push($scope.friendlists[i]);
+								} else {
+									if ($scope.friendlists[i].friendsgroup === '2') {
+										$scope.headhunterfriends.push($scope.friendlists[i]);
+									} else {
+										$scope.companyfriends.push($scope.friendlists[i]);
+									}
+								}
+							}
+						}
+					});
 				} else {
 					$scope.alerts.push({
 						type: 'danger',
@@ -385,7 +408,7 @@ angular.module('QuickCastCompany')
 		};
 
 		$scope.searchapply = function(index, friend_insert) {
-			friend_insert.self_id = parseInt($scope.user_id);
+			friend_insert.self_id = $scope.user_id_int;
 			friend_insert.partner_id = $scope.searchfriend_lists[index].partner_id;
 			CompanyService.AddFriends(friend_insert).then(function(response) {
 

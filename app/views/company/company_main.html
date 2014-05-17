@@ -348,13 +348,13 @@
         </button>
         <ul class="dropdown-menu" role="menu">
           <li>
-            <a href="" ng-click="search.pub_type=1;newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
+            <a href="" ng-click="search.pub_type='1';newsbutton='个人动态';search.pub_id=undefined;">个人动态</a>
           </li>
           <li>
-            <a href="" ng-click="search.pub_type=2;newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
+            <a href="" ng-click="search.pub_type='2';newsbutton='招聘信息';search.pub_id=undefined;">招聘信息</a>
           </li>
           <li>
-            <a href="" ng-click="search.pub_id=user_id;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
+            <a href="" ng-click="search.pub_id=user_id_int;search.pub_type=undefined;newsbutton='我的动态';">我的动态</a>
           </li>
           <li class="divider"></li>
           <li>
@@ -362,7 +362,7 @@
           </li>
         </ul>
       </div>
-      <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search|limitTo:newsquantity">
+      <div class="well newsspan" ng-repeat="update in updates |orderBy:'pub_time':true|filter:search:true|limitTo:newsquantity">
         <div class="row">
           <div class="col-md-2">
             <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{update.pub_id}}.jpg" alt="" class="main_img img-rounded img-responsive new_img"></div>
@@ -437,7 +437,7 @@
             <div class="col-md-3">
               <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{friendcircle.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
             <div class="col-md-9">
-              <a ng-href="search.html#/job/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
+              <a ng-href="search.html#/member/{{friendcircle.user_id}}">{{friendcircle.cn_tname}}</a>
               <p>目前就职: {{friendcircle.etp_name}}</p>
             </div>
           </div>

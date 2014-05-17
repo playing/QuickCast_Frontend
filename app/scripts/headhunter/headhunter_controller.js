@@ -41,6 +41,7 @@ angular.module('QuickCastHeadhunter')
 				//cookie校验
 			} else {
 				$scope.user_id = location_array[2];
+				$scope.user_id_int = parseInt($scope.user_id);
 				$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
 				if (check.user_id === $scope.user_id) {} else {
 					$window.location.href = 'http://www.playingcn.com/quickcast';
@@ -49,9 +50,9 @@ angular.module('QuickCastHeadhunter')
 			}
 		};
 		var init = function() {
-			HeadhunterService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+			HeadhunterService.Receivenews($scope.user_id_int).then(function(response) {
 				$scope.updates = response.news;
-				HeadhunterService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+				HeadhunterService.Friendnews($scope.user_id_int).then(function(response) {
 					var myself_updates = response.news;
 					$scope.updates = $scope.updates.concat(myself_updates);
 				});
@@ -62,7 +63,7 @@ angular.module('QuickCastHeadhunter')
 				$scope.user = response.user[0];
 			});
 
-			HeadhunterService.UserProfile(parseInt($scope.user_id)).then(function(response) {
+			HeadhunterService.UserProfile($scope.user_id_int).then(function(response) {
 				$scope.user_profile = response.hunter_info[0];
 			});
 
@@ -78,7 +79,7 @@ angular.module('QuickCastHeadhunter')
 				}
 			});
 
-			HeadhunterService.ApplysList(parseInt($scope.user_id)).then(function(response) {
+			HeadhunterService.ApplysList($scope.user_id_int).then(function(response) {
 				var applylist = response.friend_list;
 				for (var i = 0; i < applylist.length; i++) {
 					if (applylist[i].friend_status === '1') {
@@ -117,14 +118,14 @@ angular.module('QuickCastHeadhunter')
 			});
 
 
-			HeadhunterService.Friendcircle(parseInt($scope.user_id)).then(function(response) {
+			HeadhunterService.Friendcircle($scope.user_id_int).then(function(response) {
 				$scope.friendcircles = response.partner;
 			});
-			HeadhunterService.Recommend(parseInt($scope.user_id)).then(function(response) {
+			HeadhunterService.Recommend($scope.user_id_int).then(function(response) {
 				$scope.recommends = response.recruit_info;
 			});
 
-			HeadhunterService.DeliverRsm(parseInt($scope.user_id)).then(function(response) {
+			HeadhunterService.DeliverRsm($scope.user_id_int).then(function(response) {
 				$scope.delivers = response.deliver;
 				for (var i = 0; i < $scope.delivers.length; i++) {
 					if ($scope.delivers[i].handle_status === '0') {
@@ -154,13 +155,13 @@ angular.module('QuickCastHeadhunter')
 			var timestamp = new Date();
 			publish.pub_type = $scope.newsTab.newstype;
 			if (publish.pub_type === '1') {
-				publish.pub_id = parseInt($scope.user_id);
+				publish.pub_id = $scope.user_id_int;
 				publish.pub_time = timestamp.getTime();
 				HeadhunterService.Publishnews(publish).then(function(response) {
 					if (response.result.data === 'success') {
-						HeadhunterService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+						HeadhunterService.Receivenews($scope.user_id_int).then(function(response) {
 							$scope.updates = response.news;
-							HeadhunterService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+							HeadhunterService.Friendnews($scope.user_id_int).then(function(response) {
 								var myself_updates = response.news;
 								$scope.updates = $scope.updates.concat(myself_updates);
 							});
@@ -177,14 +178,14 @@ angular.module('QuickCastHeadhunter')
 					}
 				});
 			} else {
-				publish.user_id = parseInt($scope.user_id);
+				publish.user_id = $scope.user_id_int;
 				publish.issue_time = timestamp.getTime();
 				publish.pub_type = undefined;
 				HeadhunterService.Publishrecruits(publish).then(function(response) {
 					if (response.result.data === 'success') {
-						HeadhunterService.Receivenews(parseInt($scope.user_id)).then(function(response) {
+						HeadhunterService.Receivenews($scope.user_id_int).then(function(response) {
 							$scope.updates = response.news;
-							HeadhunterService.Friendnews(parseInt($scope.user_id)).then(function(response) {
+							HeadhunterService.Friendnews($scope.user_id_int).then(function(response) {
 								var myself_updates = response.news;
 								$scope.updates = $scope.updates.concat(myself_updates);
 							});
@@ -209,7 +210,8 @@ angular.module('QuickCastHeadhunter')
 		$scope.newmessage = function(newmessage_data) {
 			var timestamp = new Date();
 			newmessage_data.dispatch_time = timestamp.getTime();
-			newmessage_data.dispatch_id = parseInt($scope.user_id);
+			newmessage_data.dispatch_id = $scope.user_id_int;
+			newmessage_data.receive_id = newmessage_data.receive_info.partner_id;
 			newmessage_data.receive_info = undefined;
 			HeadhunterService.Newmessage(newmessage_data).then(function(response) {
 				if (response.result.data === 'success') {
@@ -326,7 +328,7 @@ angular.module('QuickCastHeadhunter')
 					del_friend_id = $scope.companyfriends[index].partner_id;
 				}
 			}
-			HeadhunterService.DelFriends(parseInt($scope.user_id), del_friend_id).then(function(response) {
+			HeadhunterService.DelFriends($scope.user_id_int, del_friend_id).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
@@ -355,13 +357,34 @@ angular.module('QuickCastHeadhunter')
 			} else {
 				friend_status = '1';
 			}
-			HeadhunterService.ApplyConfirm(parseInt($scope.user_id), $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
+			HeadhunterService.ApplyConfirm($scope.user_id_int, $scope.applys[index].id, friend_status, $scope.applys[index].rlts_id).then(function(response) {
 				if (response.result.data === 'success') {
 					$scope.alerts.push({
 						type: 'success',
 						msg: '操作成功.'
 					});
 					$scope.applys.splice(index, 1);
+					UserService.FriendsList($scope.user_id).then(function(response) {
+						$scope.friendlists = response.friend_list;
+						$scope.seekerfriends = [];
+						$scope.headhunterfriends = [];
+						$scope.companyfriends = [];
+						for (var i = 0; i <= $scope.friendlists.length - 1; i++) {
+							if ($scope.friendlists[i].friend_status === '1') {
+								$scope.friendlists.splice(i, 1);
+							} else {
+								if ($scope.friendlists[i].friendsgroup === '1') {
+									$scope.seekerfriends.push($scope.friendlists[i]);
+								} else {
+									if ($scope.friendlists[i].friendsgroup === '2') {
+										$scope.headhunterfriends.push($scope.friendlists[i]);
+									} else {
+										$scope.companyfriends.push($scope.friendlists[i]);
+									}
+								}
+							}
+						}
+					});
 				} else {
 					$scope.alerts.push({
 						type: 'danger',
@@ -387,7 +410,7 @@ angular.module('QuickCastHeadhunter')
 		};
 
 		$scope.searchapply = function(index, friend_insert) {
-			friend_insert.self_id = parseInt($scope.user_id);
+			friend_insert.self_id = $scope.user_id_int;
 			friend_insert.partner_id = $scope.searchfriend_lists[index].partner_id;
 			HeadhunterService.AddFriends(friend_insert).then(function(response) {
 
