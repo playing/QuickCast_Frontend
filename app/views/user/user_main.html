@@ -162,7 +162,6 @@
       <h3>{{cn_tname}} 快来分享你的新鲜动态.</h3>
       <alert ng-repeat="alert in alerts" type="alert.type" close="delalert($index)">{{alert.msg}}</alert>
       <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
-      {{publish}}
       <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
       <div class="btn-group pull-right">
         <button type="button" class="btn btn-default dropdown-toggle nav-btn" data-toggle="dropdown">

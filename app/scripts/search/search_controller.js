@@ -93,9 +93,10 @@ angular.module('QuickCastSearch')
 							info_id: info_id
 						};
 					} else {
+						var hunter_id = parseInt($scope.user_cookie.user_id)
 						deliver_rsm = {
 							rsm_id: $scope.resumes[i].rsm_id,
-							hunter_id: 0,
+							hunter_id: hunter_id,
 							etp_id: target_id,
 							info_id: info_id
 						};

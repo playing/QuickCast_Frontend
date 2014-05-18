@@ -144,6 +144,12 @@ angular.module('QuickCast')
 							msg: '请求失败,请重新提交.'
 						});
 					} else {
+						var UDATA = {
+							'user_id': user_id,
+							'cn_tname': $scope.user_reg.cn_tname,
+							'user_type': user_profile.user_type
+						};
+						$cookieStore.put('_UDATA', UDATA);
 						if (user_profile.user_type === '1') {
 							$window.location.href = 'user.html#/user/' + user_id;
 						} else {

@@ -29,6 +29,10 @@ angular.module('QuickCastCompany')
 			newstype: '1'
 		};
 		$scope.delivers = [];
+		$scope.nav_search = {
+			search_type: 1
+		};
+
 
 
 		var location_array = $location.path().split('/');
@@ -42,7 +46,7 @@ angular.module('QuickCastCompany')
 				$scope.user_id = location_array[2];
 				$scope.user_id_int = parseInt($scope.user_id);
 				$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
-				if (check.user_id === $scope.user_id) {} else {
+				if (check.user_id != $scope.user_id) {
 					$window.location.href = 'http://www.playingcn.com/quickcast';
 				}
 
@@ -192,7 +196,7 @@ angular.module('QuickCastCompany')
 							type: 'success',
 							msg: '发送成功.'
 						});
-						publish.content = undefined;
+						publish = undefined;
 					} else {
 						$scope.alerts.push({
 							type: 'danger',
@@ -438,6 +442,9 @@ angular.module('QuickCastCompany')
 		};
 
 		$scope.navsearch = function(nav_search) {
+			if (nav_search.serach_key === undefined) {
+				nav_search.serach_key = '';
+			}
 			if (nav_search.search_type === 1) {
 				$window.open('http://www.playingcn.com/quickcast/search.html#/search/job#' + nav_search.serach_key);
 			} else {

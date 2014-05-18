@@ -31,6 +31,10 @@ angular.module('QuickCastUser')
 		$scope.works = [];
 		$scope.proficiencys = ['初级(入门)', '中级(日常会话)', '中高级(商务会话)', '高级(无障碍商务沟通)', '母语'];
 		$scope.delivers = [];
+		$scope.nav_search = {
+			search_type: 1
+		};
+
 
 		var location_array = $location.path().split('/');
 
@@ -43,10 +47,9 @@ angular.module('QuickCastUser')
 				$scope.user_id = location_array[2];
 				$scope.user_id_int = parseInt($scope.user_id);
 				$scope.cn_tname = $cookieStore.get('_UDATA').cn_tname;
-				if (check.user_id === $scope.user_id) {} else {
+				if (check.user_id != $scope.user_id) {
 					$window.location.href = 'http://www.playingcn.com/quickcast';
 				}
-
 			}
 		};
 		var init = function() {
@@ -507,6 +510,9 @@ angular.module('QuickCastUser')
 		};
 
 		$scope.navsearch = function(nav_search) {
+			if (nav_search.serach_key === undefined) {
+				nav_search.serach_key = '';
+			}
 			if (nav_search.search_type === 1) {
 				$window.open('http://www.playingcn.com/quickcast/search.html#/search/job#' + nav_search.serach_key);
 			} else {
