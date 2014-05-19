@@ -162,10 +162,10 @@
             <input type="text" class="form-control prform"  ng-model="publish.etp_name"></div>
           <div class="form-group">
             <label >招聘职位:</label>
-            <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
+            <input type="text" class="form-control prform"  ng-model="publish.recruit_job"></div>
           <div class="form-group">
             <label >所在行业:</label>
-            <select class="form-control prform" ng-model="user_profile.etp_industry">
+            <select class="form-control prform" ng-model="publish.recruit_industry">
               <option value="0">选择...</option>
               <option value="安全和调查">安全和调查</option>
               <option value="半导体">半导体</option>
@@ -318,12 +318,12 @@
           </div>
           <div class="form-group">
             <label >薪资:</label>
-            <input type="text" class="form-control prform"  ng-model="newwork.etp_name"></div>
+            <input type="text" class="form-control prform"  ng-model="publish.salary"></div>
           <div class="form-group">
             <label >工作地点:</label>
             <input type="text" class="form-control prform"  ng-model="publish.work_place"></div>
           <label >详情:</label>
-          <textarea rows="4" cols="40" class="form-control" ng-model="publish.content"></textarea>
+          <textarea rows="4" cols="40" class="form-control" ng-model="publish.recruit_detail"></textarea>
           <button class="btn btn-primary btn-block btn-lg regbtn" ng-click="publishnews(publish)">发布</button>
         </div>
         <div  ng-switch-default>
@@ -399,30 +399,6 @@
           <a ng-href="company.html#/user/{{user_id}}/message">{{messages.length}}条</a>
           信息在快投网.
         </p>
-      </div>
-      <div>
-        <h4>职位推荐:</h4>
-        <div class="well well-sm" ng-repeat="recommend in recommends">
-          <div class="row">
-            <div class="col-md-3">
-              <img ng-src="http://www.playingcn.com:8080/quickcast/upload/{{recommend.user_id}}.jpg" alt="" class=" img-rounded img-responsive"></div>
-            <div class="col-md-9">
-              <a ng-href="search.html#/job/{{recommend.info_id}}">
-                <h5>{{recommend.recruit_job}}</h5>
-              </a>
-              <p>
-                <strong>{{recommend.etp_name}} -- {{recommend.recruit_industry}}</strong>
-              </p>
-              <p>
-                <strong>工作地点:</strong>
-                {{recommend.work_place}} --
-                <strong>薪资:</strong>
-                {{recommend.salary}}
-              </p>
-            </div>
-          </div>
-        </div>
-        <a ng-href="search.html#/" class="pull-right">更多职位</a>
       </div>
       <div>
         <h4>可能认识的会员:</h4>

@@ -282,17 +282,21 @@ angular.module('QuickCastHeadhunter')
 		};
 
 		$scope.replay = function(index, method) {
-			var replay_message_id = 0;
-			var replay_message_name = '';
+			var replay_message_info = {};
 			if (method === 'receive') {
-				replay_message_id = $scope.messages[index].dispatch_id;
-				replay_message_name = $scope.messages[index].dispatch_name;
+				replay_message_info = {
+					partner_id: $scope.messages[index].dispatch_id,
+					partner_name: $scope.messages[index].dispatch_name,
+				};
+
 			} else {
-				replay_message_id = $scope.sendmessages[index].receive_id;
-				replay_message_name = $scope.sendmessages[index].receive_name;
+
+				replay_message_info = {
+					partner_id: $scope.sendmessages[index].receive_id,
+					partner_name: $scope.sendmessages[index].receive_name,
+				};
 			}
-			$scope.newmessage_data.receive_id = replay_message_id;
-			$scope.newmessage_data.receive_info = replay_message_name;
+			$scope.newmessage_data.receive_info = replay_message_info;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};
@@ -302,22 +306,17 @@ angular.module('QuickCastHeadhunter')
 		};
 		$scope.friendtomessage = function(index, method) {
 			var friend_message_info = 0;
-			var friend_message_name = '';
 			if (method === 'seeker') {
-				friend_message_info = $scope.seekerfriends[index].partner_id;
-				friend_message_name = $scope.seekerfriends[index].partner_name;
+				friend_message_info = $scope.seekerfriends[index];
 			} else {
 				if (method === 'headhunter') {
-					friend_message_info = $scope.headhunterfriends[index].partner_id;
-					friend_message_name = $scope.headhunterfriends[index].partner_name;
+					friend_message_info = $scope.headhunterfriends[index];
 				} else {
-					friend_message_info = $scope.companyfriends[index].partner_id;
-					friend_message_name = $scope.companyfriends[index].partner_name;
+					friend_message_info = $scope.companyfriends[index];
 				}
 			}
 			$location.path('user/' + $scope.user_id + '/message');
-			$scope.newmessage_data.receive_id = friend_message_info;
-			$scope.newmessage_data.receive_info = friend_message_name;
+			$scope.newmessage_data.receive_info = friend_message_info;
 			$scope.$parent.messageswitch = {
 				messageTab: 'write'
 			};

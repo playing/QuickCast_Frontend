@@ -12,19 +12,93 @@
         <img src="./images/nav_logo.png"></a>
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav" >
-        <li>
-          <a ui-sref="server">服务器监测</a>
-        </li>
-      </ul>
       <ul class="nav navbar-nav navbar-right" >
-        <li>Admin</li>
+        <li>
+          <button class="btn btn-success nav-btn" >Admin 欢迎你!</button>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li ng-class="{'active':true}">
+          <a ui-sref="index">首页</a>
+        </li>
+        <li>
+          <a ui-sref="server">服务器状态</a>
+        </li>
+        <li>
+          <a ui-sref="chart">数据统计</a>
+        </li>
+        <li>
+          <a ui-sref="notice">通知</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div  class="jumbotron">
+        <h2>欢迎使用QuickCast,快投网！</h2>
+        <p>我们准备了几个链接供您开始：</p>
+        <div class="row">
+          <div class="col-md-4">
+            <h4>开始使用</h4>
+            <a class="btn btn-lg btn-primary" href="http://www.playingcn.com/quickcast">查看您的站点</a>
+          </div>
+          <div class="col-md-4">
+            <h4>接下来</h4>
+            <h4>
+              <span class="glyphicon glyphicon-stats"></span>
+              <a ui-sref="server" >查看服务器状态监控</a>
+            </h4>
+            <h4>
+              <span class="glyphicon glyphicon-list"></span>
+              <a ui-sref="chart" >查看数据统计</a>
+            </h4>
+          </div>
+          <div class="col-md-4 welcome-panel-last">
+            <h4>更多操作</h4>
+            <h4>
+              <span class="glyphicon glyphicon-envelope"></span>
+              <a ui-sref="notice">发送通知</a>
+            </h4>
+            <h4>
+              <span class="glyphicon glyphicon-dashboard"></span>
+              <a href="https://www.google.com/analytics/web/#report/visitors-overview/a49017618w82084682p85014100/" target="_blank">访问统计</a>
+              <small>By Google Analytics</small>
+            </h4>
+          </div>
 
-<div class="container"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="page-header">
+            <h4>
+              <span class="glyphicon glyphicon-info-sign"></span>
+              概览
+              <div  class=" btn btn-sm btn-default pull-right">
+                <span class="glyphicon glyphicon-refresh"></span>
+              </div>
+            </h4>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <p>{{overview.info_num}}个职位</p>
+              <p>{{overview.user_num}}个会员</p>
+            </div>
+            <div class="col-md-6">
+              <p>{{overview.news_num}}条动态</p>
+              <p>{{overview.message_num}}条站内信</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="footer" ng-include="'views/footer.html'">
 </div>
+
+<div class="footer" ng-include="'views/footer.html'"></div>

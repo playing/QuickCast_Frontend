@@ -14,17 +14,18 @@ angular.module('QuickCastAdmin', [
       .state('index', {
         url: '/',
         templateUrl: 'views/admin/admin_main.html',
-        controller: "AdminCtrl"
       })
       .state('server', {
         url: '/server',
         templateUrl: 'views/admin/admin_serve.html',
-        controller: "AdminCtrl"
       })
       .state('chart', {
         url: '/chart',
         templateUrl: 'views/admin/admin_chart.html',
-        controller: "AdminCtrl"
+      })
+      .state('notice', {
+        url: '/notice',
+        templateUrl: 'views/admin/admin_notice.html',
       })
       .state('404', {
         url: '/404',

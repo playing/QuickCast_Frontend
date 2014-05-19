@@ -128,7 +128,8 @@ angular.module('QuickCast')
 
 		$scope.userprofile = function(user_profile) {
 			var user_id = $cookieStore.get('_UDATA').user_id;
-			$scope.user_profile.user_id = user_id;
+			var user_type = user_profile.user_type;
+			$scope.user_profile.user_id = parseInt(user_id);
 			if (user_profile.user_type === 'null') {
 				$scope.alerts.push({
 					type: 'danger',
@@ -147,13 +148,13 @@ angular.module('QuickCast')
 						var UDATA = {
 							'user_id': user_id,
 							'cn_tname': $scope.user_reg.cn_tname,
-							'user_type': user_profile.user_type
+							'user_type': user_type
 						};
 						$cookieStore.put('_UDATA', UDATA);
-						if (user_profile.user_type === '1') {
+						if (user_type === '1') {
 							$window.location.href = 'user.html#/user/' + user_id;
 						} else {
-							if (user_profile.user_type === '2') {
+							if (user_type === '2') {
 								$window.location.href = 'headhunter.html#/user/' + user_id;
 							} else {
 								$window.location.href = 'company.html#/user/' + user_id;

@@ -1,0 +1,125 @@
+<nav class="navbar navbar-default navbar-fixed-top"
+  role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="index">
+        <img src="./images/nav_logo.png"></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right" >
+        <li>
+          <button class="btn btn-success nav-btn" >Admin 欢迎你!</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <ul class="nav nav-pills nav-stacked">
+        <li >
+          <a ui-sref="index">首页</a>
+        </li>
+        <li>
+          <a ui-sref="server">服务器状态</a>
+        </li>
+        <li >
+          <a ui-sref="chart">数据统计</a>
+        </li>
+        <li ng-class="{'active':true}">
+          <a ui-sref="notice">通知</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-10">
+      <div class="input-group pull-right global-search">
+        <label class="input-group-addon">全局搜索</label>
+        <input type="text" class="form-control" ng-model="vm.filter.$"/>
+      </div>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th rowspan="2">
+              <input type="checkbox" ng-model="vm.allChecked" ng-change="vm.checkAll(vm.allChecked)"/>
+            </th>
+            <th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)"
+          ng-class="{sortable: column.sortable !== false}">
+              {{column.label}} <i ng-if="column.name === vm.sort.column && vm.sort.direction"
+           class="glyphicon {{vm.sort.direction|orderClass}}"></i>
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td>
+              <input type="text" ng-model="vm.filter.user_id" class="form-control"/>
+            </td>
+            <td>
+              <input type="text" ng-model="vm.filter.cn_tname" class="form-control"/>
+            </td>
+            <td>
+              <input type="text" ng-model="vm.filter.email" class="form-control"/>
+            </td>
+            <td>
+              <input type="text" ng-model="vm.filter.user_type" class="form-control"/>
+            </td>
+          </tr>
+          <tr ng-repeat="item in vm.items|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1|paging:vm.page.index:vm.page.size">
+            <td>
+              <input type="checkbox" class="form-control" ng-model="item.$checked" />
+            </td>
+            <td>{{item.user_id}}</td>
+            <td>
+              <span ng-if="!item.$editing">{{item.cn_tname}}</span>
+            </td>
+            <td class="text-right">
+              <span ng-if="!item.$editing">{{item.email}}</span>
+            </td>
+            <td class="text-right">
+              <span ng-if="!item.$editing">{{item.user_type|usertype}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-md-3">
+          <select ng-model="vm.page.size" class="form-control" title="每页条目数"
+              ng-options="pageSize for pageSize in [5, 20, 100]"></select>
+        </div>
+        <div class="col-md-9">
+          <pagination total-items="vm.items|filter:vm.filter|size" page="vm.page.index" max-size="5"
+                  items-per-page="vm.page.size"
+                  class="pagination-sm pull-right" boundary-links="true"></pagination>
+        </div>
+      </div>
+      <div>
+        收件人:
+        <br/>
+        <label class="label label-primary" ng-repeat-start="item in vm.selection()">{{item.cn_tname}}</label>
+        <span ng-if="!$last && $index % 5 !== 4">,</span>
+        <br ng-repeat-end ng-if="$index % 10  === 4"/>
+      </div>
+
+      <div class="form-group regbtn">
+        <input type="text" class="form-control"  placeholder="主题" ng-model="newmessage_data.title"></div>
+      <textarea class="form-control" rows="5" placeholder="正文" ng-model="newmessage_data.content"></textarea>
+      <button class="btn btn-primary btn-block regbtn" ng-click="newmessage(newmessage_data)">
+        <span class="glyphicon glyphicon-send"></span>
+        发送
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<div class="footer" ng-include="'views/footer.html'"></div>
